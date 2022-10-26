@@ -8,9 +8,13 @@
     <h2 class="text-lg text-dark-gray py-4 px-8 capitalize">Menu</h2>
     <nav>
       <ul>
-        <li *ngFor="let item of menus" class=" hover:bg-primary-purple hover:text-white" >
-          <a [routerLink]="item.link" class="flex flex-row space-x-4 px-8 items-center py-4">
-            <img [src]="item.imageSrc" [alt]="item.name"  />
+        <li *ngFor="let item of menus">
+          <a
+            [routerLink]="item.link"
+            class="flex flex-row space-x-4 px-8 items-center py-4 hover:bg-primary-purple hover:text-white
+             focus:bg-primary-purple focus:text-white"
+          >
+            <img [src]="item.imageSrc" [alt]="item.name" />
             <p class="capitalize">{{ item.name }}</p>
           </a>
         </li>
@@ -21,8 +25,11 @@
     <h2 class="text-lg text-dark-gray py-4 px-8 capitalize">Playlist</h2>
     <nav>
       <ul>
-        <li *ngFor="let item of playlists" class=" hover:bg-primary-purple hover:text-white">
-          <a  [routerLink]="item.link" class="flex flex-row space-x-4 px-8 items-center py-4">
+        <li *ngFor="let item of playlists">
+          <a
+            [routerLink]="item.link"
+            class="flex flex-row space-x-4 px-8 items-center py-4 hover:bg-primary-purple hover:text-white"
+          >
             <img [src]="item.imageSrc" [alt]="item.name" />
             <p class="capitalize">{{ item.name }}</p>
           </a>

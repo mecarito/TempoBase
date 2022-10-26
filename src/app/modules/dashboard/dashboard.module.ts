@@ -36,6 +36,6 @@ const routes: Routes = [
     RecentPlayedComponent,
     PlaylistsComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
+  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
 })
 export class DashboardModule {}
