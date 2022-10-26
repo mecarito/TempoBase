@@ -10,34 +10,34 @@ export class SidebarComponent implements OnInit {
     {
       name: 'Home',
       imageSrc: 'assets/icons/home.svg',
-      link: '',
+      link: 'home',
     },
     {
       name: 'Albums',
       imageSrc: 'assets/icons/book.svg',
-      link: '',
+      link: 'albums',
     },
     {
       name: 'Artist',
       imageSrc: 'assets/icons/user.svg',
-      link: '',
+      link: 'artists',
     },
     {
       name: 'Discover',
       imageSrc: 'assets/icons/search.svg',
-      link: '',
+      link: 'discover',
     },
   ];
   playlists = [
     {
-      name: 'Recent',
+      name: 'Played recently',
       imageSrc: 'assets/icons/clock.svg',
-      link: '',
+      link: 'played-recently',
     },
     {
       name: 'Favorites',
       imageSrc: 'assets/icons/heart.svg',
-      link: '',
+      link: 'playlist',
     },
   ];
 
