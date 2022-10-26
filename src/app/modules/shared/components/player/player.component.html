@@ -8,5 +8,19 @@
     <p class="text-2xl text-black capitalize">Stay</p>
     <p class="text-base text-dark-gray">The kid Laroi, justin bieber</p>
   </div>
-  <div></div>
+  <div class="w-full">
+    <input
+      type="range"
+      id="track-time"
+      name="track-time"
+      min="0"
+      max="100"
+      value="20"
+      (input)="handleInputChange($event)"
+    />
+    <div class="flex flex-row items-center w-full justify-between mt-2 text-dark-gray">
+      <p>1:28</p>
+      <p>2:37</p>
+    </div>
+  </div>
 </div>
