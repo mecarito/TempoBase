@@ -14,7 +14,7 @@ import { TrackComponent } from './components/track/track.component';
     UserComponent,
     TrackComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, ],
   exports: [
     ModeSwitchComponent,
     PlayerComponent,
