@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
   ];
   playlists = [
     {
-      name: 'Recently Played',
+      name: 'Played',
       imageSrc: 'assets/icons/clock.svg',
       link: 'played-recently',
     },
