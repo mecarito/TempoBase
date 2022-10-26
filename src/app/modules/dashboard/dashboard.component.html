@@ -1,6 +1,7 @@
-<div class="grid grid-flow-col grid-cols-12">
-  <section class="col-span-2"></section>
-  <section class="col-span-7"></section>
+<div class="grid grid-flow-col grid-cols-12 h-screen">
+  <section class="col-span-2"><app-sidebar></app-sidebar></section>
+  <section class="col-span-7 bg-main-content-bg">
+    <router-outlet></router-outlet>
+  </section>
   <section class="col-span-3"></section>
 </div>
-<router-outlet></router-outlet>
