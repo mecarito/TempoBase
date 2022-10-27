@@ -1,8 +1,8 @@
 @mixin translates {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  -moz-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  -moz-transform: translateX(30px);
+  transform: translateX(30px);
 }
 
 @mixin transitions {
@@ -15,7 +15,7 @@
   position: relative;
   display: inline-block;
   width: 60px;
-  height: 26px;
+  height: 30px;
 }
 
 .switch input {
@@ -33,25 +33,24 @@
   bottom: 0;
   background-color: #ccc;
   border-radius: 26px;
-  @include transitions()
+  @include transitions();
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 18px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   margin: 4px 4px;
   background-color: white;
   border-radius: 50%;
-  @include transitions()
+  @include transitions();
 }
 
 input:checked + .slider {
   background-image: linear-gradient(to right, #3f8fff, #9244ff);
-
 }
 
 input:checked + .slider:before {
-  @include translates()
+  @include translates();
 }
