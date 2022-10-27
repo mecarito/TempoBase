@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModeSwitchComponent implements OnInit {
 
+  checked = false
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onChange() {
+    this.checked = !this.checked
+    console.log(this.checked)
+  }
 }
