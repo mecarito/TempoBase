@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightBarComponent implements OnInit {
 
+  email = 'pearlpoole@gmail.com'
+  product = 'free'
+  
   constructor() { }
 
   ngOnInit(): void {

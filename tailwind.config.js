@@ -9,6 +9,7 @@ module.exports = {
         "main-content-bg": "#F6F8F9",
         "gradient-one": "#3f8fff",
         "gradient-two": "#9244ff",
+        "light-gray": "#F5F7F8",
       },
       screens: {
         lg: "1280px",

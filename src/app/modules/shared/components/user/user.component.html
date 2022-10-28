@@ -1,1 +1,20 @@
-<p>user works!</p>
+<div
+  class="flex flex-row space-x-4 items-center w-full py-4 px-4 lgxxl:justify-between"
+>
+  <div class="flex flex-row space-x-4 items-center">
+    <div
+      class="w-10 h-10 lgxl:w-16 lgxl:h-16 rounded-full bg-light-gray flex flex-row items-center justify-center"
+    >
+      <p class="text-2xl lgxl:text-4xl text-black capitalize">
+        {{ email.charAt(0) }}
+      </p>
+    </div>
+    <div class="flex flex-col space-y-1">
+      <p class="capitalize text-base lgxxl:text-lg text-black font-semibold">{{ email }}</p>
+      <p class="capitalize text-base">{{ product }} user</p>
+    </div>
+  </div>
+  <div class="p-1 bg-light-gray rounded-full">
+    <img src="assets/icons/chevron-down.svg" alt="down arrow"  />
+  </div>
+</div>
