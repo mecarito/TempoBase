@@ -9,7 +9,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   getAccessToken(): Observable<Response.Authorization> {
-   const body = 'grant_type=client_credentials'
+    const body = 'grant_type=client_credentials';
     return this.http.post<Response.Authorization>(this.authUrl, body);
   }
 }

@@ -10,3 +10,9 @@ export namespace Response {
     expires_in: number;
   }
 }
+
+export namespace State {
+  export interface Auth {
+    access_token: string;
+  }
+}
