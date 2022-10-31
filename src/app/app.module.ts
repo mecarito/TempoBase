@@ -5,11 +5,14 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { LoginModule } from './modules/login/login.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, DashboardModule, LoginModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, DashboardModule, LoginModule, SharedModule, StoreModule.forRoot({}, {}), StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })],
   providers: [],
   bootstrap: [AppComponent],
 })
