@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { LoginModule } from './modules/login/login.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GlobalInterceptor } from './modules/shared/interceptors/global-interceptor';
+import { WelcomeModule } from './modules/welcome/welcome.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +17,7 @@ import { GlobalInterceptor } from './modules/shared/interceptors/global-intercep
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
-    LoginModule,
+    WelcomeModule,
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot({}, {}),
