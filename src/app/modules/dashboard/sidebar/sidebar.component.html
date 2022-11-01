@@ -1,24 +1,78 @@
-<div class="bg-black h-screen">
-  <h1
-    class=" text-3xl text-primary-purple text-center lgxl:text-start lgxl:ml-8 font-semibold cursor-pointer"
-    routerLink=""
-  >
-    Tempo Base
-  </h1>
-  <div>
-    <h2 class="text-lg text-dark-gray py-4 px-8 capitalize">Menu</h2>
-    <nav>
-      <ul>
-        <li *ngFor="let item of menus">
-          <a
-            [routerLink]="item.link"
-            class="flex flex-row space-x-4 px-8 items-center py-4 hover:bg-primary-purple hover:text-white focus:bg-primary-purple focus:text-white"
-          >
-            <img [src]="item.imageSrc" [alt]="item.name" />
-            <p class="capitalize">{{ item.name }}</p>
-          </a>
-        </li>
-      </ul>
-    </nav>
+<div class="bg-black h-screen pt-6">
+  <div class="px-6 pb-2">
+    <img src="assets/spotify-logo.png" alt="spotify logo" class="w-3/4" />
   </div>
+
+  <nav class="my-4 px-4">
+    <ul>
+      <li>
+        <a
+          routerLink="dashboard"
+          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-spotify-gray hover:stroke-white focus:text-white focus:stroke-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-home"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <p class="text-base mt-1">Home</p>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="dashboard"
+          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-spotify-gray hover:stroke-white focus:text-white focus:stroke-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-search"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <p class="text-base mt-1">Search</p>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="dashboard"
+          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-spotify-gray hover:stroke-white focus:text-white focus:stroke-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-book"
+          >
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path
+              d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+            ></path>
+          </svg>
+          <p class="text-base mt-1">Your Library</p>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
