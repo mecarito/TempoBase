@@ -7,12 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
   playing = false;
+  muted = false;
+  favorite = false;
+
   constructor() {}
 
   ngOnInit(): void {
     let slider = document.getElementById('track-time');
     if (slider) {
       slider.style.backgroundSize = '20% 100%';
+    }
+
+    let volume = document.getElementById('volume-level');
+    if (volume) {
+      volume.style.backgroundSize = '20% 100%';
     }
   }
 
@@ -25,11 +33,27 @@ export class PlayerComponent implements OnInit {
     target.style.backgroundSize = ((val - min) * 100) / (max - min) + '% 100%';
   }
 
-  onPlay() {
+  Play() {
     this.playing = true;
   }
 
-  onPause() {
+  Pause() {
     this.playing = false;
+  }
+
+  mute() {
+    this.muted = true;
+  }
+
+  unMute() {
+    this.muted = false;
+  }
+
+  addToFavorite() {
+    this.favorite = true;
+  }
+
+  removeFromFavorite() {
+    this.favorite = false;
   }
 }

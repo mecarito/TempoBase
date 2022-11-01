@@ -29,7 +29,7 @@
   background-repeat: no-repeat;
 }
 
-input[type="range"] {
+.audio-slider {
   @include range();
   background-image: linear-gradient(to right, #fff, #fff);
 
@@ -44,7 +44,37 @@ input[type="range"] {
   }
 }
 
-input[type="range"]:hover {
+.audio-slider:hover {
+  @include range();
+  background-image: linear-gradient(to right, #1db954, #1db954);
+
+  &::-webkit-slider-thumb {
+    @include slider-thumb-hover;
+  }
+  &::-moz-range-thumb {
+    @include slider-thumb-hover;
+  }
+  &::-ms-thumb {
+    @include slider-thumb-hover;
+  }
+}
+
+.volume-slider {
+  @include range();
+  background-image: linear-gradient(to right, #fff, #fff);
+
+  &::-webkit-slider-thumb {
+    @include slider-thumb;
+  }
+  &::-moz-range-thumb {
+    @include slider-thumb;
+  }
+  &::-ms-thumb {
+    @include slider-thumb;
+  }
+}
+
+.volume-slider:hover {
   @include range();
   background-image: linear-gradient(to right, #1db954, #1db954);
 
