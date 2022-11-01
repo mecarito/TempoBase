@@ -4,9 +4,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "spotify-black": "#191414",
+        "spotify-primary-dark": "#181818",
+        "spotify-secondary-dark": "#121212",
         "spotify-green": "#1DB954",
         "spotify-gray": "#B3B3B3",
+        "scroll-bar": "#5A5A5A",
+        "bg-border": "#2B2B2B",
       },
       fontFamily: {
         Roboto: "'Roboto', sans-serif",

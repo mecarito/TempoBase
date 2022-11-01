@@ -28,18 +28,6 @@ export class SidebarComponent implements OnInit {
       link: 'discover',
     },
   ];
-  playlists = [
-    {
-      name: 'Played',
-      imageSrc: 'assets/icons/clock.svg',
-      link: 'played-recently',
-    },
-    {
-      name: 'Favorites',
-      imageSrc: 'assets/icons/heart.svg',
-      link: 'playlist',
-    },
-  ];
 
   constructor() {}
 

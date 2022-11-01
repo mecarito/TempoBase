@@ -1,10 +1,13 @@
-<div class="grid grid-flow-col grid-cols-12 h-screen">
-  <section class="col-span-2"><app-sidebar></app-sidebar></section>
-  <section class="col-span-7 bg-main-content-bg lg:py-4 lg:px-4  lgxxl:px-10">
+<div class="grid grid-flow-col grid-cols-8 h-screen relative scroll">
+  <section class="col-span-1"><app-sidebar></app-sidebar></section>
+  <section
+    class="col-span-7 lg:py-4 lg:px-4 lgxxl:px-10 bg-spotify-secondary-dark overflow-auto"
+  >
     <router-outlet></router-outlet>
   </section>
-  <section class="col-span-3">
-  </section>
+  <footer
+    class="bg-spotify-primary-dark bottom-0 right-0 left-0 absolute h-24 border-t-[0.1px] border-t-bg-border text-white"
+  >
+    This is a foolter
+  </footer>
 </div>
-
-
