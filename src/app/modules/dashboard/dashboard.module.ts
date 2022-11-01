@@ -10,7 +10,6 @@ import { ArtistsComponent } from './artists/artists.component';
 import { DiscoverComponent } from './discover/discover.component';
 import { RecentPlayedComponent } from './recent-played/recent-played.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
-import { RightBarComponent } from './right-bar/right-bar.component';
 
 const routes: Routes = [
   {
@@ -36,7 +35,6 @@ const routes: Routes = [
     DiscoverComponent,
     RecentPlayedComponent,
     PlaylistsComponent,
-    RightBarComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
 })
