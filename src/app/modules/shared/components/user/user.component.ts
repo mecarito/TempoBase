@@ -1,19 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/types';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
+  @Input() user!: User;
 
-  @Input() email!: string
-  @Input() product!: string
-  @Input() image!: string
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

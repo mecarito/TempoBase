@@ -3,6 +3,13 @@ export interface Album {
   artist: string;
 }
 
+export interface User {
+  country: string;
+  display_name: string;
+  email: string;
+  product: string;
+}
+
 export namespace Response {
   export interface Authorization {
     access_token: string;

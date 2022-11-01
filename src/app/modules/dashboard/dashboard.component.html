@@ -1,9 +1,51 @@
 <div class="grid grid-flow-col grid-cols-8 h-screen relative scroll">
   <section class="col-span-1"><app-sidebar></app-sidebar></section>
-  <section
-    class="col-span-7 lg:py-4 lg:px-4 lgxxl:px-10 bg-spotify-secondary-dark overflow-auto"
-  >
-    <router-outlet></router-outlet>
+  <section class="col-span-7 bg-spotify-secondary-dark overflow-auto">
+    <header
+      class="bg-header-bg h-16 top-0 left-0 right-0 sticky py-3 flex flex-row items-center px-8 justify-between"
+    >
+      <div class="w-1/3 flex flex-row items-center space-x-5">
+        <div class="bg-black rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-chevron-left"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </div>
+        <div class="bg-black rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-chevron-right"
+          >
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
+        <div class="w-full">
+          <app-search></app-search>
+        </div>
+      </div>
+      <app-user></app-user>
+    </header>
+    <div class="px-8">
+      <router-outlet></router-outlet>
+    </div>
   </section>
   <footer
     class="bg-spotify-primary-dark bottom-0 right-0 left-0 absolute h-24 border-t-[0.1px] border-t-bg-border text-white"

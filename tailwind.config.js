@@ -10,6 +10,8 @@ module.exports = {
         "spotify-gray": "#B3B3B3",
         "scroll-bar": "#5A5A5A",
         "bg-border": "#2B2B2B",
+        "header-bg": "#070707",
+        "user-bg": "#535353",
       },
       fontFamily: {
         Roboto: "'Roboto', sans-serif",
