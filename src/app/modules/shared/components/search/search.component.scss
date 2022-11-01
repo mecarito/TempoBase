@@ -1,0 +1,12 @@
+.searchCancelbtn {
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    position: relative;
+    right: 0;
+    height: 35px;
+    width: 35px;
+    background-image: url("../../../../../assets/cancel.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
