@@ -1,0 +1,15 @@
+export const categoryColors = {
+  red: '#E91429',
+  pink: '#E1118C',
+  blue: '#0D72ED',
+  orange: '#E13300',
+  green: '#148A08',
+  purple: '#B02897',
+  brown: '#BC5900',
+  gray: '#777777',
+  navyBlue: '#1E3264',
+  darkRed: '#8C1932',
+  darkPink: '#E8115B',
+  darkOrange: '#D84000',
+  lightPurple: '#8D67AB',
+};
