@@ -29,6 +29,10 @@ module.exports = {
         "card-img-h": "9.313rem",
         "category-card-w": "11.25rem",
         "category-card-h": "11.25rem",
+        "category-img-h": "5.625rem",
+      },
+      rotate: {
+        20: "20deg",
       },
     },
   },

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CardVariant } from 'app-types';
 import { sampleImgUrl, categoryColors } from '../../constants';
+import { calculateBackgroundColor } from '../../utils/background-color';
 
 @Component({
   selector: 'app-card',
@@ -10,9 +11,9 @@ import { sampleImgUrl, categoryColors } from '../../constants';
 export class CardComponent implements OnInit {
   @Input() variant!: CardVariant;
   url = sampleImgUrl;
-
+  bgColor = calculateBackgroundColor;
 
   constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }
