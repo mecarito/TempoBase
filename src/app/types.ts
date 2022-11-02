@@ -3,6 +3,8 @@ export interface Album {
   artist: string;
 }
 
+export type CardVariant = 'artist' | 'album' | 'playlist' | 'episode' | 'show' | 'topResult' | 'category' | 'artistDetail' | 'albumDetail';
+
 export interface User {
   country: string;
   display_name: string;

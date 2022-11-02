@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Album } from '../../../../types';
+import { CardVariant } from 'types';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +7,7 @@ import { Album } from '../../../../types';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() album!: Album;
+  @Input() variant!: CardVariant;
 
   constructor() {}
 

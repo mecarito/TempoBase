@@ -21,6 +21,12 @@ module.exports = {
         lgxl: "1366px",
         lgxxl: "1920px",
       },
+      spacing: {
+        "card-w": "11.375rem",
+        "card-h": "16.125rem",
+        "card-p": "0.938rem",
+        "card-img-h": "9.313rem",
+      },
     },
   },
   plugins: [],
