@@ -12,6 +12,7 @@ module.exports = {
         "bg-border": "#2B2B2B",
         "header-bg": "#070707",
         "user-bg": "#535353",
+        "card-hovered": "#232323",
       },
       fontFamily: {
         Roboto: "'Roboto', sans-serif",
@@ -26,6 +27,8 @@ module.exports = {
         "card-h": "16.125rem",
         "card-p": "0.938rem",
         "card-img-h": "9.313rem",
+        "category-card-w": "11.25rem",
+        "category-card-h": "11.25rem",
       },
     },
   },

@@ -11,7 +11,8 @@ export class CardComponent implements OnInit {
   @Input() variant!: CardVariant;
   url = sampleImgUrl;
 
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
