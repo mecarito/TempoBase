@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CardVariant } from 'types';
+import { CardVariant } from 'app-types';
+import { sampleImgUrl, categoryColors } from '../../constants';
 
 @Component({
   selector: 'app-card',
@@ -8,6 +9,7 @@ import { CardVariant } from 'types';
 })
 export class CardComponent implements OnInit {
   @Input() variant!: CardVariant;
+  url = sampleImgUrl;
 
   constructor() {}
 

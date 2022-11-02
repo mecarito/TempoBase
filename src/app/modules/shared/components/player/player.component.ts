@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { sampleImgUrl } from '../../constants';
 
 @Component({
   selector: 'app-player',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent implements OnInit {
+  url = sampleImgUrl;
   playing = false;
   muted = false;
   favorite = false;
