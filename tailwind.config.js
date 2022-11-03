@@ -23,6 +23,7 @@ module.exports = {
         lgxxl: "1920px",
       },
       spacing: {
+        "player-h": "5.625rem",
         "card-w": "11.375rem",
         "card-h": "16.125rem",
         "card-p": "0.938rem",

@@ -3,7 +3,22 @@ export interface Album {
   artist: string;
 }
 
-export type CardVariant = 'artist' | 'album' | 'playlist' | 'episode' | 'show' | 'topResult' | 'category' | 'artistDetail' | 'albumDetail';
+export type CardVariants =
+  | 'artist'
+  | 'album'
+  | 'playlist'
+  | 'episode'
+  | 'show'
+  | 'topResult'
+  | 'category'
+  | 'artistDetail'
+  | 'albumDetail';
+
+export type TrackComponentVariant =
+  | 'onPopular'
+  | 'onAlbum'
+  | 'onSearch'
+  | 'onSongs';
 
 export interface User {
   country: string;

@@ -6,6 +6,7 @@ import { SearchComponent } from './components/search/search.component';
 import { UserComponent } from './components/user/user.component';
 import { TrackComponent } from './components/track/track.component';
 import { CardComponent } from './components/card/card.component';
+import { IconComponent } from './components/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CardComponent } from './components/card/card.component';
     UserComponent,
     TrackComponent,
     CardComponent,
+    IconComponent,
   ],
   imports: [CommonModule, ],
   exports: [

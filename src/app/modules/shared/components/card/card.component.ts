@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CardVariant } from 'app-types';
-import { sampleImgUrl, categoryColors } from '../../constants';
+import { CardVariants } from 'app-types';
+import { sampleImgUrl } from '../../constants';
 import { calculateBackgroundColor } from '../../utils/background-color';
 
 @Component({
@@ -9,7 +9,7 @@ import { calculateBackgroundColor } from '../../utils/background-color';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() variant!: CardVariant;
+  @Input() variant!: CardVariants;
   url = sampleImgUrl;
   bgColor = calculateBackgroundColor;
   bgImage = `url(${this.url})`
