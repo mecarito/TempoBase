@@ -3,7 +3,7 @@ export interface Album {
   artist: string;
 }
 
-export type CardVariants =
+export type Cards =
   | 'artist'
   | 'album'
   | 'playlist'
@@ -14,11 +14,31 @@ export type CardVariants =
   | 'artistDetail'
   | 'albumDetail';
 
-export type TrackComponentVariant =
-  | 'onPopular'
-  | 'onAlbum'
-  | 'onSearch'
-  | 'onSongs';
+export type TrackComponents = 'onPopular' | 'onAlbum' | 'onSearch' | 'onSongs';
+
+export type Icons =
+  | 'heart'
+  | 'heart-green'
+  | 'shuffle'
+  | 'repeat'
+  | 'skip-back'
+  | 'skip-forward'
+  | 'play-dark'
+  | 'pause'
+  | 'volume'
+  | 'mute'
+  | 'user'
+  | 'chevron-filled'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'search'
+  | 'search-dark'
+  | 'home'
+  | 'library'
+  | 'add'
+  | 'heart-white'
+  | 'play-white'
+  | 'more-horizontal';
 
 export interface User {
   country: string;

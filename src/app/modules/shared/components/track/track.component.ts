@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TrackComponentVariant } from 'app-types';
+import { TrackComponents } from 'app-types';
 import { sampleImgUrl } from '../../constants';
 
 @Component({
@@ -8,7 +8,7 @@ import { sampleImgUrl } from '../../constants';
   styleUrls: ['./track.component.scss'],
 })
 export class TrackComponent implements OnInit {
-  @Input() variant!: TrackComponentVariant;
+  @Input() variant!: TrackComponents;
   favorite = false;
   url = sampleImgUrl;
 

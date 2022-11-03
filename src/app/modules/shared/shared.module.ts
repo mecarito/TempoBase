@@ -26,6 +26,7 @@ import { IconComponent } from './components/icon/icon.component';
     UserComponent,
     TrackComponent,
     CardComponent,
+    IconComponent,
   ],
 })
 export class SharedModule {}

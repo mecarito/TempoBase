@@ -35,11 +35,11 @@ export class PlayerComponent implements OnInit {
     target.style.backgroundSize = ((val - min) * 100) / (max - min) + '% 100%';
   }
 
-  Play() {
+  play() {
     this.playing = true;
   }
 
-  Pause() {
+  pause() {
     this.playing = false;
   }
 
