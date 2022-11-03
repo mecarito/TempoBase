@@ -43,16 +43,19 @@
       </div>
       <app-user></app-user>
     </header>
-    <div class="px-8">
+    <div class="px-8 pb-36">
       <router-outlet></router-outlet>
       <div class="mt-8 flex flex-row items-center space-x-6">
         <app-card variant="artist"></app-card>
         <app-card variant="album"></app-card>
         <app-card variant="playlist"></app-card>
         <app-card variant="show"></app-card>
-        <app-card variant="episode"></app-card> 
-
-        <app-card variant="category"></app-card> 
+        <app-card variant="episode"></app-card>
+        <app-card variant="category"></app-card>
+      </div>
+      <div class="mt-10 flex flex-col space-y-10">
+        <app-card variant="artistDetail"></app-card>
+        <app-card variant="albumDetail"></app-card>
 
       </div>
     </div>

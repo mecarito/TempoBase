@@ -3,7 +3,11 @@
     <div
       class="flex flex-col w-card-w h-card-h p-card-p bg-spotify-primary-dark rounded-md hover:bg-card-hovered cursor-pointer"
     >
-      <img [src]="url" alt="artist image" class="w-full h-card-img-h rounded-full" />
+      <img
+        [src]="url"
+        alt="artist image"
+        class="w-full h-card-img-h rounded-full"
+      />
       <div class="mt-card-p flex flex-col space-y-2">
         <p class="text-white text-base capitalize font-semibold truncate">
           Pop Smoke
@@ -80,11 +84,58 @@
   </ng-container>
 
   <ng-container *ngIf="variant === 'category'">
-    <div class="w-category-card-w h-category-card-h rounded-md relative overflow-hidden" [ngStyle]="{'background-color': bgColor('dev')}">
-      <p class="capitalize text-white px-card-p py-6 font-semibold text-xl">
-        kids & family 
+    <div
+      class="w-category-card-w h-category-card-h rounded-md relative overflow-hidden cursor-pointer"
+      [ngStyle]="{ 'background-color': bgColor('kids & family') }"
+    >
+      <p class="capitalize text-white px-card-p py-5 font-semibold text-xl">
+        kids & family
       </p>
-      <img [src]="url" alt="category image" class=" h-category-img-h w-24 rotate-20 absolute bottom-0 -right-4">
+      <img
+        [src]="url"
+        alt="category image"
+        class="h-category-img-h w-24 rotate-20 absolute bottom-0 -right-4"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="variant === 'albumDetail'">
+    <div class="h-album-container-h pl-7 relative w-full">
+      <div
+        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6"
+      >
+        <img [src]="url" alt="album image" class="h-full w-album-img-w" />
+        <div class="flex flex-col relative">
+          <p class="text-xs mt-[3.875rem] mb-3">ALBUM</p>
+          <h1 class="text-8xl font-semibold capitalize">Tokooos</h1>
+          <div
+            class="flex flex-row h-6 items-center text-sm space-x-1 absolute bottom-0"
+          >
+            <img
+              [src]="url"
+              alt="category image"
+              class="w-6 h-full rounded-full"
+            />
+            <p class="capitalize">Migos .</p>
+            <p>2017 .</p>
+            <p>18 songs,</p>
+            <p>1 hr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="variant === 'artistDetail'">
+    <div
+      class="h-artist-container-h pt-[10.625rem] pl-7 text-white"
+      [ngStyle]="{ 'background-image': bgImage }"
+    >
+      <div class="flex flex-row space-x-4 items-center mb-4">
+        <img src="assets/verified.png" alt="verified image" class="w-6 h-6" />
+        <p class="text-sm text-gray-50">Verified Artist</p>
+      </div>
+      <p class="text-8xl">Christian Leave</p>
     </div>
   </ng-container>
 </div>

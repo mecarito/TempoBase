@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
   @Input() variant!: CardVariant;
   url = sampleImgUrl;
   bgColor = calculateBackgroundColor;
+  bgImage = `url(${this.url})`
 
   constructor() {}
 

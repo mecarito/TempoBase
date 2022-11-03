@@ -30,6 +30,11 @@ module.exports = {
         "category-card-w": "11.25rem",
         "category-card-h": "11.25rem",
         "category-img-h": "5.625rem",
+        "album-container-h": "21.25rem",
+        "artist-container-h": "23.75rem",
+        "album-img-w": "14.5rem",
+        "album-img-h": "14.5rem",
+        "album-space-x": "1.313rem",
       },
       rotate: {
         20: "20deg",
