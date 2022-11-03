@@ -7,6 +7,7 @@ import { UserComponent } from './components/user/user.component';
 import { TrackComponent } from './components/track/track.component';
 import { CardComponent } from './components/card/card.component';
 import { IconComponent } from './components/icon/icon.component';
+import { ChipComponent } from './components/chip/chip.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { IconComponent } from './components/icon/icon.component';
     TrackComponent,
     CardComponent,
     IconComponent,
+    ChipComponent,
   ],
-  imports: [CommonModule, ],
+  imports: [CommonModule],
   exports: [
     ModeSwitchComponent,
     PlayerComponent,
@@ -27,6 +29,7 @@ import { IconComponent } from './components/icon/icon.component';
     TrackComponent,
     CardComponent,
     IconComponent,
+    ChipComponent,
   ],
 })
 export class SharedModule {}
