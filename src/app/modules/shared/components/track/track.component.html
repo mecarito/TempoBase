@@ -1,25 +1,112 @@
 <div>
-  <ng-container *ngIf="variant === 'onPopular'">
+  <ng-container
+    *ngIf="
+      variant === 'onPopular' ||
+      variant === 'onAlbum' ||
+      variant === 'onSongs' ||
+      variant === 'onSearch'
+    "
+  >
     <div
-      class="h-14 px-4 flex flex-row items-center w-full hover:bg-bg-border rounded justify-between"
+      class="h-14 px-4 flex flex-row items-center w-full hover:bg-bg-border rounded justify-between cursor-default"
+      (mouseover)="mouseMovement(true)"
+      (mouseleave)="mouseMovement(false)"
     >
-      <div class="flex flex-row space-x-4 h-10 items-center">
-        <p class="text-spotify-gray">1</p>
-        <img [src]="url" alt="artist image" class="h-full w-10" />
-        <p class="text-white text-base">Baby Blue</p>
+      <!-- on Popular -->
+      <div
+        class="flex flex-row space-x-4 h-10 items-center"
+        *ngIf="variant === 'onPopular'"
+      >
+        <div class="w-2 mr-1">
+          <p class="text-spotify-gray text-base" *ngIf="!hovered">1</p>
+          <button *ngIf="hovered">
+            <app-icon variant="play-white"></app-icon>
+          </button>
+        </div>
+        <div class="flex flex-row items-center h-10 space-x-4">
+          <img [src]="url" alt="artist image" class="h-full w-10" />
+          <p class="text-white text-base">Baby Blue</p>
+        </div>
       </div>
+
+      <!-- on Album -->
+      <div
+        class="flex flex-row space-x-4 h-10 items-center"
+        *ngIf="variant === 'onAlbum'"
+      >
+        <div class="w-2 mr-1">
+          <p class="text-spotify-gray text-base" *ngIf="!hovered">1</p>
+          <button *ngIf="hovered">
+            <app-icon variant="play-white"></app-icon>
+          </button>
+        </div>
+        <div class="flex flex-col capitalize space-y-1">
+          <p class="text-white text-base">Late Night talking</p>
+          <p class="text-spotify-gray text-sm">Harry styles</p>
+        </div>
+      </div>
+
+      <!-- on songs  -->
+      <div
+        class="flex flex-row space-x-4 h-10 items-center"
+        *ngIf="variant === 'onSongs'"
+      >
+        <div class="w-2 mr-1">
+          <p class="text-spotify-gray text-base" *ngIf="!hovered">1</p>
+          <button *ngIf="hovered">
+            <app-icon variant="play-white"></app-icon>
+          </button>
+        </div>
+        <img [src]="url" alt="artist image" class="h-full w-10" />
+        <div class="flex flex-col space-y-1">
+          <p class="text-white text-base">Late Night talking</p>
+          <p class="text-spotify-gray text-sm">Harry styles</p>
+        </div>
+      </div>
+      <div *ngIf="variant === 'onSongs'">
+        <p class="capitalize text-spotify-gray text-sm">Certified lover boy</p>
+      </div>
+
+      <!-- on search  -->
+      <div
+        class="flex flex-row space-x-4 h-10 items-center"
+        *ngIf="variant === 'onSearch'"
+      >
+        <div class="h-10 relative">
+          <img [src]="url" alt="artist image" class="h-full w-10" />
+          <div
+            class="absolute top-0 left-0 right-0 bottom-0 bg-card-hovered opacity-50"
+            *ngIf="hovered"
+          ></div>
+
+          <button *ngIf="hovered" class="absolute top-3 bottom-4 left-3">
+            <app-icon variant="play-white"></app-icon>
+          </button>
+        </div>
+        <div class="flex flex-col space-y-1">
+          <p class="text-white text-base">Late Night talking</p>
+          <p class="text-spotify-gray text-sm">Harry styles</p>
+        </div>
+      </div>
+
+      <!-- for all variants -->
       <div class="flex flex-row space-x-8 items-center">
-        <button *ngIf="!favorite" (click)="addToFavorite()">
+        <button
+          *ngIf="!favorite"
+          (click)="addToFavorite()"
+          [ngStyle]="{ visibility: hovered ? 'visible' : 'hidden' }"
+        >
           <app-icon variant="heart"></app-icon>
         </button>
         <button *ngIf="favorite" (click)="removeFromFavorite()">
           <app-icon variant="heart-green"></app-icon>
         </button>
-
-        <p class="text-spotify-gray text-base">2:38</p>
-        <button>
-          <app-icon variant="more-horizontal"></app-icon>
-        </button>
+        <div class="flex flex-row space-x-3 items-center">
+          <p class="text-spotify-gray text-sm">2:38</p>
+          <button [ngStyle]="{ visibility: hovered ? 'visible' : 'hidden' }">
+            <app-icon variant="more-horizontal"></app-icon>
+          </button>
+        </div>
       </div>
     </div>
   </ng-container>

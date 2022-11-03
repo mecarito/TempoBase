@@ -10,6 +10,8 @@ import { sampleImgUrl } from '../../constants';
 export class TrackComponent implements OnInit {
   @Input() variant!: TrackComponents;
   favorite = false;
+  hovered = false;
+
   url = sampleImgUrl;
 
   constructor() {}
@@ -21,6 +23,10 @@ export class TrackComponent implements OnInit {
   }
 
   removeFromFavorite() {
-    this.favorite = false
+    this.favorite = false;
+  }
+
+  mouseMovement(state: boolean) {
+    this.hovered = state;
   }
 }
