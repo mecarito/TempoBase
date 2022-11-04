@@ -86,13 +86,13 @@
   <ng-container *ngIf="variant === 'category'">
     <div
       class="w-category-card-w h-category-card-h rounded-md relative overflow-hidden cursor-pointer"
-      [ngStyle]="{ 'background-color': bgColor(categoryName) }"
+      [ngStyle]="{ 'background-color': bgColor(category.name) }"
     >
       <p class="capitalize text-white px-card-p py-5 font-semibold text-xl">
-        kids & family
+        {{ category.name }}
       </p>
       <img
-        [src]="url"
+        [src]="category.icons[0].url"
         alt="category image"
         class="h-category-img-h w-24 rotate-20 absolute bottom-0 -right-4"
       />

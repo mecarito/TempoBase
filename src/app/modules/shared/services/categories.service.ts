@@ -17,5 +17,5 @@ export class CategoriesService {
         limit: 50,
       },
     })
-    .pipe(retry(2));
+    .pipe(retry(1));
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Cards } from 'app-types';
+import { Cards, Categories } from 'app-types';
 import { sampleImgUrl } from '../../constants';
 import { calculateBackgroundColor } from '../../utils/background-color';
 
@@ -10,7 +10,8 @@ import { calculateBackgroundColor } from '../../utils/background-color';
 })
 export class CardComponent implements OnInit {
   @Input() variant!: Cards;
-  @Input() categoryName!: string
+  @Input() category!: Categories
+  
   url = sampleImgUrl;
   bgColor = calculateBackgroundColor;
   bgImage = `url(${this.url})`

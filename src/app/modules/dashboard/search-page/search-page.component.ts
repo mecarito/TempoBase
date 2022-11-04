@@ -2,6 +2,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CategoriesService } from '../../shared/services/categories.service';
+import { Categories } from 'app-types';
 
 @Component({
   selector: 'app-search-page',
@@ -10,7 +11,7 @@ import { CategoriesService } from '../../shared/services/categories.service';
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
   sub!: Subscription;
-  categories!: any[];
+  categories!: Categories[];
 
   constructor(
     private categoryService: CategoriesService,
@@ -18,14 +19,10 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // this.sub = this.categoryService.categories$.subscribe({
-    //   next: (res) => console.log(res.items),
-    //   error: () => this.router.navigate(['']),
-    // });
-
-    this.sub = this.categoryService.categories$.subscribe((val) =>
-      console.log(val.categories.items)
-    );
+    this.sub = this.categoryService.categories$.subscribe({
+      next: (res) => (this.categories = res.categories.items),
+      error: () => this.router.navigate(['']),
+    });
   }
   ngOnDestroy(): void {
     this.sub.unsubscribe();
