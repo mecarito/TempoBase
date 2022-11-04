@@ -10,6 +10,7 @@ import { calculateBackgroundColor } from '../../utils/background-color';
 })
 export class CardComponent implements OnInit {
   @Input() variant!: Cards;
+  @Input() categoryName!: string
   url = sampleImgUrl;
   bgColor = calculateBackgroundColor;
   bgImage = `url(${this.url})`

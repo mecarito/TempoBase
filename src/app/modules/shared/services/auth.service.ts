@@ -5,7 +5,7 @@ import { Response } from 'src/app/types';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  authUrl = 'https://accounts.spotify.com/api/token';
+  private authUrl = 'https://accounts.spotify.com/api/token';
   constructor(private http: HttpClient) {}
 
   getAccessToken(): Observable<Response.Authorization> {

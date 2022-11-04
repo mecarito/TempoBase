@@ -86,7 +86,7 @@
   <ng-container *ngIf="variant === 'category'">
     <div
       class="w-category-card-w h-category-card-h rounded-md relative overflow-hidden cursor-pointer"
-      [ngStyle]="{ 'background-color': bgColor('kids & family') }"
+      [ngStyle]="{ 'background-color': bgColor(categoryName) }"
     >
       <p class="capitalize text-white px-card-p py-5 font-semibold text-xl">
         kids & family

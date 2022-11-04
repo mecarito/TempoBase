@@ -5,9 +5,9 @@ interface AppState {
   auth: StateNamespace.Auth
 } 
 
-export const selectAuth = (state: AppState ) => state.auth
+// export const selectAuth = (state: AppState ) => state.auth
 
-export const selectAccessToken = createSelector(
-   selectAuth,
-  (state: StateNamespace.Auth) => state.access_token
-);
+// export const selectAccessToken = createSelector(
+//    selectAuth,
+//   (state: StateNamespace.Auth) => state.access_token
+// );

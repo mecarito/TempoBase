@@ -53,6 +53,10 @@ export namespace Response {
     token_type: string;
     expires_in: number;
   }
+
+  export interface Categories {
+    
+  }
 }
 
 export namespace State {

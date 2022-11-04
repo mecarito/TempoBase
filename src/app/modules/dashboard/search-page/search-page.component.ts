@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { CategoriesService } from '../../shared/services/categories.service';
 
 @Component({
   selector: 'app-search-page',
@@ -6,9 +7,11 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./search-page.component.scss'],
 })
 export class SearchPageComponent implements OnInit {
-  constructor() {}
+  constructor(private categoryService: CategoriesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.categoryService.getCategories().subscribe( val => console.log(val))
+  }
 
   // check if title is not in view and change the background of search header
   @HostListener('document:mousewheel', ['$event'])

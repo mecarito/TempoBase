@@ -5,11 +5,8 @@ import {
   HttpHandler,
   HttpRequest,
 } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MemoizedSelector, Store } from '@ngrx/store';
-import { selectAccessToken } from '../store/selectors/selectors';
 
 /** Pass untouched request through to the next request handler. */
 @Injectable()
@@ -17,16 +14,15 @@ export class GlobalInterceptor implements HttpInterceptor {
   req!: HttpRequest<any>;
   authenticationUrl = 'https://accounts.spotify.com/api/token';
   token$!: Observable<string>;
-  token!: string;
+  accessToken!: string | null;
 
-  constructor(private store: Store) {}
+  constructor() {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    this.token$ = this.store.select(selectAccessToken as any);
-    this.token$.subscribe((val) => (this.token = val));
+    this.accessToken = localStorage.getItem('accessToken');
 
     if (req.url === this.authenticationUrl) {
       this.req = req.clone({
@@ -40,7 +36,8 @@ export class GlobalInterceptor implements HttpInterceptor {
     return next.handle(
       req.clone({
         setHeaders: {
-          Authorization: 'Bearer' + this.token,
+          Authorization: 'Bearer ' + this.accessToken,
+          'Content-Type': 'application/json',
         },
       })
     );
