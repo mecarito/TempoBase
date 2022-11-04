@@ -4,8 +4,9 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, retry } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 /** Pass untouched request through to the next request handler. */
@@ -33,6 +34,7 @@ export class GlobalInterceptor implements HttpInterceptor {
       });
       return next.handle(this.req);
     }
+
     return next.handle(
       req.clone({
         setHeaders: {

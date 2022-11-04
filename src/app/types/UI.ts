@@ -1,8 +1,3 @@
-export interface Album {
-  name: string;
-  artist: string;
-}
-
 export type Cards =
   | 'artist'
   | 'album'
@@ -39,25 +34,6 @@ export type Icons =
   | 'heart-white'
   | 'play-white'
   | 'more-horizontal';
-
-export interface User {
-  country: string;
-  display_name: string;
-  email: string;
-  product: string;
-}
-
-export namespace Response {
-  export interface Authorization {
-    access_token: string;
-    token_type: string;
-    expires_in: number;
-  }
-
-  export interface Categories {
-    
-  }
-}
 
 export namespace State {
   export interface Auth {

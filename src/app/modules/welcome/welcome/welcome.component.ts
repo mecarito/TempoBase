@@ -11,7 +11,6 @@ import { AuthService } from '../../shared/services/auth.service';
 export class WelcomeComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private store: Store,
     private router: Router
   ) {}
 

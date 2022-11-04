@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { retry } from 'rxjs';
+import { CategoriesResponse } from 'app-types';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -10,11 +11,11 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) {}
 
-  getCategories() {
-    return this.http.get(this.categoriesUrl, {
+  public categories$ = this.http
+    .get<CategoriesResponse>(this.categoriesUrl, {
       params: {
         limit: 50,
       },
-    });
-  }
+    })
+    .pipe(retry(2));
 }

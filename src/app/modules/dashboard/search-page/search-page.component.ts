@@ -1,4 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CategoriesService } from '../../shared/services/categories.service';
 
 @Component({
@@ -6,11 +8,27 @@ import { CategoriesService } from '../../shared/services/categories.service';
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss'],
 })
-export class SearchPageComponent implements OnInit {
-  constructor(private categoryService: CategoriesService) {}
+export class SearchPageComponent implements OnInit, OnDestroy {
+  sub!: Subscription;
+  categories!: any[];
+
+  constructor(
+    private categoryService: CategoriesService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe( val => console.log(val))
+    // this.sub = this.categoryService.categories$.subscribe({
+    //   next: (res) => console.log(res.items),
+    //   error: () => this.router.navigate(['']),
+    // });
+
+    this.sub = this.categoryService.categories$.subscribe((val) =>
+      console.log(val.categories.items)
+    );
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   // check if title is not in view and change the background of search header
