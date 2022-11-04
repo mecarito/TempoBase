@@ -15,7 +15,7 @@ module.exports = {
         "card-hovered": "#232323",
       },
       fontFamily: {
-        Roboto: "'Roboto', sans-serif",
+        Lato: "'Lato', sans-serif;",
       },
       screens: {
         lg: "1280px",
