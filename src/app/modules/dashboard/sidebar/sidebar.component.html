@@ -5,58 +5,24 @@
 
   <nav class="my-4 px-4 text-base">
     <ul class="flex flex-col space-y-1">
-      <li>
+      <li *ngFor="let section of upSection">
         <a
-          routerLink="dashboard"
+          [routerLink]="section.link"
           class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-spotify-gray hover:stroke-white focus:text-white focus:stroke-white"
         >
-          <app-icon variant="home"></app-icon>
-          <p>Home</p>
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="dashboard"
-          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-spotify-gray hover:stroke-white focus:text-white focus:stroke-white"
-        >
-          <app-icon variant="search"></app-icon>
-          <p>Search</p>
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="dashboard"
-          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-spotify-gray hover:stroke-white focus:text-white focus:stroke-white"
-        >
-          <app-icon variant="library"></app-icon>
-
-          <p>Your Library</p>
+          <app-icon [variant]="section.iconName"></app-icon>
+          <p>{{ section.title }}</p>
         </a>
       </li>
     </ul>
     <ul class="flex flex-col space-y-1 mt-7">
-      <li>
+      <li *ngFor="let section of downSection">
         <a
-          routerLink="dashboard"
-          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-black focus:text-white"
+          [routerLink]="section.link"
+          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white focus:text-white"
         >
-          <div class="p-[2px] bg-white rounded-sm">
-            <app-icon variant="add"></app-icon>
-          </div>
-          <p>Create Playlist</p>
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="dashboard"
-          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-white fill-white focus:text-white"
-        >
-          <div
-            class="p-[6px] bg-gradient-to-r from-indigo-700 to-white rounded-sm"
-          >
-            <app-icon variant="heart-white"></app-icon>
-          </div>
-          <p>Liked Songs</p>
+          <app-icon [variant]="section.iconName"></app-icon>
+          <p>{{ section.title }}</p>
         </a>
       </li>
     </ul>
