@@ -13,7 +13,7 @@ const routes: Routes = [
       import('./modules/welcome/welcome.module').then((m) => m.WelcomeModule),
   },
   {
-    path: 'home',
+    path: 'app',
     loadChildren: () =>
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule

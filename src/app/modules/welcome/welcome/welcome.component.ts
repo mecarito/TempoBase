@@ -22,7 +22,7 @@ export class WelcomeComponent implements OnInit {
     this.authService.getAccessToken().subscribe({
       next: (res) => {
         this.saveAccessToken(res.access_token);
-        this.router.navigate(['home']);
+        this.router.navigate(['app']);
       },
       error: () => alert('An error occured fetching access token'),
     });
