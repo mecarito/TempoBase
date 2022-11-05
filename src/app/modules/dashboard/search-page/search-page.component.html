@@ -15,7 +15,7 @@
   </div>
   <app-user></app-user>
 </header>
-<div class="pt-11 px-8">
+<!-- <div class="pt-11 px-8">
   <h1 class="text-2xl text-white font-semibold tracking-tight mb-5" id="title">
     Browse all
   </h1>
@@ -25,5 +25,46 @@
       [category]="category"
       *ngFor="let category of categories"
     ></app-card>
+  </div>
+</div> -->
+<div class="px-8 py-2">
+  <div class="flex flex-row items-center space-x-4">
+    <app-chip
+      *ngFor="let category of searchResultsCategories"
+      [label]="category"
+    ></app-chip>
+  </div>
+
+  <div class="flex flex-col space-y-11 mt-5">
+    <div class="flex flex-col space-y-5">
+      <h1 class="text-white capitalize text-2xl font-semibold">Songs</h1>
+      <app-track variant="onSearch"></app-track>
+    </div>
+    <div class="flex flex-col space-y-5">
+      <h1 class="text-white capitalize text-2xl font-semibold">Artists</h1>
+      <div class="flex flex-row  gap-5 overflow-hidden">
+        <app-card
+          variant="artist"
+          [artist]="artist"
+          *ngFor="let artist of artists"
+        ></app-card>
+      </div>
+    </div>
+    <div class="flex flex-col space-y-5">
+      <h1 class="text-white capitalize text-2xl font-semibold">Albums</h1>
+      <app-card variant="album"></app-card>
+    </div>
+    <div class="flex flex-col space-y-5">
+      <h1 class="text-white capitalize text-2xl font-semibold">Playlists</h1>
+      <app-card variant="playlist"></app-card>
+    </div>
+    <div class="flex flex-col space-y-5">
+      <h1 class="text-white capitalize text-2xl font-semibold">Podcasts</h1>
+      <app-card variant="show"></app-card>
+    </div>
+    <div class="flex flex-col space-y-5">
+      <h1 class="text-white capitalize text-2xl font-semibold">Episodes</h1>
+      <app-card variant="episode"></app-card>
+    </div>
   </div>
 </div>

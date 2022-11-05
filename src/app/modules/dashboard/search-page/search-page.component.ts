@@ -2,7 +2,8 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CategoriesService } from '../../shared/services/categories.service';
-import { Categories } from 'app-types';
+import { Categories, Artists } from 'app-types';
+import { SearchService } from '../../shared/services/search.service';
 
 @Component({
   selector: 'app-search-page',
@@ -12,20 +13,36 @@ import { Categories } from 'app-types';
 export class SearchPageComponent implements OnInit, OnDestroy {
   sub!: Subscription;
   categories!: Categories[];
+  artists!: Artists[];
+
+  searchResultsCategories = [
+    'All',
+    'Songs',
+    'Artists',
+    'Playlists',
+    'Albums',
+    'Podcasts & shows',
+    'Episodes',
+  ];
 
   constructor(
     private categoryService: CategoriesService,
+    private searchService: SearchService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.sub = this.categoryService.categories$.subscribe({
-      next: (res) => (this.categories = res.categories.items),
-      error: () => this.router.navigate(['']),
+    // this.sub = this.categoryService.categories$.subscribe({
+    //   next: (res) => (this.categories = res.categories.items),
+    //   error: () => this.router.navigate(['']),
+    // });
+
+    this.sub = this.searchService.getItems('adele').subscribe({
+      next: (res) => (this.artists = res.artists.items),
     });
   }
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 
   // check if title is not in view and change the background of search header

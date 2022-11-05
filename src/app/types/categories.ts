@@ -6,7 +6,7 @@ export interface Categories {
   href: string;
   id: string;
   name: string;
-  icons: Icon[]
+  icons: Images[]
 }
 
 interface CategoriesBody {
@@ -16,7 +16,7 @@ interface CategoriesBody {
   offset: number;
 }
 
-interface Icon {
+interface  Images {
   height: number;
   width: number;
   url: string;
