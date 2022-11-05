@@ -38,7 +38,11 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     // });
 
     this.sub = this.searchService.getItems('adele').subscribe({
-      next: (res) => (this.artists = res.artists.items),
+      next: (res) => {
+        this.artists = res.artists.items.filter(
+          (artist) => artist.images.length !== 0
+        );
+      },
     });
   }
   ngOnDestroy(): void {
@@ -60,5 +64,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
         header.style.backgroundColor = '#121212';
       }
     }
+  }
+
+  navigateToArtistPage(id: string) {
+    console.log(id);
   }
 }

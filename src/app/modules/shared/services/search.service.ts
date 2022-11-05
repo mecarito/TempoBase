@@ -16,8 +16,9 @@ export class SearchService {
       .get<SearchResults>(this.searchUrl, {
         params: {
           q: search,
+          include_external: 'audio',
           type: 'album,artist,playlist,track,show,episode',
-          limit: 50,
+          limit: 20,
         },
       })
       .pipe(retry(1));
