@@ -20,6 +20,7 @@ import { ChipComponent } from './components/chip/chip.component';
     IconComponent,
     ChipComponent,
   ],
+
   imports: [CommonModule],
   exports: [
     ModeSwitchComponent,

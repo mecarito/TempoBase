@@ -11,9 +11,10 @@ import { SearchService } from '../../shared/services/search.service';
   styleUrls: ['./search-page.component.scss'],
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
+  searchTerm!: string;
   sub!: Subscription;
-  categories!: Categories[];
-  artists!: Artists[];
+  categories: Categories[] = [];
+  artists: Artists[] = []
 
   searchResultsCategories = [
     'All',
@@ -36,17 +37,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       next: (res) => (this.categories = res.categories.items),
       error: () => this.router.navigate(['']),
     });
-
-    // this.sub = this.searchService.getItems('adele').subscribe({
-    //   next: (res) => {
-    //     this.artists = res.artists.items.filter(
-    //       (artist) => artist.images.length !== 0
-    //     );
-    //   },
-    // });
   }
   ngOnDestroy(): void {
-    // this.sub.unsubscribe();
+    this.sub.unsubscribe();
   }
 
   // check if title is not in view and change the background of search header
@@ -68,5 +61,19 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   navigateToArtistPage(id: string) {
     console.log(id);
+  }
+
+  search(search: string) {
+    this.searchTerm = search;
+    if (search) {
+      this.sub = this.searchService.getItems(search).subscribe({
+        next: (res) => {
+          this.artists = res.artists.items.filter(
+            (artist) => artist.images.length !== 0
+          );
+          console.log(res);
+        },
+      });
+    }
   }
 }
