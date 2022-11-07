@@ -2,7 +2,7 @@ export interface CategoriesResponse {
   categories: CategoriesBody;
 }
 
-export interface Categories {
+export interface Category {
   href: string;
   id: string;
   name: string;
@@ -11,7 +11,7 @@ export interface Categories {
 
 interface CategoriesBody {
   href: string;
-  items: Categories[]
+  items: Category[]
   limit: number;
   offset: number;
 }

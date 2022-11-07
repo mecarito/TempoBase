@@ -1,4 +1,4 @@
-export interface Artists {
+export interface Artist {
   followers: Followers;
   id: string;
   images: Images[];
@@ -9,7 +9,7 @@ export interface Artists {
 
 export interface ArtistBody {
   href: string;
-  items: Artists[]
+  items: Artist[]
   limit: number;
   offset: number;
 }

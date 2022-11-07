@@ -2,7 +2,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CategoriesService } from '../../shared/services/categories.service';
-import { Categories, Artists } from 'app-types';
+import { Category, Artist } from 'app-types';
 import { SearchService } from '../../shared/services/search.service';
 
 @Component({
@@ -13,8 +13,8 @@ import { SearchService } from '../../shared/services/search.service';
 export class SearchPageComponent implements OnInit, OnDestroy {
   searchTerm!: string;
   sub!: Subscription;
-  categories: Categories[] = [];
-  artists: Artists[] = []
+  categories: Category[] = [];
+  artists: Artist[] = []
 
   searchResultsCategories = [
     'All',
