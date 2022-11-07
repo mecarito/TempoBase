@@ -32,18 +32,18 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // this.sub = this.categoryService.categories$.subscribe({
-    //   next: (res) => (this.categories = res.categories.items),
-    //   error: () => this.router.navigate(['']),
-    // });
-
-    this.sub = this.searchService.getItems('adele').subscribe({
-      next: (res) => {
-        this.artists = res.artists.items.filter(
-          (artist) => artist.images.length !== 0
-        );
-      },
+    this.sub = this.categoryService.categories$.subscribe({
+      next: (res) => (this.categories = res.categories.items),
+      error: () => this.router.navigate(['']),
     });
+
+    // this.sub = this.searchService.getItems('adele').subscribe({
+    //   next: (res) => {
+    //     this.artists = res.artists.items.filter(
+    //       (artist) => artist.images.length !== 0
+    //     );
+    //   },
+    // });
   }
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
