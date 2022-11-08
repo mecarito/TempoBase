@@ -7,7 +7,7 @@ export interface Track {
   track_number: number;
   duration_ms: number;
   disc_number: number;
-  artists: Artist;
+  artists: Artist[];
   album: Album
 }
 

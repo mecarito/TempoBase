@@ -2,7 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'millisecstoMIns' })
 export class MinutesPipe implements PipeTransform {
-  transform(value: number): number {
-    return Math.round(value / 60000);
+  transform(milliSeconds: number): number {
+    return Math.round(milliSeconds / 60000);
   }
 }
+
+

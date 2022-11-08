@@ -73,7 +73,11 @@
         *ngIf="variant === 'onSearch'"
       >
         <div class="h-10 relative">
-          <img [src]="url" alt="artist image" class="h-full w-10" />
+          <img
+            [src]="track.album.images[2].url"
+            alt="artist image"
+            class="h-full w-10"
+          />
           <div
             class="absolute top-0 left-0 right-0 bottom-0 bg-card-hovered opacity-50"
             *ngIf="hovered"
@@ -84,8 +88,8 @@
           </button>
         </div>
         <div class="flex flex-col space-y-1">
-          <p class="text-white text-base">Late Night talking</p>
-          <p class="text-spotify-gray text-sm">Harry styles</p>
+          <p class="text-white text-base">{{ track.name }}</p>
+          <p class="text-spotify-gray text-sm">{{ track.artists[0].name }}</p>
         </div>
       </div>
 
@@ -102,7 +106,7 @@
           <app-icon variant="heart-green"></app-icon>
         </button>
         <div class="flex flex-row space-x-3 items-center">
-          <p class="text-spotify-gray text-sm">2:38</p>
+          <p class="text-spotify-gray text-sm">{{ track.duration_ms | millisecstoSecs }}</p>
           <button [ngStyle]="{ visibility: hovered ? 'visible' : 'hidden' }">
             <app-icon variant="more-horizontal"></app-icon>
           </button>

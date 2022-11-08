@@ -66,6 +66,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
         this.episodes = res.episodes.items.filter(
           (item) => item.images.length !== 0
         );
+        this.tracks = res.tracks.items.filter(
+          (item) => item.album.images.length !== 0
+        );
         console.log(res);
       },
       error: () => this.router.navigate(['']),

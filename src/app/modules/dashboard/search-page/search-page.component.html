@@ -38,9 +38,15 @@
   </div>
 
   <div class="flex flex-col space-y-11 mt-5">
-    <div class="flex flex-col space-y-5">
+    <div class="flex flex-col space-y-5 w-3/4" *ngIf="tracks.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Songs</h1>
-      <app-track variant="onSearch"></app-track>
+      <div class="flex flex-col ">
+        <app-track
+          variant="onSearch"
+          [track]="track"
+          *ngFor="let track of tracks.slice(0,4)"
+        ></app-track>
+      </div>
     </div>
     <div class="flex flex-col space-y-5" *ngIf="artists.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Artists</h1>

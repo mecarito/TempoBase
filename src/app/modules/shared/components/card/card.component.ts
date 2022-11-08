@@ -26,7 +26,6 @@ export class CardComponent implements OnInit {
   @Input() episode!: Episode;
 
   url = sampleImgUrl;
-
   bgColor = calculateBackgroundColor;
   bgImage = `url(${this.url})`;
 
