@@ -23,6 +23,7 @@ export class SearchService {
           include_external: 'audio',
           type: 'album,artist,playlist,track,show,episode',
           limit: 20,
+          market: 'US'
         },
       });
     })

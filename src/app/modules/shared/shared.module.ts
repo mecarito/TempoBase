@@ -8,6 +8,7 @@ import { TrackComponent } from './components/track/track.component';
 import { CardComponent } from './components/card/card.component';
 import { IconComponent } from './components/icon/icon.component';
 import { ChipComponent } from './components/chip/chip.component';
+import { MinutesPipe } from './pipes/minutes.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ChipComponent } from './components/chip/chip.component';
     CardComponent,
     IconComponent,
     ChipComponent,
+    MinutesPipe,
   ],
 
   imports: [CommonModule],

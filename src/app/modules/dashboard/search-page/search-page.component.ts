@@ -26,9 +26,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   artists: Artist[] = [];
   albums: Album[] = [];
   tracks: Track[] = [];
-  playlist: Playlist[] = [];
+  playlists: Playlist[] = [];
   shows: Show[] = [];
-  episosdes: Episode[] = [];
+  episodes: Episode[] = [];
 
   searchResultsCategories = [
     'All',
@@ -57,6 +57,13 @@ export class SearchPageComponent implements OnInit, OnDestroy {
           (item) => item.images.length !== 0
         );
         this.albums = res.albums.items.filter(
+          (item) => item.images.length !== 0
+        );
+        this.playlists = res.playlists.items.filter(
+          (item) => item.images.length !== 0
+        );
+        this.shows = res.shows.items.filter((item) => item.images.length !== 0);
+        this.episodes = res.episodes.items.filter(
           (item) => item.images.length !== 0
         );
         console.log(res);
