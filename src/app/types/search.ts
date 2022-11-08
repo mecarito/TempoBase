@@ -1,17 +1,18 @@
-import { ArtistBody} from './artist'
+// import { ArtistBody} from './artist'
+import {
+  ArtistBody,
+  TrackBody,
+  AlbumBody,
+  PlaylistBody,
+  ShowBody,
+  EpisodeBody,
+} from './index';
 
 export interface SearchResults {
-  tracks: Response;
-  artists: ArtistBody
-  albums: Response;
-  playlists: Response;
-  shows: Response;
-  episodes: Response;
-}
-
-interface Response {
-  href: string;
-  items: any[];
-  limit: number;
-  offset: number;
+  tracks: TrackBody;
+  artists: ArtistBody;
+  albums: AlbumBody;
+  playlists: PlaylistBody;
+  shows: ShowBody;
+  episodes: EpisodeBody;
 }

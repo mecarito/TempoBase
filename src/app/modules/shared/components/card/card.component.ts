@@ -1,5 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Artist, Cards, Category } from 'app-types';
+import {
+  Album,
+  Artist,
+  Cards,
+  Category,
+  Episode,
+  Playlist,
+  Show,
+} from 'app-types';
 import { sampleImgUrl } from '../../constants';
 import { calculateBackgroundColor } from '../../utils/background-color';
 
@@ -10,13 +18,17 @@ import { calculateBackgroundColor } from '../../utils/background-color';
 })
 export class CardComponent implements OnInit {
   @Input() variant!: Cards;
-  @Input() category!: Category
-  @Input() artist!: Artist
-  
+  @Input() category!: Category;
+  @Input() artist!: Artist;
+  @Input() album!: Album;
+  @Input() playlist!: Playlist;
+  @Input() show!: Show;
+  @Input() episode!: Episode;
+
   url = sampleImgUrl;
-  
+
   bgColor = calculateBackgroundColor;
-  bgImage = `url(${this.url})`
+  bgImage = `url(${this.url})`;
 
   constructor() {}
 

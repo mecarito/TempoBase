@@ -2,7 +2,15 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CategoriesService } from '../../shared/services/categories.service';
-import { Category, Artist } from 'app-types';
+import {
+  Category,
+  Artist,
+  Album,
+  Track,
+  Playlist,
+  Show,
+  Episode,
+} from 'app-types';
 import { SearchService } from '../../shared/services/search.service';
 
 @Component({
@@ -12,9 +20,15 @@ import { SearchService } from '../../shared/services/search.service';
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
   searchTerm!: string;
-  sub!: Subscription;
+  categorySub!: Subscription;
+  searchSub!: Subscription;
   categories: Category[] = [];
-  artists: Artist[] = []
+  artists: Artist[] = [];
+  albums: Album[] = [];
+  tracks: Track[] = [];
+  playlist: Playlist[] = [];
+  shows: Show[] = [];
+  episosdes: Episode[] = [];
 
   searchResultsCategories = [
     'All',
@@ -33,13 +47,26 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.sub = this.categoryService.categories$.subscribe({
+    this.categorySub = this.categoryService.categories$.subscribe({
       next: (res) => (this.categories = res.categories.items),
+      error: () => this.router.navigate(['']),
+    });
+    this.searchSub = this.searchService.searchResults$.subscribe({
+      next: (res) => {
+        this.artists = res.artists.items.filter(
+          (item) => item.images.length !== 0
+        );
+        this.albums = res.albums.items.filter(
+          (item) => item.images.length !== 0
+        );
+        console.log(res);
+      },
       error: () => this.router.navigate(['']),
     });
   }
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.categorySub.unsubscribe();
+    this.searchSub.unsubscribe();
   }
 
   // check if title is not in view and change the background of search header
@@ -66,14 +93,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   search(search: string) {
     this.searchTerm = search;
     if (search) {
-      this.sub = this.searchService.getItems(search).subscribe({
-        next: (res) => {
-          this.artists = res.artists.items.filter(
-            (artist) => artist.images.length !== 0
-          );
-          console.log(res);
-        },
-      });
+      this.searchService.setSearchTerm(search);
     }
   }
 }
