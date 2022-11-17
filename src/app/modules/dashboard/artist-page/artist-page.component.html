@@ -1,1 +1,18 @@
-<p>artist-page works!</p>
+<div>
+  <app-card variant="artistDetail" [artist]="artist"></app-card>
+  <div>
+    <section *ngIf="popularTracks$ | async as tracks" class="mt-10 mx-8">
+      <h1 class="text-white text-2xl mx-8 font-semibold">Popular</h1>
+      <div class="flex flex-col">
+        <!-- <app-track
+          variant="onPopular"
+          [track]="track"
+          [index]="i"
+          *ngFor="let track of tracks.tracks; let i = index"
+        ></app-track> -->
+      </div>
+    </section>
+    <section></section>
+    <section></section>
+  </div>
+</div>

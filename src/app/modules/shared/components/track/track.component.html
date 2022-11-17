@@ -18,14 +18,20 @@
         *ngIf="variant === 'onPopular'"
       >
         <div class="w-2 mr-1">
-          <p class="text-spotify-gray text-base" *ngIf="!hovered">1</p>
+          <p class="text-spotify-gray text-base" *ngIf="!hovered">
+            {{ index }}
+          </p>
           <button *ngIf="hovered">
             <app-icon variant="play-white"></app-icon>
           </button>
         </div>
         <div class="flex flex-row items-center h-10 space-x-4">
-          <img [src]="url" alt="artist image" class="h-full w-10" />
-          <p class="text-white text-base">Baby Blue</p>
+          <img
+            [src]="track.album.images[1].url"
+            alt="artist image"
+            class="h-full w-10"
+          />
+          <p class="text-white text-base">{{ track.name }}</p>
         </div>
       </div>
 
@@ -106,7 +112,9 @@
           <app-icon variant="heart-green"></app-icon>
         </button>
         <div class="flex flex-row space-x-3 items-center">
-          <p class="text-spotify-gray text-sm">{{ track.duration_ms | millisecstoSecs }}</p>
+          <p class="text-spotify-gray text-sm">
+            {{ track.duration_ms | millisecstoSecs }}
+          </p>
           <button [ngStyle]="{ visibility: hovered ? 'visible' : 'hidden' }">
             <app-icon variant="more-horizontal"></app-icon>
           </button>

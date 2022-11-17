@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, retry } from 'rxjs';
-import { Artist } from 'app-types';
+import { map, merge, retry } from 'rxjs';
+import { Artist, Track, AlbumBody, ArtistTracks } from 'app-types';
 import { environment } from 'src/environments/environment';
 import { Store } from '@ngrx/store';
 import { selectArtistId } from '../store/selectors/selectors';
@@ -14,12 +14,35 @@ export class ArtistService {
 
   constructor(private http: HttpClient, private store: Store) {}
 
-  getArtistDetails(): Observable<Artist> {
+  getArtistId() {
     this.store.select(selectArtistId as any).subscribe((id) => {
       this.artistId = id as any;
     });
-    return this.http
-      .get<Artist>(`${this.artistsUrl}/${this.artistId}`)
-      .pipe(retry(1));
+    return this.artistId;
   }
+
+  public artistDetails$ = this.http
+    .get<Artist>(`${this.artistsUrl}/${this.getArtistId()}`)
+    .pipe(retry(1));
+
+  public artistTopTracks$ = this.http
+    .get<ArtistTracks>(`${this.artistsUrl}/${this.getArtistId()}/top-tracks`, {
+      params: {
+        market: 'US',
+      },
+    })
+    .pipe(retry(1));
+
+  public artistRelatedArtists$ = this.http
+    .get<Artist[]>(`${this.artistsUrl}/${this.getArtistId()}/related-artists`)
+    .pipe(retry(1));
+
+  public artistAlbums$ = this.http
+    .get<AlbumBody>(`${this.artistsUrl}/${this.getArtistId()}/albums`, {
+      params: {
+        limit: 10,
+      },
+    })
+    .pipe(retry(1));
+
 }

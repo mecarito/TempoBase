@@ -98,9 +98,11 @@
           {{ episode.name }}
         </p>
         <p class="text-spotify-gray truncate text-sm">
-          <span>{{ episode.release_date | date:'MMM y'}}</span>
+          <span>{{ episode.release_date | date: "MMM y" }}</span>
           <span class="mx-1">.</span>
-          <span class="hover:underline">{{ episode.duration_ms | millisecstoMIns }} Min</span>
+          <span class="hover:underline"
+            >{{ episode.duration_ms | millisecstoMIns }} Min</span
+          >
         </p>
       </div>
     </div>
@@ -159,7 +161,7 @@
         <img src="assets/verified.png" alt="verified image" class="w-6 h-6" />
         <p class="text-sm text-gray-50">Verified Artist</p>
       </div>
-      <p class="text-8xl">Christian Leave</p>
+      <p class="text-8xl">{{ artist.name }}</p>
     </div>
   </ng-container>
 </div>

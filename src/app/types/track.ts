@@ -11,6 +11,10 @@ export interface Track {
   album: Album
 }
 
+export interface ArtistTracks {
+  tracks: Track[]
+}
+
 export interface TrackBody {
   href: string;
   items: Track[];

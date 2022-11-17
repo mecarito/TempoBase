@@ -10,6 +10,8 @@ import { sampleImgUrl } from '../../constants';
 export class TrackComponent implements OnInit {
   @Input() variant!: TrackComponents;
   @Input() track!: Track
+  @Input() index!: number
+  
   favorite = false;
   hovered = false;
 
