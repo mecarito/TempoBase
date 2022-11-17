@@ -35,8 +35,3 @@ export type Icons =
   | 'play-white'
   | 'more-horizontal';
 
-export namespace State {
-  export interface Auth {
-    access_token: string;
-  }
-}

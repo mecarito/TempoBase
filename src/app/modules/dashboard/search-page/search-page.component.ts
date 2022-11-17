@@ -18,6 +18,8 @@ import {
   Episode,
 } from 'app-types';
 import { SearchService } from '../../shared/services/search.service';
+import { Store } from '@ngrx/store';
+import { saveArtistId } from '../../shared/store/actions/artist';
 
 @Component({
   selector: 'app-search-page',
@@ -33,9 +35,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   artists: Artist[] = [];
   albums: Album[] = [];
   tracks: Track[] = [];
-  playlists: Playlist[] = []
-  shows: Show[] = []
-  episodes: Episode[] = []
+  playlists: Playlist[] = [];
+  shows: Show[] = [];
+  episodes: Episode[] = [];
   noResults = false;
 
   searchResultsCategories = [
@@ -51,7 +53,8 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   constructor(
     private categoryService: CategoriesService,
     private searchService: SearchService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -116,7 +119,8 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   navigateToArtistPage(id: string) {
-    this.router.navigate(['artist',id]);
+    this.router.navigate(['artist', id]);
+    this.store.dispatch(saveArtistId({ id }));
   }
 
   search(search: string) {

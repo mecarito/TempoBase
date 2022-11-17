@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GlobalInterceptor } from './modules/shared/interceptors/global-interceptor';
 import { WelcomeModule } from './modules/welcome/welcome.module';
+import { ArtistReducer } from './modules/shared/store/reducers/artist';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,7 @@ import { WelcomeModule } from './modules/welcome/welcome.module';
     WelcomeModule,
     HttpClientModule,
     SharedModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({ artist: ArtistReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
