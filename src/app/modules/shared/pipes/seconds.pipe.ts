@@ -7,9 +7,6 @@ export class SecondsPipe implements PipeTransform {
     const roundedMinutes = Math.floor(totalSeconds / 60);
     const minutes = totalSeconds / 60;
     const seconds = Math.floor((minutes - roundedMinutes) * 60);
-
-    console.log(roundedMinutes, minutes, seconds);
-
     return `${String(roundedMinutes)}:${String(seconds)}`;
   }
 }

@@ -23,19 +23,19 @@ import { SearchService } from '../../shared/services/search.service';
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
   searchTerm!: string;
   categorySub!: Subscription;
   searchSub!: Subscription;
-  categories: Category[] = [];
-  artists: Artist[] = [];
-  albums: Album[] = [];
-  tracks: Track[] = [];
-  playlists: Playlist[] = [];
-  shows: Show[] = [];
-  episodes: Episode[] = [];
+  categories!: Category[];
+  artists!: Artist[]
+  albums!: Album[]
+  tracks!: Track[]
+  playlists!: Playlist[]
+  shows!: Show[]
+  episodes!: Episode[]
 
   searchResultsCategories = [
     'All',
@@ -76,7 +76,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
         this.tracks = res.tracks.items.filter(
           (item) => item.album.images.length !== 0
         );
-        console.log(res);
       },
       error: () => this.router.navigate(['']),
     });
