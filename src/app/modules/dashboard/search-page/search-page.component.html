@@ -30,21 +30,21 @@
 </div>
 
 <div class="px-8 py-2" *ngIf="searchTerm">
-  <div class="flex flex-row items-center space-x-4">
+  <section class="flex flex-row items-center space-x-4" *ngIf="!noResults">
     <app-chip
       *ngFor="let category of searchResultsCategories"
       [label]="category"
     ></app-chip>
-  </div>
+  </section>
 
-  <div class="flex flex-col space-y-11 mt-5">
+  <section class="flex flex-col space-y-11 mt-5">
     <div class="flex flex-col space-y-5 w-3/4" *ngIf="tracks.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Songs</h1>
-      <div class="flex flex-col ">
+      <div class="flex flex-col">
         <app-track
           variant="onSearch"
           [track]="track"
-          *ngFor="let track of tracks.slice(0,4)"
+          *ngFor="let track of tracks.slice(0, 4)"
         ></app-track>
       </div>
     </div>
@@ -55,7 +55,7 @@
           variant="artist"
           [artist]="artist"
           *ngFor="let artist of artists"
-          (click)="navigateToArtistPage(artist.id)"
+          (clickEvent)="navigateToArtistPage($event)"
         ></app-card>
       </div>
     </div>
@@ -99,11 +99,11 @@
         ></app-card>
       </div>
     </div>
-  </div>
+  </section>
 
   <section
-    class="flex flex-col space-y-4 h-full w-full items-center justify-center text-white"
-    ngif
+    class="flex flex-col space-y-4 h-screen w-full items-center justify-center text-white "
+    *ngIf="noResults"
   >
     <h1 class="text-2xl">No results found for "{{ searchTerm }}"</h1>
     <p>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   Album,
   Artist,
@@ -24,6 +24,7 @@ export class CardComponent implements OnInit {
   @Input() playlist!: Playlist;
   @Input() show!: Show;
   @Input() episode!: Episode;
+  @Output() clickEvent = new EventEmitter<string>();
 
   url = sampleImgUrl;
   bgColor = calculateBackgroundColor;
@@ -31,5 +32,9 @@ export class CardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+  
+  getItemId(id: string) {
+     this.clickEvent.emit(id)
+  }
 }

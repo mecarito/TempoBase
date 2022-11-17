@@ -2,6 +2,7 @@
   <ng-container *ngIf="variant === 'artist'">
     <div
       class="flex flex-col w-card-w h-card-h p-card-p bg-spotify-primary-dark rounded-md hover:bg-card-hovered cursor-pointer"
+      (click)="getItemId(artist.id)"
     >
       <img
         [src]="artist.images[1].url"

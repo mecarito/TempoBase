@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { CollectionPageComponent } from './collection-page/collection-page.component';
+import { ArtistPageComponent } from './artist-page/artist-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'home', redirectTo: '', pathMatch: 'full' },
       { path: 'search', component: SearchPageComponent },
       { path: 'collection', component: CollectionPageComponent },
+      { path: 'artist/:id', component: ArtistPageComponent}
     ],
   },
 ];
@@ -27,6 +29,7 @@ const routes: Routes = [
     HomePageComponent,
     SearchPageComponent,
     CollectionPageComponent,
+    ArtistPageComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
 })

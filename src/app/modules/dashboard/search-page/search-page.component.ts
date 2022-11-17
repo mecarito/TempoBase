@@ -29,13 +29,14 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   searchTerm!: string;
   categorySub!: Subscription;
   searchSub!: Subscription;
-  categories!: Category[];
-  artists!: Artist[]
-  albums!: Album[]
-  tracks!: Track[]
-  playlists!: Playlist[]
-  shows!: Show[]
-  episodes!: Episode[]
+  categories: Category[] = [];
+  artists: Artist[] = [];
+  albums: Album[] = [];
+  tracks: Track[] = [];
+  playlists: Playlist[] = []
+  shows: Show[] = []
+  episodes: Episode[] = []
+  noResults = false;
 
   searchResultsCategories = [
     'All',
@@ -60,6 +61,18 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     });
     this.searchSub = this.searchService.searchResults$.subscribe({
       next: (res) => {
+        if (
+          res.albums.items.length === 0 &&
+          res.artists.items.length === 0 &&
+          res.episodes.items.length === 0 &&
+          res.playlists.items.length === 0 &&
+          res.shows.items.length === 0 &&
+          res.tracks.items.length === 0
+        ) {
+          this.noResults = true;
+        } else {
+          this.noResults = false;
+        }
         this.artists = res.artists.items.filter(
           (item) => item.images.length !== 0
         );
@@ -103,7 +116,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   navigateToArtistPage(id: string) {
-    console.log(id);
+    this.router.navigate(['artist',id]);
   }
 
   search(search: string) {
