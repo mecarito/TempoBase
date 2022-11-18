@@ -55,7 +55,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private router: Router,
     private store: Store
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.categorySub = this.categoryService.categories$.subscribe({
@@ -121,6 +121,11 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   navigateToArtistPage(id: string) {
     this.router.navigate(['artist', id]);
     this.store.dispatch(saveArtistId({ id }));
+  }
+
+  navigateToAlbumPage(id: string) {
+    this.router.navigate(['album', id]);
+    
   }
 
   search(search: string) {

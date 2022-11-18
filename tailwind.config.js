@@ -13,6 +13,9 @@ module.exports = {
         "header-bg": "#070707",
         "user-bg": "#535353",
         "card-hovered": "#232323",
+        "album-details-bg-t": "#9F2314",
+        "album-details-bg-c": "#7B1A0F",
+        "album-details-bg-b": "#51120B",
       },
       fontFamily: {
         Lato: "'Lato', sans-serif;",

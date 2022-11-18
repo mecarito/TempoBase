@@ -59,13 +59,14 @@
         ></app-card>
       </div>
     </div>
-    <div class="flex flex-col space-y-5" *ngIf="artists.length !== 0">
+    <div class="flex flex-col space-y-5" *ngIf="albums.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Albums</h1>
       <div class="flex flex-row gap-5 overflow-x-hidden">
         <app-card
           variant="album"
           [album]="album"
           *ngFor="let album of albums"
+          (clickEvent)="navigateToAlbumPage($event)"
         ></app-card>
       </div>
     </div>
@@ -102,7 +103,7 @@
   </section>
 
   <section
-    class="flex flex-col space-y-4 h-screen w-full items-center justify-center text-white "
+    class="flex flex-col space-y-4 h-screen w-full items-center justify-center text-white"
     *ngIf="noResults"
   >
     <h1 class="text-2xl">No results found for "{{ searchTerm }}"</h1>

@@ -8,6 +8,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { CollectionPageComponent } from './collection-page/collection-page.component';
 import { ArtistPageComponent } from './artist-page/artist-page.component';
+import { AlbumPageComponent } from './album-page/album-page.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'home', redirectTo: '', pathMatch: 'full' },
       { path: 'search', component: SearchPageComponent },
       { path: 'collection', component: CollectionPageComponent },
-      { path: 'artist/:id', component: ArtistPageComponent}
+      { path: 'artist/:id', component: ArtistPageComponent },
+      { path: 'album/:id', component: AlbumPageComponent },
     ],
   },
 ];
@@ -30,6 +32,7 @@ const routes: Routes = [
     SearchPageComponent,
     CollectionPageComponent,
     ArtistPageComponent,
+    AlbumPageComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
 })
