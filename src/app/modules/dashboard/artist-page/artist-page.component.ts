@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Artist, ArtistTracks, Track } from 'app-types';
-import { Observable, Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Album, Artist, Track } from 'app-types';
+import { Subscription } from 'rxjs';
 import { ArtistService } from '../../shared/services/artist.service';
 
 @Component({
@@ -10,21 +10,48 @@ import { ArtistService } from '../../shared/services/artist.service';
   styleUrls: ['./artist-page.component.scss'],
 })
 export class ArtistPageComponent implements OnInit, OnDestroy {
-  sub!: Subscription;
-  popularTracks$!: Observable<ArtistTracks>;
-  artist!: Artist
+  detailsSub!: Subscription;
+  albumSub!: Subscription;
+  relatedArtistSub!: Subscription;
+  topTracksSub!: Subscription;
 
-  constructor(private artistService: ArtistService, private router: Router) {}
+  artist!: Artist;
+  albums: Album[] = [];
+  topTracks: Track[] = [];
+  relatedArtists: Artist[] = [];
+  artistId!: string | null;
+
+  constructor(
+    private artistService: ArtistService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.sub = this.artistService.artistDetails$.subscribe({
-      next: (artist) => this.artist = artist,
-      error: () => this.router.navigate(['']),
-    });
-    this.popularTracks$ = this.artistService.artistTopTracks$;
+    this.artistId = this.route.snapshot.paramMap.get('id');
+    this.detailsSub = this.artistService
+      .getArtistDetails(this.artistId)
+      .subscribe({
+        next: (res) => (this.artist = res),
+        error: () => this.router.navigate(['']),
+      });
+    this.albumSub = this.artistService
+      .getArtistAlbums(this.artistId)
+      .subscribe((res) => {
+        this.albums = res.items.filter((item) => item.images.length !== 0);
+      });
+    this.topTracksSub = this.artistService
+      .getArtistTopTracks(this.artistId)
+      .subscribe((res) => (this.topTracks = res.tracks));
+    this.relatedArtistSub = this.artistService
+      .getRelatedArtists(this.artistId)
+      .subscribe((res) => (this.relatedArtists = res.artists));
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.detailsSub.unsubscribe();
+    this.albumSub.unsubscribe();
+    this.relatedArtistSub.unsubscribe();
+    this.topTracksSub.unsubscribe();
   }
 }

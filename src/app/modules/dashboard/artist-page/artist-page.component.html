@@ -1,15 +1,15 @@
 <div>
   <app-card variant="artistDetail" [artist]="artist"></app-card>
   <div>
-    <section *ngIf="popularTracks$ | async as tracks" class="mt-10 mx-8">
-      <h1 class="text-white text-2xl mx-8 font-semibold">Popular</h1>
-      <div class="flex flex-col">
-        <!-- <app-track
+    <section class="mt-10 mx-8">
+      <h1 class="text-white text-2xl font-semibold">Popular</h1>
+      <div class="flex flex-col mt-6 w-3/4 ml-2">
+        <app-track
           variant="onPopular"
           [track]="track"
-          [index]="i"
-          *ngFor="let track of tracks.tracks; let i = index"
-        ></app-track> -->
+          [index]="i + 1"
+          *ngFor="let track of topTracks; let i = index"
+        ></app-track>
       </div>
     </section>
     <section></section>

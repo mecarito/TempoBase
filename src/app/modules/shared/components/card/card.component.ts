@@ -25,20 +25,21 @@ export class CardComponent implements OnInit {
   @Input() show!: Show;
   @Input() episode!: Episode;
   @Output() clickEvent = new EventEmitter<string>();
-  bgImage!: string;
+  // bgImage!: string;
 
   url = sampleImgUrl;
   bgColor = calculateBackgroundColor;
+  bgImage = `url(${this.url})`;
 
   constructor() {}
 
   ngOnInit(): void {
-    if (this.artist) {
-      this.bgImage = `url(${this.artist.images[0].url})`;
-    }
-    else {
-       this.bgImage = `url(${this.url})`;
-    }
+    // if (this.artist) {
+    //   this.bgImage = `url(${this.artist.images[0].url})`;
+    //   console.log(this.artist);
+    // } else {
+    //   this.bgImage = `url(${this.url})`;
+    // }
   }
 
   getItemId(id: string) {

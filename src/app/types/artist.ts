@@ -7,6 +7,10 @@ export interface Artist {
   type: string;
 }
 
+export interface RelatedArtists {
+  artists: Artist[];
+}
+
 export interface ArtistBody {
   href: string;
   items: Artist[]

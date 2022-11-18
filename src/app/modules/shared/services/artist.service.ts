@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, merge, retry } from 'rxjs';
-import { Artist, Track, AlbumBody, ArtistTracks } from 'app-types';
+import { Observable, retry } from 'rxjs';
+import { Artist, AlbumBody, ArtistTracks, RelatedArtists } from 'app-types';
 import { environment } from 'src/environments/environment';
 import { Store } from '@ngrx/store';
-import { selectArtistId } from '../store/selectors/selectors';
 
 @Injectable({ providedIn: 'root' })
 export class ArtistService {
@@ -14,35 +13,33 @@ export class ArtistService {
 
   constructor(private http: HttpClient, private store: Store) {}
 
-  getArtistId() {
-    this.store.select(selectArtistId as any).subscribe((id) => {
-      this.artistId = id as any;
-    });
-    return this.artistId;
+  getArtistDetails(id: string | null): Observable<Artist> {
+    return this.http.get<Artist>(`${this.artistsUrl}/${id}`).pipe(retry(1));
   }
 
-  public artistDetails$ = this.http
-    .get<Artist>(`${this.artistsUrl}/${this.getArtistId()}`)
-    .pipe(retry(1));
+  getArtistTopTracks(id: string | null): Observable<ArtistTracks> {
+    return this.http
+      .get<ArtistTracks>(`${this.artistsUrl}/${id}/top-tracks`, {
+        params: {
+          market: 'US',
+        },
+      })
+      .pipe(retry(1));
+  }
 
-  public artistTopTracks$ = this.http
-    .get<ArtistTracks>(`${this.artistsUrl}/${this.getArtistId()}/top-tracks`, {
-      params: {
-        market: 'US',
-      },
-    })
-    .pipe(retry(1));
+  getRelatedArtists(id: string | null): Observable<RelatedArtists> {
+    return this.http
+      .get<RelatedArtists>(`${this.artistsUrl}/${id}/related-artists`)
+      .pipe(retry(1));
+  }
 
-  public artistRelatedArtists$ = this.http
-    .get<Artist[]>(`${this.artistsUrl}/${this.getArtistId()}/related-artists`)
-    .pipe(retry(1));
-
-  public artistAlbums$ = this.http
-    .get<AlbumBody>(`${this.artistsUrl}/${this.getArtistId()}/albums`, {
-      params: {
-        limit: 10,
-      },
-    })
-    .pipe(retry(1));
-
+  getArtistAlbums(id: string | null): Observable<AlbumBody> {
+    return this.http
+      .get<AlbumBody>(`${this.artistsUrl}/${id}/albums`, {
+        params: {
+          limit: 10,
+        },
+      })
+      .pipe(retry(1));
+  }
 }
