@@ -26,7 +26,6 @@ export class CardComponent implements OnInit {
   @Input() show!: Show;
   @Input() episode!: Episode;
   @Output() clickEvent = new EventEmitter<string>();
-  bgImage!: string;
 
   url = sampleImgUrl;
   bgColor = calculateBackgroundColor;
@@ -38,8 +37,8 @@ export class CardComponent implements OnInit {
   getItemId(id: string) {
     this.clickEvent.emit(id);
   }
+
   getBgImage() {
-    this.bgImage = `url(${this.artistDetails.images[0].url})`;
-    return this.bgImage;
+    return `url(${this.artistDetails.images[0].url})`;
   }
 }

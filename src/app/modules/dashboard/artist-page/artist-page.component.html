@@ -1,5 +1,11 @@
-<div >
-  <app-card variant="artistDetail" [artistDetails]="artist" *ngIf="artist"></app-card>
+<div>
+  <div #scrollTo>
+    <app-card
+      variant="artistDetail"
+      [artistDetails]="artist"
+      *ngIf="artist"
+    ></app-card>
+  </div>
   <div>
     <section class="mt-10 mx-8" *ngIf="topTracks.length !== 0">
       <h1 class="text-white text-2xl font-semibold">Popular</h1>

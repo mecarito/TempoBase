@@ -1,9 +1,9 @@
 import {
   Component,
-  OnChanges,
+  ElementRef,
   OnDestroy,
   OnInit,
-  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -30,6 +30,8 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
   relatedArtists: Artist[] = [];
   artistId!: string | null;
 
+  @ViewChild('scrollTo') scrollTo!: ElementRef;
+
   constructor(
     private artistService: ArtistService,
     private router: Router,
@@ -52,15 +54,38 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
         });
       this.albumSub = this.artistService
         .getArtistAlbums(this.artistId)
-        .subscribe((res) => {
-          this.albums = res.items.filter((item) => item.images.length !== 0);
+        .subscribe({
+          next: (res) => {
+            // filter duplicate albums
+            let albumNames: string[] = [];
+            let uniqueAlbums: Album[] = [];
+            res.items.forEach((album) => {
+              if (!albumNames.includes(album.name)) {
+                albumNames.push(album.name);
+                uniqueAlbums.push(album);
+              }
+            });
+
+            this.albums = uniqueAlbums.filter(
+              (item) => item.images.length !== 0
+            );
+          },
+          error: () => this.router.navigate(['']),
         });
+
       this.topTracksSub = this.artistService
         .getArtistTopTracks(this.artistId)
-        .subscribe((res) => (this.topTracks = res.tracks));
+        .subscribe({
+          next: (res) => (this.topTracks = res.tracks),
+          error: () => this.router.navigate(['']),
+        });
+
       this.relatedArtistSub = this.artistService
         .getRelatedArtists(this.artistId)
-        .subscribe((res) => (this.relatedArtists = res.artists));
+        .subscribe({
+          next: (res) => (this.relatedArtists = res.artists),
+          error: () => this.router.navigate(['']),
+        });
     });
   }
 
@@ -74,5 +99,6 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
   navigateToArtistPage(id: string) {
     this.router.navigate(['artist', id]);
     this.store.dispatch(saveArtistId({ id }));
+    this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 }

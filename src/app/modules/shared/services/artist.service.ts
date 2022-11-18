@@ -9,7 +9,6 @@ import { Store } from '@ngrx/store';
 export class ArtistService {
   private baseUrl = environment.api_base_url;
   private artistsUrl = `${this.baseUrl}/artists`;
-  private artistId!: string;
 
   constructor(private http: HttpClient, private store: Store) {}
 
@@ -33,6 +32,7 @@ export class ArtistService {
       .pipe(retry(1));
   }
 
+  // sometimes the api return album duplicates
   getArtistAlbums(id: string | null): Observable<AlbumBody> {
     return this.http
       .get<AlbumBody>(`${this.artistsUrl}/${id}/albums`, {
