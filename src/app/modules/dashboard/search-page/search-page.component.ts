@@ -19,6 +19,7 @@ import {
 } from 'app-types';
 import { SearchService } from '../../shared/services/search.service';
 import { Store } from '@ngrx/store';
+import { saveArtistId } from '../../shared/store/actions/artist';
 
 @Component({
   selector: 'app-search-page',
@@ -119,6 +120,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   navigateToArtistPage(id: string) {
     this.router.navigate(['artist', id]);
+    this.store.dispatch(saveArtistId({ id }));
   }
 
   search(search: string) {

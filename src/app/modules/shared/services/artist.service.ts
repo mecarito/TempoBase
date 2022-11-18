@@ -38,6 +38,8 @@ export class ArtistService {
       .get<AlbumBody>(`${this.artistsUrl}/${id}/albums`, {
         params: {
           limit: 10,
+          market: 'US',
+          include_groups: 'album',
         },
       })
       .pipe(retry(1));

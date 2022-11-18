@@ -155,13 +155,18 @@
   <ng-container *ngIf="variant === 'artistDetail'">
     <div
       class="h-artist-container-h pt-[10.625rem] pl-7 text-white"
-      [ngStyle]="{ 'background-image': bgImage }"
+      [ngStyle]="{
+        'background-image': getBgImage(),
+        'background-repeat': 'no-repeat',
+        'background-size': 'cover',
+        'background-position': 'center top 20%'
+      }"
     >
       <div class="flex flex-row space-x-4 items-center mb-4">
         <img src="assets/verified.png" alt="verified image" class="w-6 h-6" />
         <p class="text-sm text-gray-50">Verified Artist</p>
       </div>
-      <p class="text-8xl" >{{ artist.name }}</p>
+      <p class="text-8xl font-semibold">{{ artistDetails.name }}</p>
     </div>
   </ng-container>
 </div>
