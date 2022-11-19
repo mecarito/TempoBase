@@ -3,14 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable, retry } from 'rxjs';
 import { Artist, AlbumBody, ArtistTracks, RelatedArtists } from 'app-types';
 import { environment } from 'src/environments/environment';
-import { Store } from '@ngrx/store';
 
 @Injectable({ providedIn: 'root' })
 export class ArtistService {
   private baseUrl = environment.api_base_url;
   private artistsUrl = `${this.baseUrl}/artists`;
 
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(private http: HttpClient) {}
 
   getArtistDetails(id: string | null): Observable<Artist> {
     return this.http.get<Artist>(`${this.artistsUrl}/${id}`).pipe(retry(1));
