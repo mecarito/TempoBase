@@ -101,4 +101,8 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
     this.store.dispatch(saveArtistId({ id }));
     this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
+
+  navigateToAlbumPage(id: string) {
+    this.router.navigate(['album', id]);
+  }
 }

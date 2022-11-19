@@ -41,14 +41,24 @@
         *ngIf="variant === 'onAlbum'"
       >
         <div class="w-2 mr-1">
-          <p class="text-spotify-gray text-base" *ngIf="!hovered">1</p>
+          <p class="text-spotify-gray text-base" *ngIf="!hovered">
+            {{ index }}
+          </p>
           <button *ngIf="hovered">
             <app-icon variant="play-white"></app-icon>
           </button>
         </div>
-        <div class="flex flex-col capitalize space-y-1">
-          <p class="text-white text-base">Late Night talking</p>
-          <p class="text-spotify-gray text-sm">Harry styles</p>
+        <div class="flex flex-col capitalize">
+          <p class="text-white text-base">{{ track.name }}</p>
+          <p class="text-spotify-gray text-sm" *ngIf="!track.artists[1]">
+            {{ track.artists[0].name }}
+          </p>
+          <p
+            *ngIf="track.artists[0] && track.artists[1]"
+            class="text-spotify-gray text-sm"
+          >
+            {{ track.artists[0].name }}, {{ track.artists[1].name }}
+          </p>
         </div>
       </div>
 
@@ -95,7 +105,15 @@
         </div>
         <div class="flex flex-col space-y-1">
           <p class="text-white text-base">{{ track.name }}</p>
-          <p class="text-spotify-gray text-sm">{{ track.artists[0].name }}</p>
+          <p class="text-spotify-gray text-sm" *ngIf="!track.artists[1]">
+            {{ track.artists[0].name }}
+          </p>
+          <p
+            *ngIf="track.artists[0] && track.artists[1]"
+            class="text-spotify-gray text-sm"
+          >
+            {{ track.artists[0].name }}, {{ track.artists[1].name }}
+          </p>
         </div>
       </div>
 

@@ -1,6 +1,9 @@
+import { Track } from './track';
+
 export interface Album {
   album_type: string;
   artists: Artist[];
+  tracks: TrackBody
   images: Images[];
   name: string;
   type: string;
@@ -27,4 +30,11 @@ interface Artist {
   id: string;
   name: string;
   type: string;
+}
+
+interface TrackBody {
+  href: string;
+  items:  Track[]
+  limit: number;
+  offset: number;
 }

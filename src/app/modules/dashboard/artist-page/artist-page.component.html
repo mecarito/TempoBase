@@ -24,6 +24,7 @@
         <app-card
           variant="album"
           [album]="album"
+          (clickEvent)="navigateToAlbumPage($event)"
           *ngFor="let album of albums"
         ></app-card>
       </div>

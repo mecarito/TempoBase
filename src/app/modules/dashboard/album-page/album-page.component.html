@@ -1,6 +1,13 @@
 <div>
-  <div #scrollTo>
+  <section #scrollTo>
     <app-card variant="albumDetail" [album]="album" *ngIf="album"></app-card>
-  </div>
-  <div></div>
+  </section>
+  <section *ngIf="albumTracks" class="mt-10 mx-8" >
+    <app-track
+      variant="onAlbum"
+      [track]="track"
+      [index]="i + 1"
+      *ngFor="let track of albumTracks; let i = index"
+    ></app-track>
+  </section>
 </div>
