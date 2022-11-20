@@ -33,5 +33,6 @@ export type Icons =
   | 'add'
   | 'heart-white'
   | 'play-white'
-  | 'more-horizontal';
-
+  | 'more-horizontal'
+  | 'clock'
+  | 'hashTag';

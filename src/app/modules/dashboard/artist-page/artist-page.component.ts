@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import { Album, Artist, Track } from 'app-types';
 import { Subscription } from 'rxjs';
 import { ArtistService } from '../../shared/services/artist.service';
+import { saveAlbumId } from '../../shared/store/actions/album';
 import { saveArtistId } from '../../shared/store/actions/artist';
 import { selectArtistId } from '../../shared/store/selectors/selectors';
 
@@ -104,5 +105,6 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
 
   navigateToAlbumPage(id: string) {
     this.router.navigate(['album', id]);
+    this.store.dispatch(saveAlbumId({ id }));
   }
 }

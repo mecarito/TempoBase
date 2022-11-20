@@ -20,6 +20,7 @@ import {
 import { SearchService } from '../../shared/services/search.service';
 import { Store } from '@ngrx/store';
 import { saveArtistId } from '../../shared/store/actions/artist';
+import { saveAlbumId } from '../../shared/store/actions/album';
 
 @Component({
   selector: 'app-search-page',
@@ -55,7 +56,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private router: Router,
     private store: Store
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.categorySub = this.categoryService.categories$.subscribe({
@@ -125,7 +126,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   navigateToAlbumPage(id: string) {
     this.router.navigate(['album', id]);
-    
+    this.store.dispatch(saveAlbumId({ id }));
   }
 
   search(search: string) {
