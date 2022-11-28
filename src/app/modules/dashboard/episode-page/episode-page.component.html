@@ -1,6 +1,41 @@
-
 <div>
-  <section  *ngIf="episode">
+  <section *ngIf="episode">
     <app-card variant="episodeDetail" [episode]="episode"></app-card>
+  </section>
+  <section *ngIf="episode" class="w-1/2 mx-8 py-6">
+    <div class="flex flex-col space-y-4">
+      <h1 class="text-spotify-gray text-base">
+        <span>{{ episode.release_date | date }}</span>
+        <span class="mx-1">.</span>
+        <span>{{ episode.duration_ms | millisecstoMIns }} Min</span>
+      </h1>
+
+      <button
+        *ngIf="!playing"
+        (click)="play()"
+        class="bg-spotify-green-lighter p-4 rounded-full w-min"
+      >
+        <app-icon variant="play-dark"></app-icon>
+      </button>
+      <button
+        *ngIf="playing"
+        (click)="pause()"
+        class="bg-spotify-green-lighter p-4 rounded-full w-min"
+      >
+        <app-icon variant="pause"></app-icon>
+      </button>
+    </div>
+    <div class="flex flex-col space-y-4 mt-4">
+      <h1 class="text-white font-semibold text-2xl">Episode Description</h1>
+      <p class="text-base text-spotify-gray tracking-wide">
+        {{ episode.description }}
+      </p>
+    </div>
+    <button
+      class="text-base text-white py-1 px-4 border-[1px] rounded-3xl border-gray-500 font-semibold mt-8"
+      (click)="navigateToShowPage(episode.show.id)"
+    >
+      See all episodes
+    </button>
   </section>
 </div>

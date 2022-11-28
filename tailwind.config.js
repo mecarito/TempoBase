@@ -7,6 +7,7 @@ module.exports = {
         "spotify-primary-dark": "#181818",
         "spotify-secondary-dark": "#121212",
         "spotify-green": "#1DB954",
+        "spotify-green-lighter": "#1ED760",
         "spotify-gray": "#B3B3B3",
         "scroll-bar": "#5A5A5A",
         "bg-border": "#2B2B2B",

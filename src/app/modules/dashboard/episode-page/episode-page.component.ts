@@ -13,6 +13,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy {
   episodeSub!: Subscription;
   episode!: Episode;
   episodeId!: string | null;
+  playing = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy {
     this.episodeSub = this.episodeService.getEpisode(this.episodeId).subscribe({
       next: (episode) => {
         this.episode = episode;
+        console.log(episode);
       },
       error: () => this.router.navigate(['']),
     });
@@ -32,5 +34,16 @@ export class EpisodePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.episodeSub.unsubscribe();
+  }
+
+  navigateToShowPage(id: string) {
+    this.router.navigate(['show', id]);
+  }
+  play() {
+    this.playing = true;
+  }
+
+  pause() {
+    this.playing = false;
   }
 }

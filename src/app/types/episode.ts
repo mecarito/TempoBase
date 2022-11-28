@@ -3,6 +3,7 @@ import { Show } from './show';
 export interface Episode {
   audio_preview_url: string;
   description: string;
+  html_description: string;
   duration_ms: number;
   id: string;
   images: Images[];

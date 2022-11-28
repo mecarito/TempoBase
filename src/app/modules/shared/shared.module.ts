@@ -35,6 +35,7 @@ import { SecondsPipe } from './pipes/seconds.pipe';
     CardComponent,
     IconComponent,
     ChipComponent,
+    MinutesPipe,
   ],
 })
 export class SharedModule {}
