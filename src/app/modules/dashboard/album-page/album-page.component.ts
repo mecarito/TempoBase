@@ -28,7 +28,7 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
   artistAlbumSub!: Subscription;
   artistDetials!: Subscription;
   album!: Album;
-  artistAlbums!: Album[];
+  artistAlbums: Album[] = [];
   albumTracks: Track[] = [];
   albumId!: string | null;
   artist!: Artist;

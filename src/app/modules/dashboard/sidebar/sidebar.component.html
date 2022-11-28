@@ -3,23 +3,12 @@
     <img src="assets/spotify-logo.png" alt="spotify logo" class="w-3/4" />
   </div>
 
-  <nav class="my-4 px-4 text-base">
+  <nav class="my-6 px-4 text-base">
     <ul class="flex flex-col space-y-1">
       <li *ngFor="let section of upSection">
         <a
           [routerLink]="section.link"
           class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white stroke-spotify-gray hover:stroke-white focus:text-white focus:stroke-white"
-        >
-          <app-icon [variant]="section.iconName"></app-icon>
-          <p>{{ section.title }}</p>
-        </a>
-      </li>
-    </ul>
-    <ul class="flex flex-col space-y-1 mt-7">
-      <li *ngFor="let section of downSection">
-        <a
-          [routerLink]="section.link"
-          class="flex flex-row space-x-4 px-2 items-center py-1.5 text-spotify-gray hover:text-white focus:text-white"
         >
           <app-icon [variant]="section.iconName"></app-icon>
           <p>{{ section.title }}</p>
