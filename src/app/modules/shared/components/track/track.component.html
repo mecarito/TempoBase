@@ -64,7 +64,7 @@
 
       <!-- on songs  -->
       <div
-        class="flex flex-row space-x-4 h-10 items-center"
+        class="flex flex-row space-x-4 h-10 items-center w-2/5"
         *ngIf="variant === 'onSongs'"
       >
         <div class="w-2 mr-1">
@@ -81,12 +81,12 @@
           class="h-full w-10"
         />
         <div class="flex flex-col space-y-1">
-          <p class="text-white text-base">{{ track.name }}</p>
-          <p class="text-spotify-gray text-sm">{{ track.artists[0].name }}</p>
+          <p class="text-white text-base truncate ...">{{ track.name }}</p>
+          <p class="text-spotify-gray text-sm truncate ...">{{ track.artists[0].name }}</p>
         </div>
       </div>
-      <div *ngIf="variant === 'onSongs'" class=" w-1/5">
-        <p class="capitalize text-spotify-gray text-sm">
+      <div *ngIf="variant === 'onSongs'" class=" w-2/5">
+        <p class="capitalize text-spotify-gray text-sm text-center truncate ...">
           {{ track.album.name }}
         </p>
       </div>
@@ -126,7 +126,7 @@
       </div>
 
       <!-- for all variants -->
-      <div class="flex flex-row space-x-8 items-center">
+      <div class="flex flex-row space-x-8 items-center w-1/5 justify-end">
         <button
           *ngIf="!favorite"
           (click)="addToFavorite()"
