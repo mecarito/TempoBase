@@ -24,8 +24,7 @@ export class EpisodePageComponent implements OnInit, OnDestroy {
     this.episodeId = this.route.snapshot.paramMap.get('id');
     this.episodeSub = this.episodeService.getEpisode(this.episodeId).subscribe({
       next: (episode) => {
-        this.episode = episode
-        console.log(episode)
+        this.episode = episode;
       },
       error: () => this.router.navigate(['']),
     });

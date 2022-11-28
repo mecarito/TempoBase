@@ -4,6 +4,7 @@ export interface Playlist {
   id: string;
   images: Images[];
   name: string;
+  followers: Followers;
   description: string;
   type: string;
   tracks: Tracks;
@@ -29,6 +30,11 @@ interface Owner {
 }
 
 interface Tracks {
+  href: string;
+  total: number;
+}
+
+interface Followers {
   href: string;
   total: number;
 }

@@ -149,7 +149,7 @@
             {{ album.name }}
           </h1>
           <div
-            class="flex flex-row h-6 items-center text-sm space-x-2 absolute bottom-0"
+            class="flex flex-row h-6 items-center text-base space-x-2 absolute bottom-0"
           >
             <img
               [src]="album.images[1].url"
@@ -217,7 +217,9 @@
           class="h-full w-album-img-w"
         />
         <div class="flex flex-col relative">
-          <p class="text-xs mt-[2rem] mb-4 font-semibold wordSpacing">PODCAST EPISODE</p>
+          <p class="text-xs mt-[2rem] mb-4 font-semibold wordSpacing">
+            PODCAST EPISODE
+          </p>
           <h1
             class="text-8xl font-semibold capitalize overflow-hidden pb-3 truncate ..."
           >
@@ -228,6 +230,45 @@
           >
             <p class="text-2xl font-semibold">
               {{ episode.show.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="variant === 'playlistDetail'">
+    <div
+      class="h-album-container-h pl-7 relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b"
+    >
+      <div
+        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6"
+      >
+        <img
+          [src]="playlist.images[0].url"
+          alt="album image"
+          class="h-full w-album-img-w"
+        />
+        <div class="flex flex-col relative">
+          <p class="text-xs mt-[2rem] mb-4 font-semibold ">PLAYLIST</p>
+          <h1
+            class="text-8xl font-semibold capitalize overflow-hidden pb-3 truncate ..."
+          >
+            {{ playlist.name }}
+          </h1>
+          <div
+            class="flex flex-row h-6 items-center text-base space-x-2 absolute bottom-0"
+          >
+            <p
+              class="capitalize flex flex-row items-center font-semibold "
+            >
+              {{ playlist.owner.display_name }} <span class="ml-2">.</span>
+            </p>
+              <p class="flex flex-row items-center space-x-2">
+              {{ playlist.followers.total | number }} likes <span class="ml-2">.</span>
+            </p>
+            <p class="flex flex-row items-center space-x-2">
+              {{ playlist.tracks.total }} <span class="ml-1">songs</span>
             </p>
           </div>
         </div>

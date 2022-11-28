@@ -1,1 +1,5 @@
-<p>playlist-page works!</p>
+<div>
+  <section  *ngIf="playlist">
+    <app-card variant="playlistDetail" [playlist]="playlist"></app-card>
+  </section>
+</div>
