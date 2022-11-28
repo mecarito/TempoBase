@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Playlist } from 'app-types';
+import { Playlist, PlaylistTrack } from 'app-types';
 import { Subscription } from 'rxjs';
 import { PlaylistService } from '../../shared/services/playlist.service';
 
@@ -11,20 +11,27 @@ import { PlaylistService } from '../../shared/services/playlist.service';
 })
 export class PlaylistPageComponent implements OnInit, OnDestroy {
   playlistSub!: Subscription;
-  playlist!: Playlist
+  playlist!: Playlist;
   playlistId!: string | null;
+  playlistTracks: PlaylistTrack[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private playlistService: PlaylistService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private playlistService: PlaylistService
+  ) {}
 
   ngOnInit(): void {
     this.playlistId = this.route.snapshot.paramMap.get('id');
-    this.playlistSub = this.playlistService.getPlaylist(this.playlistId).subscribe({
-      next: (playlist) => {
-        this.playlist = playlist;
-        console.log(playlist);
-      },
-      error: () => this.router.navigate(['']),
-    });
+    this.playlistSub = this.playlistService
+      .getPlaylist(this.playlistId)
+      .subscribe({
+        next: (playlist) => {
+          this.playlist = playlist;
+          this.playlistTracks = playlist.tracks.items;
+        },
+        error: () => this.router.navigate(['']),
+      });
   }
 
   ngOnDestroy(): void {

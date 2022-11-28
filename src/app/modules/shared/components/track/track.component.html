@@ -68,19 +68,27 @@
         *ngIf="variant === 'onSongs'"
       >
         <div class="w-2 mr-1">
-          <p class="text-spotify-gray text-base" *ngIf="!hovered">1</p>
+          <p class="text-spotify-gray text-base" *ngIf="!hovered">
+            {{ index }}
+          </p>
           <button *ngIf="hovered">
             <app-icon variant="play-white"></app-icon>
           </button>
         </div>
-        <img [src]="url" alt="artist image" class="h-full w-10" />
+        <img
+          [src]="track.album.images[1].url"
+          alt="artist image"
+          class="h-full w-10"
+        />
         <div class="flex flex-col space-y-1">
-          <p class="text-white text-base">Late Night talking</p>
-          <p class="text-spotify-gray text-sm">Harry styles</p>
+          <p class="text-white text-base">{{ track.name }}</p>
+          <p class="text-spotify-gray text-sm">{{ track.artists[0].name }}</p>
         </div>
       </div>
-      <div *ngIf="variant === 'onSongs'">
-        <p class="capitalize text-spotify-gray text-sm">Certified lover boy</p>
+      <div *ngIf="variant === 'onSongs'" class=" w-1/5">
+        <p class="capitalize text-spotify-gray text-sm">
+          {{ track.album.name }}
+        </p>
       </div>
 
       <!-- on search  -->

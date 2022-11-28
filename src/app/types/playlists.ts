@@ -1,3 +1,5 @@
+import { PlaylistTrack } from "./track";
+
 export interface Playlist {
   owner: Owner;
   collaborative: boolean;
@@ -32,6 +34,7 @@ interface Owner {
 interface Tracks {
   href: string;
   total: number;
+  items: PlaylistTrack[]
 }
 
 interface Followers {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Track, TrackComponents } from 'app-types';
+import { PlaylistTrack, Track, TrackComponents } from 'app-types';
 import { sampleImgUrl } from '../../constants';
 
 @Component({
@@ -11,7 +11,7 @@ export class TrackComponent implements OnInit {
   @Input() variant!: TrackComponents;
   @Input() track!: Track
   @Input() index!: number
-  
+
   favorite = false;
   hovered = false;
 

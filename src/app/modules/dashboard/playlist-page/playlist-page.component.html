@@ -1,5 +1,23 @@
 <div>
-  <section  *ngIf="playlist">
+  <section *ngIf="playlist">
     <app-card variant="playlistDetail" [playlist]="playlist"></app-card>
+  </section>
+
+  <section *ngIf="playlistTracks" class="pt-8 px-8">
+    <div
+      class="flex flex-row items-center justify-between text-spotify-gray pl-3 pr-16 pb-2 border-b-[0.1px] border-b-bg-border mb-2"
+    >
+      <div class="flex flex-row space-x-5 items-center">
+        <app-icon variant="hashTag"></app-icon>
+        <p class="text-sm">TITLE</p>
+      </div>
+      <app-icon variant="clock"></app-icon>
+    </div>
+    <app-track
+      variant="onSongs"
+      [track]="track.track"
+      [index]="i + 1"
+      *ngFor="let track of playlistTracks; let i = index"
+    ></app-track>
   </section>
 </div>

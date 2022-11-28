@@ -11,6 +11,10 @@ export interface Track {
   album: Album
 }
 
+export interface PlaylistTrack {
+  track: Track
+}
+
 export interface ArtistTracks {
   tracks: Track[]
 }
