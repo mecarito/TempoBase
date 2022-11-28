@@ -1,1 +1,6 @@
-<p>episode-page works!</p>
+
+<div>
+  <section  *ngIf="episode">
+    <app-card variant="episodeDetail" [episode]="episode"></app-card>
+  </section>
+</div>

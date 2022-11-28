@@ -129,6 +129,18 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.store.dispatch(saveAlbumId({ id }));
   }
 
+  navigateToShowPage(id: string) {
+    this.router.navigate(['show', id]);
+  }
+
+  navigateToEpisodePage(id: string) {
+    this.router.navigate(['episode', id]);
+  }
+
+  navigateToPlaylistPage(id: string) {
+    this.router.navigate(['playlist', id]);
+  }
+
   search(search: string) {
     this.searchTerm = search;
     if (search) {

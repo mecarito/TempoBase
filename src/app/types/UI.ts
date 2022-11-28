@@ -7,7 +7,10 @@ export type Cards =
   | 'topResult'
   | 'category'
   | 'artistDetail'
-  | 'albumDetail';
+  | 'albumDetail'
+  | 'showDetail'
+  | 'episodeDetail'
+  | 'playlistDetail'
 
 export type TrackComponents = 'onPopular' | 'onAlbum' | 'onSearch' | 'onSongs';
 

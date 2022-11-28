@@ -45,6 +45,7 @@
   <ng-container *ngIf="variant === 'playlist'">
     <div
       class="flex flex-col w-card-w h-card-h p-card-p bg-spotify-primary-dark rounded-md hover:bg-card-hovered cursor-pointer"
+      (click)="getItemId(playlist.id)"
     >
       <img
         [src]="playlist.images[0].url"
@@ -68,6 +69,7 @@
   <ng-container *ngIf="variant === 'show'">
     <div
       class="flex flex-col w-card-w h-card-h p-card-p bg-spotify-primary-dark rounded-md hover:bg-card-hovered cursor-pointer"
+      (click)="getItemId(show.id)"
     >
       <img
         [src]="show.images[1].url"
@@ -88,6 +90,7 @@
   <ng-container *ngIf="variant === 'episode'">
     <div
       class="flex flex-col w-card-w h-card-h p-card-p bg-spotify-primary-dark rounded-md hover:bg-card-hovered cursor-pointer"
+      (click)="getItemId(episode.id)"
     >
       <img
         [src]="episode.images[1].url"
@@ -139,8 +142,12 @@
           class="h-full w-album-img-w"
         />
         <div class="flex flex-col relative">
-          <p class="text-xs mt-[3.875rem] mb-3">ALBUM</p>
-          <h1 class="text-8xl font-semibold capitalize overflow-hidden truncate ...">{{ album.name }}</h1>
+          <p class="text-xs mt-[2rem] mb-4 font-semibold">ALBUM</p>
+          <h1
+            class="text-8xl font-semibold capitalize overflow-hidden pb-3 truncate ..."
+          >
+            {{ album.name }}
+          </h1>
           <div
             class="flex flex-row h-6 items-center text-sm space-x-2 absolute bottom-0"
           >
@@ -149,7 +156,9 @@
               alt="category image"
               class="w-6 h-full rounded-full"
             />
-            <p class="capitalize flex flex-row items-center font-semibold hover:underline">
+            <p
+              class="capitalize flex flex-row items-center font-semibold hover:underline"
+            >
               {{ album.artists[0].name }} <span class="ml-2">.</span>
             </p>
             <p class="flex flex-row items-center space-x-2">
@@ -157,6 +166,68 @@
             </p>
             <p class="flex flex-row items-center space-x-2">
               {{ album.total_tracks }} <span class="ml-1">songs</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="variant === 'showDetail'">
+    <div
+      class="h-album-container-h pl-7 relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b"
+    >
+      <div
+        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6"
+      >
+        <img
+          [src]="show.images[0].url"
+          alt="album image"
+          class="h-full w-album-img-w"
+        />
+        <div class="flex flex-col relative">
+          <p class="text-xs mt-[2rem] mb-4 font-semibold">PODCAST</p>
+          <h1
+            class="text-8xl font-semibold capitalize overflow-hidden pb-3 truncate ..."
+          >
+            {{ show.name }}
+          </h1>
+          <div
+            class="flex flex-row h-6 items-center text-sm space-x-2 absolute bottom-0"
+          >
+            <p class="text-2xl font-semibold">
+              {{ show.publisher }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="variant === 'episodeDetail'">
+    <div
+      class="h-album-container-h pl-7 relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b"
+    >
+      <div
+        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6"
+      >
+        <img
+          [src]="episode.images[0].url"
+          alt="album image"
+          class="h-full w-album-img-w"
+        />
+        <div class="flex flex-col relative">
+          <p class="text-xs mt-[2rem] mb-4 font-semibold wordSpacing">PODCAST EPISODE</p>
+          <h1
+            class="text-8xl font-semibold capitalize overflow-hidden pb-3 truncate ..."
+          >
+            {{ episode.name }}
+          </h1>
+          <div
+            class="flex flex-row h-6 items-center text-sm space-x-2 absolute bottom-0"
+          >
+            <p class="text-2xl font-semibold">
+              {{ episode.show.name }}
             </p>
           </div>
         </div>
@@ -178,7 +249,9 @@
         <img src="assets/verified.png" alt="verified image" class="w-6 h-6" />
         <p class="text-sm text-gray-50">Verified Artist</p>
       </div>
-      <p class="text-8xl font-semibold overflow-hidden truncate ...">{{ artistDetails.name }}</p>
+      <p class="text-8xl font-semibold overflow-hidden truncate ...">
+        {{ artistDetails.name }}
+      </p>
     </div>
   </ng-container>
 </div>
