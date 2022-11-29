@@ -26,7 +26,6 @@ export class EpisodePageComponent implements OnInit, OnDestroy {
     this.episodeSub = this.episodeService.getEpisode(this.episodeId).subscribe({
       next: (episode) => {
         this.episode = episode;
-        console.log(episode);
       },
       error: () => this.router.navigate(['']),
     });

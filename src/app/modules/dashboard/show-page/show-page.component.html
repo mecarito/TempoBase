@@ -1,5 +1,17 @@
 <div>
-  <section  *ngIf="show">
+  <section *ngIf="show">
     <app-card variant="showDetail" [show]="show"></app-card>
+  </section>
+  <section *ngIf="episodes" class="px-6 py-6 grid grid-cols-6 grid-flow-col items-center">
+    <div class=" flex flex-col space-y-4 col-span-4">
+      <h1 class=" text-white text-2xl font-semibold" *ngIf="episodes">All Episodes</h1>
+      <app-card
+        variant="episodeShowDetail"
+        [episode]="episode"
+        *ngFor="let episode of episodes"
+         (clickEvent)="navigateToEpisodePage($event)"
+      ></app-card>
+    </div>
+    <div class=" col-span-2"></div>
   </section>
 </div>

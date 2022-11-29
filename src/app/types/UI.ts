@@ -10,6 +10,7 @@ export type Cards =
   | 'albumDetail'
   | 'showDetail'
   | 'episodeDetail'
+  | 'episodeShowDetail'
   | 'playlistDetail'
 
 export type TrackComponents = 'onPopular' | 'onAlbum' | 'onSearch' | 'onSongs';

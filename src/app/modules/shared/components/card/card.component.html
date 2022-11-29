@@ -221,7 +221,7 @@
             PODCAST EPISODE
           </p>
           <h1
-            class="text-8xl font-semibold capitalize  pb-3  overflow-hidden truncate .."
+            class="text-8xl font-semibold capitalize pb-3 overflow-hidden truncate .."
           >
             {{ episode.name }}
           </h1>
@@ -232,6 +232,34 @@
               {{ episode.show.name }}
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="variant === 'episodeShowDetail'">
+    <div
+      class="h-episode-h px-4 py-4 w-full bg-transparent rounded-md hover:bg-card-hovered cursor-pointer "
+      (click)="getItemId(episode.id)"
+    >
+      <div class="flex flex-row space-x-5 text-white">
+        <img [src]="episode.images[1].url" alt="album image" class="h-28 w-28" />
+        <div class="flex flex-col space-y-2 pb-4">
+          <h1 class="text-white text-base font-semibold hover:underline">
+            {{ episode.name }}
+          </h1>
+          <p
+            class="text-sm text-spotify-gray tracking-wide h-20 overflow-hidden text-ellipsis ..."
+          >
+            {{ episode.description }}
+          </p>
+          <p class="text-spotify-gray text-sm ">
+            <span>{{ episode.release_date | date }}</span>
+            <span class="mx-1">.</span>
+            <span class="hover:underline"
+              >{{ episode.duration_ms | millisecstoMIns }} Min</span
+            >
+          </p>
         </div>
       </div>
     </div>
@@ -250,7 +278,7 @@
           class="h-full w-album-img-w"
         />
         <div class="flex flex-col relative">
-          <p class="text-xs mt-[2rem] mb-4 font-semibold ">PLAYLIST</p>
+          <p class="text-xs mt-[2rem] mb-4 font-semibold">PLAYLIST</p>
           <h1
             class="text-8xl font-semibold capitalize overflow-hidden pb-3 truncate ..."
           >
@@ -259,13 +287,12 @@
           <div
             class="flex flex-row h-6 items-center text-base space-x-2 absolute bottom-0"
           >
-            <p
-              class="capitalize flex flex-row items-center font-semibold "
-            >
+            <p class="capitalize flex flex-row items-center font-semibold">
               {{ playlist.owner.display_name }} <span class="ml-2">.</span>
             </p>
-              <p class="flex flex-row items-center space-x-2">
-              {{ playlist.followers.total | number }} likes <span class="ml-2">.</span>
+            <p class="flex flex-row items-center space-x-2">
+              {{ playlist.followers.total | number }} likes
+              <span class="ml-2">.</span>
             </p>
             <p class="flex flex-row items-center space-x-2">
               {{ playlist.tracks.total }} <span class="ml-1">songs</span>

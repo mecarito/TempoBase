@@ -40,6 +40,7 @@ module.exports = {
         "album-img-w": "14.5rem",
         "album-img-h": "14.5rem",
         "album-space-x": "1.313rem",
+        "episode-h": "10.75rem",
       },
       rotate: {
         20: "20deg",
