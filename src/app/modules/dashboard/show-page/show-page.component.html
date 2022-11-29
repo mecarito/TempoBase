@@ -2,16 +2,24 @@
   <section *ngIf="show">
     <app-card variant="showDetail" [show]="show"></app-card>
   </section>
-  <section *ngIf="episodes" class="px-6 py-6 grid grid-cols-6 grid-flow-col items-center">
-    <div class=" flex flex-col space-y-4 col-span-4">
-      <h1 class=" text-white text-2xl font-semibold" *ngIf="episodes">All Episodes</h1>
+  <section
+    *ngIf="episodes"
+    class="px-6 py-6 grid grid-cols-6 grid-flow-col"
+  >
+    <div class="flex flex-col space-y-4 col-span-4">
+      <h1 class="text-white text-2xl font-semibold" *ngIf="episodes">
+        All Episodes
+      </h1>
       <app-card
         variant="episodeShowDetail"
         [episode]="episode"
         *ngFor="let episode of episodes"
-         (clickEvent)="navigateToEpisodePage($event)"
+        (clickEvent)="navigateToEpisodePage($event)"
       ></app-card>
     </div>
-    <div class=" col-span-2"></div>
+    <div class="col-span-2 flex flex-col space-y-4 px-6 mt-12">
+      <h1 class="text-2xl text-white font-semibold">About</h1>
+      <p class="text-base text-spotify-gray">{{ show.description }}</p>
+    </div>
   </section>
 </div>
