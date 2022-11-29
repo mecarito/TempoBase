@@ -21,7 +21,7 @@
     ></app-track>
   </section>
 
-  <section class="mt-9 mx-8" *ngIf="artistAlbums.length !== 0">
+  <section class="mt-9 mx-8" *ngIf="artistAlbums.length !== 0 && artist">
     <h1 class="text-white text-2xl font-semibold">
       More albums by {{ artist.name }}
     </h1>

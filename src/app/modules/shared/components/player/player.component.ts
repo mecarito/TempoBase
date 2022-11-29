@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { sampleImgUrl } from '../../constants';
 
 @Component({
@@ -6,12 +12,15 @@ import { sampleImgUrl } from '../../constants';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss'],
 })
-export class PlayerComponent implements OnInit {
+export class PlayerComponent implements OnInit, AfterViewInit {
   url = sampleImgUrl;
   playing = false;
   muted = false;
   favorite = false;
 
+  audioDuration!: number
+
+  @ViewChild('audio') audio!: ElementRef<HTMLAudioElement>;
   constructor() {}
 
   ngOnInit(): void {
@@ -24,6 +33,27 @@ export class PlayerComponent implements OnInit {
     if (volume) {
       volume.style.backgroundSize = '20% 100%';
     }
+
+    // const audio = document.querySelector('audio');
+
+    // if (audio) {
+    //   audio.addEventListener('loadedmetadata', () => {
+    //       console.log(audio.duration, this.audio.nativeElement.duration)
+    //   });
+    // }
+
+    // if (this.audio) {
+    //   this.audio.nativeElement.onloadedmetadata()
+    // }
+  }
+
+  ngAfterViewInit() {
+    // console.log(this.audio.nativeElement.duration);
+  }
+
+  onLoadedMetaData(audio: HTMLAudioElement) {
+    this.audioDuration = audio.duration
+     console.log(audio.duration)
   }
 
   handleInputChange(e: Event) {

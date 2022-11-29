@@ -59,10 +59,10 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.categorySub = this.categoryService.categories$.subscribe({
-      next: (res) => (this.categories = res.categories.items),
-      error: () => this.router.navigate(['']),
-    });
+    // this.categorySub = this.categoryService.categories$.subscribe({
+    //   next: (res) => (this.categories = res.categories.items),
+    //   error: () => this.router.navigate(['']),
+    // });
     this.searchSub = this.searchService.searchResults$.subscribe({
       next: (res) => {
         if (

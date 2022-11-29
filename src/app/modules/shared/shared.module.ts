@@ -10,6 +10,7 @@ import { IconComponent } from './components/icon/icon.component';
 import { ChipComponent } from './components/chip/chip.component';
 import { MinutesPipe } from './pipes/minutes.pipe';
 import { SecondsPipe } from './pipes/seconds.pipe';
+import { CalculateTimePipe } from './pipes/calculateTime.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SecondsPipe } from './pipes/seconds.pipe';
     ChipComponent,
     MinutesPipe,
     SecondsPipe,
+    CalculateTimePipe,
   ],
 
   imports: [CommonModule],
@@ -36,6 +38,7 @@ import { SecondsPipe } from './pipes/seconds.pipe';
     IconComponent,
     ChipComponent,
     MinutesPipe,
+    CalculateTimePipe,
   ],
 })
 export class SharedModule {}

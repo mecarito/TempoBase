@@ -47,9 +47,17 @@
         class="audio-slider"
         (input)="handleInputChange($event)"
       />
-      <p>2:37</p>
+      <p>{{ audioDuration | calculateTime}}</p>
     </div>
   </div>
+  <audio
+    src="https://p.scdn.co/mp3-preview/72ba150b45e1fe593b9f0b76d5c4de6c94c4c60e?cid=1b0a2280f1fb49b2864251589d203897"
+    preload="metadata"
+    controls
+    #audio
+    (loadedmetadata)="onLoadedMetaData(audio)"
+  ></audio>
+
   <div class="w-full flex flex-row justify-end">
     <div class="col-span-1 flex flex-row items-center space-x-2 w-1/4">
       <button *ngIf="!muted" (click)="mute()">
