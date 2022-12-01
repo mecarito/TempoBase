@@ -12,3 +12,9 @@ export const selectAlbumId = createSelector(
   selectAlbum,
   (state: AlbumState) => state.id
 );
+
+const selectTrack = (state: Store) => state.track;
+export const selectTrackData = createSelector(
+  selectAlbum,
+  (state: AlbumState) => state
+);

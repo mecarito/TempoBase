@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlaylistTrack, Track, TrackComponents } from 'app-types';
 import { sampleImgUrl } from '../../constants';
 
@@ -9,8 +9,9 @@ import { sampleImgUrl } from '../../constants';
 })
 export class TrackComponent implements OnInit {
   @Input() variant!: TrackComponents;
-  @Input() track!: Track
-  @Input() index!: number
+  @Input() track!: Track;
+  @Input() index!: number;
+  @Output() clickEvent = new EventEmitter<Track>();
 
   favorite = false;
   hovered = false;
@@ -20,6 +21,10 @@ export class TrackComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  getTrack(track: Track) {
+    this.clickEvent.emit(track);
+  }
 
   addToFavorite() {
     this.favorite = true;

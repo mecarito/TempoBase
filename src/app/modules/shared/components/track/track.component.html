@@ -8,9 +8,10 @@
     "
   >
     <div
-      class="h-14 px-4 flex flex-row items-center w-full hover:bg-bg-border rounded justify-between cursor-default"
+      class="h-14 px-4 flex flex-row items-center w-full hover:bg-bg-border rounded justify-between cursor-pointer"
       (mouseover)="mouseMovement(true)"
       (mouseleave)="mouseMovement(false)"
+      (dblclick)="getTrack(track)"
     >
       <!-- on Popular -->
       <div

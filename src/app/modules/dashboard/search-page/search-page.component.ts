@@ -19,8 +19,7 @@ import {
 } from 'app-types';
 import { SearchService } from '../../shared/services/search.service';
 import { Store } from '@ngrx/store';
-import { saveArtistId } from '../../shared/store/actions/artist';
-import { saveAlbumId } from '../../shared/store/actions/album';
+import { saveTrack, saveAlbumId, saveArtistId } from 'store';
 
 @Component({
   selector: 'app-search-page',
@@ -59,10 +58,10 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // this.categorySub = this.categoryService.categories$.subscribe({
-    //   next: (res) => (this.categories = res.categories.items),
-    //   error: () => this.router.navigate(['']),
-    // });
+    this.categorySub = this.categoryService.categories$.subscribe({
+      next: (res) => (this.categories = res.categories.items),
+      error: () => this.router.navigate(['']),
+    });
     this.searchSub = this.searchService.searchResults$.subscribe({
       next: (res) => {
         if (
@@ -102,23 +101,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.searchSub.unsubscribe();
   }
 
-  // check if title is not in view and change the background of search header
-  @HostListener('document:mousewheel', ['$event'])
-  onscroll(event: Event) {
-    const title = document.getElementById('title');
-    const header = document.getElementById('header');
-
-    if (title?.getBoundingClientRect().y !== title?.offsetTop) {
-      if (header) {
-        header.style.backgroundColor = '#070707';
-      }
-    } else {
-      if (header) {
-        header.style.backgroundColor = '#121212';
-      }
-    }
-  }
-
   navigateToArtistPage(id: string) {
     this.router.navigate(['artist', id]);
     this.store.dispatch(saveArtistId({ id }));
@@ -146,5 +128,17 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     if (search) {
       this.searchService.setSearchTerm(search);
     }
+  }
+
+  addToPlayer(track: Track) {
+    console.log(track);
+    this.store.dispatch(
+      saveTrack({
+        images: track.album.images,
+        previewUrl: track.preview_url,
+        trackName: track.name,
+        artistName: track.artists[0].name,
+      })
+    );
   }
 }
