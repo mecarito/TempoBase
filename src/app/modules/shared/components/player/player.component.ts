@@ -13,7 +13,7 @@ import { audioCurrentTIme, sliderPercentage } from '../../utils/audio';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss'],
 })
-export class PlayerComponent implements OnInit, AfterViewInit {
+export class PlayerComponent implements OnInit {
   url = sampleImgUrl;
   playing = false;
   muted = false;
@@ -39,25 +39,10 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     if (volume) {
       volume.style.backgroundSize = '20% 100%';
     }
-
-    // const audio = document.querySelector('audio');
-
-    // if (audio) {
-    //   const bufferedAmount = audio.buffered.end(audio.buffered.length - 1);
-    //   this.currentTime = audio.currentTime
-    // }
-  }
-
-  ngAfterViewInit() {
-    // console.log(this.audio.nativeElement.duration);
   }
 
   onLoadedMetaData(audio: HTMLAudioElement) {
     this.audioDuration = audio.duration;
-    // this.audioSlider.nativeElement.max = String(Math.round(audio.duration));
-    const bufferedAmount = audio.buffered.end(audio.buffered.length - 1);
-    const seekableAmount = audio.seekable.end(audio.seekable.length - 1);
-    // console.log(audio.duration, bufferedAmount, seekableAmount);
   }
 
   onPlaying(audio: HTMLAudioElement) {
@@ -70,18 +55,31 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
 
   audioSliderChange() {
+    if (!this.audio.nativeElement.paused) {
+      this.audio.nativeElement.pause();
+      this.playing = false
+    }
     const val = this.audioSlider.nativeElement.value;
     this.currentTime = audioCurrentTIme(val, this.audioDuration);
-    this.audioSlider.nativeElement.style.backgroundSize = `${val}% 100%`;
+     this.audio.nativeElement.currentTime = audioCurrentTIme(
+       val,
+       this.audioDuration
+     );
   }
 
   audioTimeChange() {
+    if (this.audio.nativeElement.paused) {
+      this.audio.nativeElement.play();
+      this.playing = true
+    }
     const val = this.audioSlider.nativeElement.value;
     this.audio.nativeElement.currentTime = audioCurrentTIme(
       val,
       this.audioDuration
     );
   }
+
+ 
 
   volumeSliderChange() {
     const val = this.volumeSlider.nativeElement.value;
