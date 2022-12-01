@@ -21,7 +21,8 @@ export class PlayerComponent implements OnInit {
 
   audioDuration!: number;
   currentTime: number = 0;
-  sliderPercentage: string = '0';
+  audioSliderPercentage: string = '0';
+  volumeSliderPercentage: string = '10';
 
   @ViewChild('audio') audio!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioSlider') audioSlider!: ElementRef<HTMLInputElement>;
@@ -37,53 +38,56 @@ export class PlayerComponent implements OnInit {
 
     let volume = document.getElementById('volume-level');
     if (volume) {
-      volume.style.backgroundSize = '20% 100%';
+      volume.style.backgroundSize = '10% 100%';
     }
   }
 
   onLoadedMetaData(audio: HTMLAudioElement) {
     this.audioDuration = audio.duration;
+    this.audio.nativeElement.volume = 0.1;
   }
 
   onPlaying(audio: HTMLAudioElement) {
     this.currentTime = audio.currentTime;
-    this.sliderPercentage = sliderPercentage(
+    this.audioSliderPercentage = sliderPercentage(
       this.currentTime,
       this.audioDuration
     );
-    this.audioSlider.nativeElement.style.backgroundSize = `${this.sliderPercentage}% 100%`;
+    this.audioSlider.nativeElement.style.backgroundSize = `${this.audioSliderPercentage}% 100%`;
   }
 
   audioSliderChange() {
     if (!this.audio.nativeElement.paused) {
       this.audio.nativeElement.pause();
-      this.playing = false
+      this.playing = false;
     }
     const val = this.audioSlider.nativeElement.value;
     this.currentTime = audioCurrentTIme(val, this.audioDuration);
-     this.audio.nativeElement.currentTime = audioCurrentTIme(
-       val,
-       this.audioDuration
-     );
-  }
-
-  audioTimeChange() {
-    if (this.audio.nativeElement.paused) {
-      this.audio.nativeElement.play();
-      this.playing = true
-    }
-    const val = this.audioSlider.nativeElement.value;
     this.audio.nativeElement.currentTime = audioCurrentTIme(
       val,
       this.audioDuration
     );
   }
 
- 
+  audioTimeChange() {
+    if (this.audio.nativeElement.paused) {
+      this.audio.nativeElement.play();
+      this.playing = true;
+    }
+  }
 
   volumeSliderChange() {
     const val = this.volumeSlider.nativeElement.value;
+    const volume = Number(val) * 0.01;
     this.volumeSlider.nativeElement.style.backgroundSize = `${val}% 100%`;
+
+    if (volume === 0) {
+      this.muted = true;
+      this.audio.nativeElement.volume = volume;
+    } else {
+      this.muted = false;
+      this.audio.nativeElement.volume = volume;
+    }
   }
 
   play() {

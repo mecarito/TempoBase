@@ -36,20 +36,20 @@
       <button><app-icon variant="repeat"></app-icon></button>
     </div>
     <div class="flex flex-row items-center space-x-2 text-xs">
-      <p>{{ currentTime | calculateTime}}</p>
+      <p>{{ currentTime | calculateTime }}</p>
       <input
         type="range"
         id="track-time"
         name="track-time"
         min="0"
         max="100"
-        [value]="sliderPercentage"
+        [value]="audioSliderPercentage"
         class="audio-slider"
         (input)="audioSliderChange()"
         (change)="audioTimeChange()"
         #audioSlider
       />
-      <p>{{ audioDuration | calculateTime}}</p>
+      <p>{{ audioDuration | calculateTime }}</p>
     </div>
   </div>
   <audio
@@ -60,7 +60,7 @@
     (loadedmetadata)="onLoadedMetaData(audio)"
     (timeupdate)="onPlaying(audio)"
     (pause)="pause()"
-    class=" hidden"
+    class="hidden"
   ></audio>
 
   <div class="w-full flex flex-row justify-end">
@@ -79,6 +79,7 @@
         max="100"
         value="20"
         class="volume-slider"
+        [value]="volumeSliderPercentage"
         #volumeSlider
         (input)="volumeSliderChange()"
       />
