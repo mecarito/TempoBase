@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { sampleImgUrl } from '../../constants';
+import { audioCurrentTIme, sliderPercentage } from '../../utils/audio';
 
 @Component({
   selector: 'app-player',
@@ -20,6 +21,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
 
   audioDuration!: number;
   currentTime: number = 0;
+  sliderPercentage: string = '0';
 
   @ViewChild('audio') audio!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioSlider') audioSlider!: ElementRef<HTMLInputElement>;
@@ -59,20 +61,26 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
 
   onPlaying(audio: HTMLAudioElement) {
-    // console.log(audio.currentTime)
     this.currentTime = audio.currentTime;
-  }
-
-  onDurationChange(audio: HTMLAudioElement) {
-    const bufferedAmount = audio.buffered.end(audio.buffered.length - 1);
-    const seekableAmount = audio.seekable.end(audio.seekable.length - 1);
-
-    console.log(bufferedAmount, seekableAmount);
+    this.sliderPercentage = sliderPercentage(
+      this.currentTime,
+      this.audioDuration
+    );
+    this.audioSlider.nativeElement.style.backgroundSize = `${this.sliderPercentage}% 100%`;
   }
 
   audioSliderChange() {
     const val = this.audioSlider.nativeElement.value;
+    this.currentTime = audioCurrentTIme(val, this.audioDuration);
     this.audioSlider.nativeElement.style.backgroundSize = `${val}% 100%`;
+  }
+
+  audioTimeChange() {
+    const val = this.audioSlider.nativeElement.value;
+    this.audio.nativeElement.currentTime = audioCurrentTIme(
+      val,
+      this.audioDuration
+    );
   }
 
   volumeSliderChange() {

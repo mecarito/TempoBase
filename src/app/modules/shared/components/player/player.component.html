@@ -43,9 +43,10 @@
         name="track-time"
         min="0"
         max="100"
-        value="0"
+        [value]="sliderPercentage"
         class="audio-slider"
         (input)="audioSliderChange()"
+        (change)="audioTimeChange()"
         #audioSlider
       />
       <p>{{ audioDuration | calculateTime}}</p>
@@ -57,8 +58,9 @@
     controls
     #audio
     (loadedmetadata)="onLoadedMetaData(audio)"
-    (pause)="onPlaying(audio)"
-    (seeking)="onDurationChange(audio)"
+    (timeupdate)="onPlaying(audio)"
+    (pause)="pause()"
+    class=" hidden"
   ></audio>
 
   <div class="w-full flex flex-row justify-end">
