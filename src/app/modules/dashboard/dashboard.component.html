@@ -1,11 +1,11 @@
 <div class="grid grid-flow-col grid-cols-8 h-screen relative scroll">
   <section class="col-span-1"><app-sidebar></app-sidebar></section>
-  <section class="col-span-7 bg-spotify-secondary-dark overflow-auto pb-32 ">
+  <section class="col-span-7 bg-spotify-secondary-dark overflow-auto pb-32">
     <router-outlet></router-outlet>
   </section>
   <footer
     class="bg-spotify-primary-dark bottom-0 right-0 left-0 absolute border-t-[0.1px] border-t-bg-border text-white"
   >
-    <app-player></app-player>
+    <app-player [track]="track"></app-player>
   </footer>
 </div>

@@ -107,12 +107,27 @@
   </section>
 
   <section
-    class="flex flex-col space-y-4 h-screen w-full items-center justify-center text-white"
+    class="flex flex-col items-center py-40 text-white"
+    *ngIf="
+      (albums.length === 0 ||
+        artists.length === 0 ||
+        episodes.length === 0 ||
+        playlists.length === 0 ||
+        shows.length === 0 ||
+        tracks.length === 0) &&
+      !noResults
+    "
+  >
+    <h1 class="text-2xl">Searching ...</h1>
+  </section>
+
+  <section
+    class="flex flex-col items-center py-40 text-white"
     *ngIf="noResults"
   >
     <h1 class="text-2xl">No results found for "{{ searchTerm }}"</h1>
-    <p ()>
-      Please make sure your words are spelled correctly or use less or different
+    <p>
+      Please make sure your words are spelled correctly or use different
       keywords.
     </p>
   </section>

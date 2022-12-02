@@ -2,9 +2,11 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { TrackState } from 'app-types';
 import { sampleImgUrl } from '../../constants';
 import { audioCurrentTIme, sliderPercentage } from '../../utils/audio';
 
@@ -14,12 +16,13 @@ import { audioCurrentTIme, sliderPercentage } from '../../utils/audio';
   styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent implements OnInit {
+  @Input() track!: TrackState;
   url = sampleImgUrl;
   playing = false;
   muted = false;
   favorite = false;
 
-  audioDuration!: number;
+  audioDuration: number = 0
   currentTime: number = 0;
   audioSliderPercentage: string = '0';
   volumeSliderPercentage: string = '10';
@@ -30,21 +33,14 @@ export class PlayerComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    let slider = document.getElementById('track-time');
-    if (slider) {
-      slider.style.backgroundSize = '0 100%';
-    }
-
-    let volume = document.getElementById('volume-level');
-    if (volume) {
-      volume.style.backgroundSize = '10% 100%';
-    }
-  }
+  ngOnInit(): void {}
 
   onLoadedMetaData(audio: HTMLAudioElement) {
+    this.volumeSlider.nativeElement.style.backgroundSize = '10% 100%';
+    this.audioSlider.nativeElement.style.backgroundSize = '0 100%';
     this.audioDuration = audio.duration;
     this.audio.nativeElement.volume = 0.1;
+    this.playing = true;
   }
 
   onPlaying(audio: HTMLAudioElement) {

@@ -131,14 +131,17 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   addToPlayer(track: Track) {
-    console.log(track);
-    this.store.dispatch(
-      saveTrack({
-        images: track.album.images,
-        previewUrl: track.preview_url,
-        trackName: track.name,
-        artistName: track.artists[0].name,
-      })
-    );
+    if (track.preview_url) {
+      this.store.dispatch(
+        saveTrack({
+          images: track.album.images,
+          previewUrl: track.preview_url,
+          trackName: track.name,
+          artistName: track.artists[0].name,
+        })
+      );
+    } else {
+      alert(`Song ${track.name} has no preview url hence can't be played`)
+    }
   }
 }

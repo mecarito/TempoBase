@@ -1,88 +1,98 @@
-<div class="grid grid-flow-col grid-cols-3 h-player-h p-4">
-  <div class="col-span-1 flex flex-row items-center">
-    <img [src]="url" alt="track image" class="w-14 h-14" />
-    <div class="flex flex-col space-y-1 ml-4">
-      <p class="capitalize text-sm">Easy on me</p>
-      <p class="capitalize text-xs text-spotify-gray">Adele</p>
-    </div>
-    <div class="ml-8">
-      <button *ngIf="!favorite" (click)="addToFavorite()">
-        <app-icon variant="heart"></app-icon>
-      </button>
-      <button *ngIf="favorite" (click)="removeFromFavorite()">
-        <app-icon variant="heart-green"></app-icon>
-      </button>
-    </div>
+<div class="h-player-h">
+  <div
+    *ngIf="!track.previewUrl"
+    class="flex flex-col h-full items-center justify-center"
+  >
+    <p class="text-white text-2xl">Tracks you play will appear here</p>
   </div>
-  <div class="col-span-1 text-spotify-gray flex flex-col space-y-2">
-    <div class="flex flex-row items-center space-x-5 justify-center">
-      <button><app-icon variant="shuffle"></app-icon></button>
-      <button><app-icon variant="skip-back"></app-icon></button>
-      <button
-        *ngIf="!playing"
-        (click)="play()"
-        class="bg-white p-2 rounded-full"
-      >
-        <app-icon variant="play-dark"></app-icon>
-      </button>
-      <button
-        *ngIf="playing"
-        (click)="pause()"
-        class="bg-white p-2 rounded-full"
-      >
-        <app-icon variant="pause"></app-icon>
-      </button>
-      <button><app-icon variant="skip-forward"></app-icon></button>
-      <button><app-icon variant="repeat"></app-icon></button>
+  <div class="grid grid-flow-col grid-cols-3 p-4" *ngIf="track.previewUrl" >
+    <div class="col-span-1 flex flex-row items-center">
+      <img [src]="track.images[1].url" alt="track image" class="w-14 h-14" />
+      <div class="flex flex-col space-y-1 ml-4">
+        <p class="capitalize text-sm">{{ track.trackName }}</p>
+        <p class="capitalize text-xs text-spotify-gray">
+          {{ track.artistName }}
+        </p>
+      </div>
+      <div class="ml-8">
+        <button *ngIf="!favorite" (click)="addToFavorite()">
+          <app-icon variant="heart"></app-icon>
+        </button>
+        <button *ngIf="favorite" (click)="removeFromFavorite()">
+          <app-icon variant="heart-green"></app-icon>
+        </button>
+      </div>
     </div>
-    <div class="flex flex-row items-center space-x-2 text-xs">
-      <p>{{ currentTime | calculateTime }}</p>
-      <input
-        type="range"
-        id="track-time"
-        name="track-time"
-        min="0"
-        max="100"
-        [value]="audioSliderPercentage"
-        class="audio-slider"
-        (input)="audioSliderChange()"
-        (change)="audioTimeChange()"
-        #audioSlider
-      />
-      <p>{{ audioDuration | calculateTime }}</p>
+    <div class="col-span-1 text-spotify-gray flex flex-col space-y-2">
+      <div class="flex flex-row items-center space-x-5 justify-center">
+        <button><app-icon variant="shuffle"></app-icon></button>
+        <button><app-icon variant="skip-back"></app-icon></button>
+        <button
+          *ngIf="!playing"
+          (click)="play()"
+          class="bg-white p-2 rounded-full"
+        >
+          <app-icon variant="play-dark"></app-icon>
+        </button>
+        <button
+          *ngIf="playing"
+          (click)="pause()"
+          class="bg-white p-2 rounded-full"
+        >
+          <app-icon variant="pause"></app-icon>
+        </button>
+        <button><app-icon variant="skip-forward"></app-icon></button>
+        <button><app-icon variant="repeat"></app-icon></button>
+      </div>
+      <div class="flex flex-row items-center space-x-2 text-xs">
+        <p>{{ currentTime | calculateTime }}</p>
+        <input
+          type="range"
+          id="track-time"
+          name="track-time"
+          min="0"
+          max="100"
+          [value]="audioSliderPercentage"
+          class="audio-slider"
+          (input)="audioSliderChange()"
+          (change)="audioTimeChange()"
+          #audioSlider
+        />
+        <p>{{ audioDuration | calculateTime }}</p>
+      </div>
     </div>
-  </div>
-  <audio
-    src="https://p.scdn.co/mp3-preview/72ba150b45e1fe593b9f0b76d5c4de6c94c4c60e?cid=1b0a2280f1fb49b2864251589d203897"
-    preload="metadata"
-    controls
-    #audio
-    (loadedmetadata)="onLoadedMetaData(audio)"
-    (timeupdate)="onPlaying(audio)"
-    (pause)="pause()"
-    class="hidden"
-  ></audio>
+    <audio
+      [src]="track.previewUrl"
+      preload="metadata"
+      controls
+      #audio
+      (loadedmetadata)="onLoadedMetaData(audio)"
+      (timeupdate)="onPlaying(audio)"
+      (pause)="pause()"
+      class="hidden"
+      autoplay
+    ></audio>
 
-  <div class="w-full flex flex-row justify-end">
-    <div class="col-span-1 flex flex-row items-center space-x-2 w-1/4">
-      <button *ngIf="!muted" (click)="mute()">
-        <app-icon variant="volume"></app-icon>
-      </button>
-      <button *ngIf="muted" (click)="unMute()">
-        <app-icon variant="mute"></app-icon>
-      </button>
-      <input
-        type="range"
-        id="volume-level"
-        name="track-time"
-        min="0"
-        max="100"
-        value="20"
-        class="volume-slider"
-        [value]="volumeSliderPercentage"
-        #volumeSlider
-        (input)="volumeSliderChange()"
-      />
+    <div class="w-full flex flex-row justify-end">
+      <div class="col-span-1 flex flex-row items-center space-x-2 w-1/4">
+        <button *ngIf="!muted" (click)="mute()">
+          <app-icon variant="volume"></app-icon>
+        </button>
+        <button *ngIf="muted" (click)="unMute()">
+          <app-icon variant="mute"></app-icon>
+        </button>
+        <input
+          type="range"
+          id="volume-level"
+          name="track-time"
+          min="0"
+          max="100"
+          [value]="volumeSliderPercentage"
+          class="volume-slider"
+          #volumeSlider
+          (input)="volumeSliderChange()"
+        />
+      </div>
     </div>
   </div>
 </div>

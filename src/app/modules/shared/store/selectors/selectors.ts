@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { Store, ArtistState, AlbumState } from 'app-types';
+import { Store, ArtistState, AlbumState, TrackState } from 'app-types';
 
 const selectArtist = (state: Store) => state.artist;
 export const selectArtistId = createSelector(
@@ -15,6 +15,6 @@ export const selectAlbumId = createSelector(
 
 const selectTrack = (state: Store) => state.track;
 export const selectTrackData = createSelector(
-  selectAlbum,
-  (state: AlbumState) => state
+  selectTrack,
+  (state: TrackState) => state
 );
