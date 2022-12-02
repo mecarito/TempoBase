@@ -22,8 +22,9 @@ export class PlayerComponent implements OnInit {
   muted = false;
   favorite = false;
 
-  audioDuration: number = 0
+  audioDuration: number = 0;
   currentTime: number = 0;
+  audioVolume: number = 0.1
   audioSliderPercentage: string = '0';
   volumeSliderPercentage: string = '10';
 
@@ -36,10 +37,10 @@ export class PlayerComponent implements OnInit {
   ngOnInit(): void {}
 
   onLoadedMetaData(audio: HTMLAudioElement) {
-    this.volumeSlider.nativeElement.style.backgroundSize = '10% 100%';
+    const volumePercentage = this.audioVolume * 100;
+    this.volumeSlider.nativeElement.style.backgroundSize = `${volumePercentage}% 100%`;
     this.audioSlider.nativeElement.style.backgroundSize = '0 100%';
     this.audioDuration = audio.duration;
-    this.audio.nativeElement.volume = 0.1;
     this.playing = true;
   }
 
@@ -79,10 +80,10 @@ export class PlayerComponent implements OnInit {
 
     if (volume === 0) {
       this.muted = true;
-      this.audio.nativeElement.volume = volume;
+      this.audioVolume = volume;
     } else {
       this.muted = false;
-      this.audio.nativeElement.volume = volume;
+      this.audioVolume = volume;
     }
   }
 

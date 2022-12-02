@@ -21,6 +21,8 @@
       [track]="track.track"
       [index]="i + 1"
       *ngFor="let track of playlistTracks; let i = index"
+          (clickEvent)="addToPlayer($event)"
+
     ></app-track>
   </section>
 </div>
