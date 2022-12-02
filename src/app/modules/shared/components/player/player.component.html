@@ -1,11 +1,13 @@
-<div class="h-player-h">
+<div class="h-player-h p-4">
   <div
     *ngIf="!track.previewUrl"
     class="flex flex-col h-full items-center justify-center"
   >
-    <p class="text-white text-2xl">Tracks you play will appear here</p>
+    <p class="text-white text-2xl">
+      Songs or podcast episodes you play will appear here
+    </p>
   </div>
-  <div class="grid grid-flow-col grid-cols-3 p-4" *ngIf="track.previewUrl" >
+  <div class="grid grid-flow-col grid-cols-3" *ngIf="track.previewUrl">
     <div class="col-span-1 flex flex-row items-center">
       <img [src]="track.images[1].url" alt="track image" class="w-14 h-14" />
       <div class="flex flex-col space-y-1 ml-4">

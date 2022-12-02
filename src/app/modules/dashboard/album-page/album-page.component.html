@@ -18,6 +18,7 @@
       [track]="track"
       [index]="i + 1"
       *ngFor="let track of albumTracks; let i = index"
+      (clickEvent)="addToPlayer($event)"
     ></app-track>
   </section>
 

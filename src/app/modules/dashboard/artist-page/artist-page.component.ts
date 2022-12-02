@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Album, Artist, Track } from 'app-types';
 import { Subscription } from 'rxjs';
+import { saveTrack } from 'store';
 import { ArtistService } from '../../shared/services/artist.service';
 import { saveAlbumId } from '../../shared/store/actions/album';
 import { saveArtistId } from '../../shared/store/actions/artist';
@@ -106,5 +107,20 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
   navigateToAlbumPage(id: string) {
     this.router.navigate(['album', id]);
     this.store.dispatch(saveAlbumId({ id }));
+  }
+
+  addToPlayer(track: Track) {
+    if (track.preview_url) {
+      this.store.dispatch(
+        saveTrack({
+          images: track.album.images,
+          previewUrl: track.preview_url,
+          trackName: track.name,
+          artistName: track.artists[0].name,
+        })
+      );
+    } else {
+      alert(`Song ${track.name} has no preview url hence can't be played`);
+    }
   }
 }

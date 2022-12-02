@@ -8,7 +8,8 @@ export interface Track {
   duration_ms: number;
   disc_number: number;
   artists: Artist[];
-  album: Album
+  album: Album;
+  images: Images[]
 }
 
 export interface PlaylistTrack {

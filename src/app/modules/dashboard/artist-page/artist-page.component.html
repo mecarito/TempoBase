@@ -15,6 +15,7 @@
           [track]="track"
           [index]="i + 1"
           *ngFor="let track of topTracks; let i = index"
+          (clickEvent)="addToPlayer($event)"
         ></app-track>
       </div>
     </section>

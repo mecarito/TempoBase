@@ -16,6 +16,7 @@ import {
   selectArtistId,
   saveAlbumId,
   saveArtistId,
+  saveTrack,
 } from 'store';
 
 @Component({
@@ -57,8 +58,11 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
 
         this.albumSub = this.albumService.getAlbum(this.albumId).subscribe({
           next: (album) => {
+            const images = album.images;
             this.album = album;
-            this.albumTracks = album.tracks.items;
+            this.albumTracks = album.tracks.items.map((track) => {
+              return { ...track, images };
+            });
             this.store.dispatch(saveArtistId({ id: album.artists[0].id }));
           },
           error: () => this.router.navigate(['']),
@@ -112,5 +116,20 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
     this.router.navigate(['album', id]);
     this.store.dispatch(saveAlbumId({ id }));
     this.scrollTo.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  addToPlayer(track: Track) {
+    if (track.preview_url) {
+      this.store.dispatch(
+        saveTrack({
+          images: track.images,
+          previewUrl: track.preview_url,
+          trackName: track.name,
+          artistName: track.artists[0].name,
+        })
+      );
+    } else {
+      alert(`Song ${track.name} has no preview url hence can't be played`);
+    }
   }
 }
