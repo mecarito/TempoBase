@@ -42,4 +42,5 @@ export class CardComponent implements OnInit {
   getBgImage() {
     return `url(${this.artistDetails.images[0].url})`;
   }
+
 }

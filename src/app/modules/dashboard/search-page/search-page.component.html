@@ -37,8 +37,8 @@
     ></app-chip>
   </section> -->
 
-  <section class="flex flex-col space-y-11 mt-5">
-    <div class="flex flex-col space-y-5 w-full" *ngIf="tracks.length !== 0">
+  <section class="flex flex-col space-y-11 mt-5 w-full ">
+    <div class="flex flex-col space-y-5" *ngIf="tracks.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Songs</h1>
       <div class="grid grid-flow-col grid-rows-5 grid-cols-2">
         <app-track
@@ -54,7 +54,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="artists.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Artists</h1>
-      <div class="flex flex-row gap-5 overflow-x-hidden">
+      <div class="flex flex-row gap-5 flex-wrap">
         <app-card
           variant="artist"
           [artist]="artist"
@@ -65,7 +65,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="albums.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Albums</h1>
-      <div class="flex flex-row gap-5 overflow-x-hidden">
+      <div class="flex flex-row gap-5 flex-wrap">
         <app-card
           variant="album"
           [album]="album"
@@ -76,7 +76,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="playlists.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Playlists</h1>
-      <div class="flex flex-row gap-5 overflow-x-hidden">
+      <div class="flex flex-row gap-5 flex-wrap">
         <app-card
           variant="playlist"
           [playlist]="playlist"
@@ -87,7 +87,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="shows.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Podcasts</h1>
-      <div class="flex flex-row gap-5 overflow-x-hidden">
+      <div class="flex flex-row gap-5 flex-wrap">
         <app-card
           variant="show"
           [show]="show"
@@ -98,7 +98,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="episodes.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Episodes</h1>
-      <div class="flex flex-row gap-5 overflow-x-hidden">
+      <div class="flex flex-row gap-5 flex-wrap">
         <app-card
           variant="episode"
           [episode]="episode"

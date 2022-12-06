@@ -9,20 +9,11 @@
         <span class="mx-1">.</span>
         <span>{{ episode.duration_ms | millisecstoMIns }} Min</span>
       </h1>
-
       <button
-        *ngIf="!playing"
         (click)="play()"
         class="bg-spotify-green-lighter p-4 rounded-full w-min"
       >
         <app-icon variant="play-dark"></app-icon>
-      </button>
-      <button
-        *ngIf="playing"
-        (click)="pause()"
-        class="bg-spotify-green-lighter p-4 rounded-full w-min"
-      >
-        <app-icon variant="pause"></app-icon>
       </button>
     </div>
     <div class="flex flex-col space-y-4 mt-4">
