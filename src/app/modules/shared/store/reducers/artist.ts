@@ -1,11 +1,9 @@
 import {  createReducer, on } from '@ngrx/store';
-import { saveArtistId } from '../actions/artist';
-
-export interface Artist {
+import { saveArtistId } from '../actions';
+ interface Artist {
   id: string;
 }
-
-export const initialState: Artist = {
+ const initialState: Artist = {
   id: '',
 };
 

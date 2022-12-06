@@ -17,6 +17,11 @@ module.exports = {
         "album-details-bg-t": "#C7061D",
         "album-details-bg-c": "#A00316",
         "album-details-bg-b": "#66030F",
+        "liked-details-bg-t": "#523BA0",
+        "liked-details-bg-c": "#412F7F",
+        "liked-details-bg-b": "#2B1F54",
+        "liked-gradient-r": "#7B9087",
+        "liked-gradient-l": "#4014B9",
       },
       fontFamily: {
         Lato: "'Lato', sans-serif;",

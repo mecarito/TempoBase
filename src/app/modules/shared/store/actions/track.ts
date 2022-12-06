@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { TrackImages } from 'app-types';
+import { TrackImages, Track } from 'app-types';
 
 export const saveTrack = createAction(
   '[search Page] saving track',
@@ -10,3 +10,4 @@ export const saveTrack = createAction(
     artistName: string;
   }>()
 );
+

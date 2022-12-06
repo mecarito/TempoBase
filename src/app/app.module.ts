@@ -10,9 +10,12 @@ import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GlobalInterceptor } from './modules/shared/interceptors/global-interceptor';
 import { WelcomeModule } from './modules/welcome/welcome.module';
-import { ArtistReducer } from './modules/shared/store/reducers/artist';
-import { AlbumReducer } from './modules/shared/store/reducers/album';
-import { TrackReducer } from './modules/shared/store/reducers/track';
+import {
+  ArtistReducer,
+  AlbumReducer,
+  TrackReducer,
+  FavoriteReducer,
+} from 'store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +30,7 @@ import { TrackReducer } from './modules/shared/store/reducers/track';
       artist: ArtistReducer,
       album: AlbumReducer,
       track: TrackReducer,
+      favorites: FavoriteReducer,
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

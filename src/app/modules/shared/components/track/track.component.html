@@ -130,12 +130,12 @@
       <div class="flex flex-row space-x-8 items-center w-1/5 justify-end">
         <button
           *ngIf="!favorite"
-          (click)="addToFavorite()"
+          (click)="addToFavorite(track)"
           [ngStyle]="{ visibility: hovered ? 'visible' : 'hidden' }"
         >
           <app-icon variant="heart"></app-icon>
         </button>
-        <button *ngIf="favorite" (click)="removeFromFavorite()">
+        <button *ngIf="favorite" (click)="removeFromFavorite(track)">
           <app-icon variant="heart-green"></app-icon>
         </button>
         <div class="flex flex-row space-x-3 items-center">

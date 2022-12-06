@@ -1,11 +1,11 @@
 import {  createReducer, on } from '@ngrx/store';
-import { saveAlbumId } from '../actions/album';
+import { saveAlbumId } from '../actions';
 
-export interface Album {
+ interface Album {
   id: string;
 }
 
-export const initialState: Album = {
+ const initialState: Album = {
   id: '',
 };
 

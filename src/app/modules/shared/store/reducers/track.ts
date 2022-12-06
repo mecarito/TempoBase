@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { saveTrack } from '../actions/track';
+import { saveTrack } from '../actions';
 import { TrackState } from 'app-types';
 
-export const initialState: TrackState = {
+ const initialState: TrackState = {
   images: [],
   previewUrl: '',
   trackName: '',

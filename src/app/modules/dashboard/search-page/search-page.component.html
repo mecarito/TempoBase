@@ -46,6 +46,8 @@
           [track]="track"
           *ngFor="let track of tracks.slice(0, 4)"
           (clickEvent)="addToPlayer($event)"
+          (addToFavoriteEvent)="addToFavorite($event)"
+          (removeFromFavoriteEvent)="removeFromFavorite($event)"
         ></app-track>
       </div>
     </div>

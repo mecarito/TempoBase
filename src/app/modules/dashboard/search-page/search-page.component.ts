@@ -19,7 +19,13 @@ import {
 } from 'app-types';
 import { SearchService } from '../../shared/services/search.service';
 import { Store } from '@ngrx/store';
-import { saveTrack, saveAlbumId, saveArtistId } from 'store';
+import {
+  saveTrack,
+  saveAlbumId,
+  saveArtistId,
+  addToFavorite,
+  removeFromFavorite,
+} from 'store';
 
 @Component({
   selector: 'app-search-page',
@@ -141,7 +147,15 @@ export class SearchPageComponent implements OnInit, OnDestroy {
         })
       );
     } else {
-      alert(`Song ${track.name} has no preview url hence can't be played`)
+      alert(`Song ${track.name} has no preview url hence can't be played`);
     }
+  }
+
+  addToFavorite(track: Track) {
+    this.store.dispatch(addToFavorite({ track: track }));
+  }
+
+  removeFromFavorite(track: Track) {
+    this.store.dispatch(removeFromFavorite({ track: track}))
   }
 }

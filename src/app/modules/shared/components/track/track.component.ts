@@ -12,6 +12,8 @@ export class TrackComponent implements OnInit {
   @Input() track!: Track;
   @Input() index!: number;
   @Output() clickEvent = new EventEmitter<Track>();
+  @Output() addToFavoriteEvent = new EventEmitter<Track>();
+  @Output() removeFromFavoriteEvent = new EventEmitter<Track>();
 
   favorite = false;
   hovered = false;
@@ -26,12 +28,14 @@ export class TrackComponent implements OnInit {
     this.clickEvent.emit(track);
   }
 
-  addToFavorite() {
+  addToFavorite(track: Track) {
     this.favorite = true;
+    this.addToFavoriteEvent.emit(track);
   }
 
-  removeFromFavorite() {
+  removeFromFavorite(track: Track) {
     this.favorite = false;
+    this.removeFromFavoriteEvent.emit(track)
   }
 
   mouseMovement(state: boolean) {

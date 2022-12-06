@@ -12,6 +12,7 @@ export type Cards =
   | 'episodeDetail'
   | 'episodeShowDetail'
   | 'playlistDetail'
+  | 'likedSongs';
 
 export type TrackComponents = 'onPopular' | 'onAlbum' | 'onSearch' | 'onSongs';
 
@@ -39,4 +40,5 @@ export type Icons =
   | 'play-white'
   | 'more-horizontal'
   | 'clock'
-  | 'hashTag';
+  | 'hashTag'
+  | 'liked';
