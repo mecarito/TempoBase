@@ -1,9 +1,12 @@
 <div>
   <section>
-    <app-card variant="likedSongs"></app-card>
+    <app-card
+      variant="likedSongs"
+      [favoriteTracks]="favoriteTracks.length"
+    ></app-card>
   </section>
 
-  <section class="pt-8 px-8">
+  <section class="pt-8 px-8" *ngIf="favoriteTracks.length > 0">
     <div
       class="flex flex-row items-center text-spotify-gray pl-3 pr-4 pb-2 border-b-[0.1px] border-b-bg-border mb-3"
     >
@@ -16,13 +19,26 @@
         <app-icon variant="clock"></app-icon>
       </div>
     </div>
-    <!-- <app-track
+    <app-track
       variant="onSongs"
-      [track]="track.track"
+      [track]="track"
       [index]="i + 1"
-      *ngFor="let track of playlistTracks; let i = index"
-          (clickEvent)="addToPlayer($event)"
+      *ngFor="let track of favoriteTracks; let i = index"
+      (clickEvent)="addToPlayer($event)"
+    ></app-track>
+  </section>
 
-    ></app-track> -->
+  <section
+    class="text-white flex flex-col items-center space-y-8 mt-20"
+    *ngIf="favoriteTracks.length === 0"
+  >
+    <h1 class="text-3xl font-semibold">Songs you like will appear here</h1>
+    <p class="text-lg">Save songs by tapping the heart icon</p>
+    <button
+      class="text-black bg-white py-3 px-8 rounded-3xl text-base font-semibold"
+      (click)="findSongs()"
+    >
+      Find Songs
+    </button>
   </section>
 </div>

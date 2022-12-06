@@ -1,7 +1,9 @@
+import { Track } from './track';
 export interface Store {
   artist: ArtistState;
   album: AlbumState;
   track: TrackState;
+  favorites: Track[];
 }
 
 export interface ArtistState {

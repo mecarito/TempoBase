@@ -335,7 +335,9 @@
       <div
         class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6"
       >
-        <div class="h-full w-album-img-w bg-gradient-to-br from-liked-gradient-l to-liked-gradient-r flex flex-row items-center justify-center">
+        <div
+          class="h-full w-album-img-w bg-gradient-to-br from-liked-gradient-l to-liked-gradient-r flex flex-row items-center justify-center"
+        >
           <app-icon variant="liked"></app-icon>
         </div>
 
@@ -349,8 +351,17 @@
           <div
             class="flex flex-row h-6 items-center text-base space-x-2 absolute bottom-0"
           >
-            <p class="flex flex-row items-center space-x-2">
-              20 <span class="ml-1">songs</span>
+            <p
+              class="flex flex-row items-center space-x-2"
+              *ngIf="favoriteTracks <= 1"
+            >
+              {{ favoriteTracks }} <span class="ml-1">song</span>
+            </p>
+            <p
+              class="flex flex-row items-center space-x-2"
+              *ngIf="favoriteTracks > 1"
+            >
+              {{ favoriteTracks }} <span class="ml-1">songs</span>
             </p>
           </div>
         </div>

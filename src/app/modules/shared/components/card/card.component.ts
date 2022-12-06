@@ -25,6 +25,7 @@ export class CardComponent implements OnInit {
   @Input() playlist!: Playlist;
   @Input() show!: Show;
   @Input() episode!: Episode;
+  @Input() favoriteTracks!: number;
   @Output() clickEvent = new EventEmitter<string>();
 
   url = sampleImgUrl;
