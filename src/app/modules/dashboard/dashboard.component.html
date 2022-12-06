@@ -1,4 +1,4 @@
-<div class="grid grid-flow-col grid-cols-12 lgxxl:grid-cols-8 h-screen relative scroll">
+<div class="hidden  lg:grid grid-flow-col grid-cols-12 lgxxl:grid-cols-8 h-screen relative scroll">
   <section class="md:col-span-2 lgxxl:col-span-1"><app-sidebar></app-sidebar></section>
   <section class="md:col-span-10 lgxxl:col-span-7 bg-spotify-secondary-dark overflow-y-auto overflow-x-hidden pb-32">
     <router-outlet></router-outlet>
@@ -8,4 +8,8 @@
   >
     <app-player [track]="track"></app-player>
   </footer>
+</div>
+
+<div class="lg:hidden text-white h-screen bg-black flex flex-col justify-center items-center">
+   <h1 class="text-3xl text-center w-5/6">Mobile and ipad not supported</h1>
 </div>
