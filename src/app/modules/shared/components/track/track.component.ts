@@ -11,11 +11,11 @@ export class TrackComponent implements OnInit {
   @Input() variant!: TrackComponents;
   @Input() track!: Track;
   @Input() index!: number;
+  @Input() favorite!: boolean;
   @Output() clickEvent = new EventEmitter<Track>();
   @Output() addToFavoriteEvent = new EventEmitter<Track>();
   @Output() removeFromFavoriteEvent = new EventEmitter<Track>();
 
-  favorite = false;
   hovered = false;
 
   url = sampleImgUrl;

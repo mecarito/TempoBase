@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Track } from 'app-types';
 import { Subscription } from 'rxjs';
-import { saveTrack, selectFavoriteTracks } from 'store';
+import { removeFromFavorite, saveTrack, selectFavoriteTracks } from 'store';
 
 @Component({
   selector: 'app-liked-song-page',
@@ -29,7 +29,7 @@ export class LikedSongPageComponent implements OnInit, OnDestroy {
   }
 
   findSongs() {
-    this.router.navigate(['search'])
+    this.router.navigate(['search']);
   }
 
   addToPlayer(track: Track) {
@@ -45,5 +45,9 @@ export class LikedSongPageComponent implements OnInit, OnDestroy {
     } else {
       alert(`Song ${track.name} has no preview url hence can't be played`);
     }
+  }
+
+  removeFromFavorite(track: Track) {
+    this.store.dispatch(removeFromFavorite({ track: track }));
   }
 }

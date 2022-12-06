@@ -15,8 +15,6 @@ export const FavoriteReducer = createReducer(
     }
   }),
   on(removeFromFavorite, (state, payload) => {
-    const trackIndex = state.indexOf(payload.track);
-    const trackToDelete: Track[] = state.slice(trackIndex, trackIndex + 1);
-    return state.filter((track) => track.id !== trackToDelete[0].id);
+    return state.filter((track) => track.id !== payload.track.id);
   })
 );

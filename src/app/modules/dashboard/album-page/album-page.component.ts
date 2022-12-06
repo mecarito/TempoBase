@@ -17,6 +17,9 @@ import {
   saveAlbumId,
   saveArtistId,
   saveTrack,
+  addToFavorite,
+  removeFromFavorite,
+  selectFavoriteTracks,
 } from 'store';
 
 @Component({
@@ -30,6 +33,9 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
   artistDetials!: Subscription;
   albumIdSub!: Subscription;
   artistIdSub!: Subscription;
+  favoritesSub!: Subscription;
+
+  favoriteTracks: Track[] = [];
   album!: Album;
   artistAlbums: Album[] = [];
   albumTracks: Track[] = [];
@@ -58,10 +64,13 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
 
         this.albumSub = this.albumService.getAlbum(this.albumId).subscribe({
           next: (album) => {
-            const images = album.images;
+            const albumDetails = {
+              name: album.name,
+              images: album.images,
+            };
             this.album = album;
             this.albumTracks = album.tracks.items.map((track) => {
-              return { ...track, images };
+              return { ...track, album: albumDetails };
             });
             this.store.dispatch(saveArtistId({ id: album.artists[0].id }));
           },
@@ -102,6 +111,12 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
             });
         }
       });
+
+    this.favoritesSub = this.store
+      .select(selectFavoriteTracks as any)
+      .subscribe((tracks: any) => {
+        this.favoriteTracks = tracks;
+      });
   }
 
   ngOnDestroy(): void {
@@ -110,6 +125,7 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
     this.artistDetials.unsubscribe();
     this.albumIdSub.unsubscribe();
     this.artistIdSub.unsubscribe();
+    this.favoritesSub.unsubscribe();
   }
 
   navigateToAlbumPage(id: string) {
@@ -122,7 +138,7 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
     if (track.preview_url) {
       this.store.dispatch(
         saveTrack({
-          images: track.images,
+          images: track.album.images,
           previewUrl: track.preview_url,
           trackName: track.name,
           artistName: track.artists[0].name,
@@ -131,5 +147,23 @@ export class AlbumPageComponent implements OnInit, OnDestroy {
     } else {
       alert(`Song ${track.name} has no preview url hence can't be played`);
     }
+  }
+
+  addToFavorite(track: Track) {
+    this.store.dispatch(addToFavorite({ track: track }));
+  }
+
+  removeFromFavorite(track: Track) {
+    this.store.dispatch(removeFromFavorite({ track: track }));
+  }
+
+  isInFavorites(searchTrack: Track) {
+    const available = this.favoriteTracks.find(
+      (track) => track.id === searchTrack.id
+    );
+    if (available) {
+      return true;
+    }
+    return false;
   }
 }

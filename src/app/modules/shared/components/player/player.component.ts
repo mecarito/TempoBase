@@ -107,11 +107,5 @@ export class PlayerComponent implements OnInit {
     this.audio.nativeElement.muted = false;
   }
 
-  addToFavorite() {
-    this.favorite = true;
-  }
 
-  removeFromFavorite() {
-    this.favorite = false;
-  }
 }

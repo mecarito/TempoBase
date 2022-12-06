@@ -41,13 +41,13 @@ interface Artist {
 
 
 interface Album {
-  album_type: string;
-  artists: Artist[];
+  album_type?: string;
+  artists?: Artist[];
   images: Images[];
   name: string;
-  type: string;
-  id: string;
-  release_date: string;
-  release_date_precision: string;
-  total_tracks: number;
+  type?: string;
+  id?: string;
+  release_date?: string;
+  release_date_precision?: string;
+  total_tracks?: number;
 }

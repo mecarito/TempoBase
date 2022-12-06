@@ -38,14 +38,15 @@
   </section> -->
 
   <section class="flex flex-col space-y-11 mt-5">
-    <div class="flex flex-col space-y-5 w-3/4" *ngIf="tracks.length !== 0">
+    <div class="flex flex-col space-y-5 w-full" *ngIf="tracks.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Songs</h1>
-      <div class="flex flex-col">
+      <div class="grid grid-flow-col grid-rows-5 grid-cols-2">
         <app-track
           variant="onSearch"
           [track]="track"
-          *ngFor="let track of tracks.slice(0, 4)"
+          *ngFor="let track of tracks"
           (clickEvent)="addToPlayer($event)"
+          [favorite]="isInFavorites(track)"
           (addToFavoriteEvent)="addToFavorite($event)"
           (removeFromFavoriteEvent)="removeFromFavorite($event)"
         ></app-track>

@@ -1,6 +1,6 @@
 <div>
   <section #scrollTo *ngIf="album">
-    <app-card variant="albumDetail" [album]="album" ></app-card>
+    <app-card variant="albumDetail" [album]="album"></app-card>
   </section>
 
   <section *ngIf="albumTracks" class="pt-8 px-8">
@@ -19,6 +19,9 @@
       [index]="i + 1"
       *ngFor="let track of albumTracks; let i = index"
       (clickEvent)="addToPlayer($event)"
+      [favorite]="isInFavorites(track)"
+      (addToFavoriteEvent)="addToFavorite($event)"
+      (removeFromFavoriteEvent)="removeFromFavorite($event)"
     ></app-track>
   </section>
 

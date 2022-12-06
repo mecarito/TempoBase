@@ -9,11 +9,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Album, Artist, Track } from 'app-types';
 import { Subscription } from 'rxjs';
-import { saveTrack } from 'store';
 import { ArtistService } from '../../shared/services/artist.service';
-import { saveAlbumId } from '../../shared/store/actions/album';
-import { saveArtistId } from '../../shared/store/actions/artist';
-import { selectArtistId } from '../../shared/store/selectors/selectors';
+import {
+  saveTrack,
+  saveAlbumId,
+  saveArtistId,
+  selectArtistId,
+  addToFavorite,
+  removeFromFavorite,
+  selectFavoriteTracks,
+} from 'store';
 
 @Component({
   selector: 'app-artist-page',
@@ -25,6 +30,8 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
   albumSub!: Subscription;
   relatedArtistSub!: Subscription;
   topTracksSub!: Subscription;
+  favoritesSub!: Subscription;
+  favoriteTracks: Track[] = [];
 
   artist!: Artist;
   albums: Album[] = [];
@@ -89,6 +96,12 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
           error: () => this.router.navigate(['']),
         });
     });
+
+    this.favoritesSub = this.store
+      .select(selectFavoriteTracks as any)
+      .subscribe((tracks: any) => {
+        this.favoriteTracks = tracks;
+      });
   }
 
   ngOnDestroy(): void {
@@ -96,6 +109,7 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
     this.albumSub.unsubscribe();
     this.relatedArtistSub.unsubscribe();
     this.topTracksSub.unsubscribe();
+    this.favoritesSub.unsubscribe();
   }
 
   navigateToArtistPage(id: string) {
@@ -122,5 +136,23 @@ export class ArtistPageComponent implements OnInit, OnDestroy {
     } else {
       alert(`Song ${track.name} has no preview url hence can't be played`);
     }
+  }
+
+  addToFavorite(track: Track) {
+    this.store.dispatch(addToFavorite({ track: track }));
+  }
+
+  removeFromFavorite(track: Track) {
+    this.store.dispatch(removeFromFavorite({ track: track }));
+  }
+
+  isInFavorites(searchTrack: Track) {
+    const available = this.favoriteTracks.find(
+      (track) => track.id === searchTrack.id
+    );
+    if (available) {
+      return true;
+    }
+    return false;
   }
 }

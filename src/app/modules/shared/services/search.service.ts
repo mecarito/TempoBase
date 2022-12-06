@@ -22,7 +22,7 @@ export class SearchService {
           q: search,
           include_external: 'audio',
           type: 'album,artist,playlist,track,show,episode',
-          limit: 20,
+          limit: 10,
           market: 'US'
         },
       });

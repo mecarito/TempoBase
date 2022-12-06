@@ -16,14 +16,7 @@
           {{ track.artistName }}
         </p>
       </div>
-      <div class="ml-8">
-        <button *ngIf="!favorite" (click)="addToFavorite()">
-          <app-icon variant="heart"></app-icon>
-        </button>
-        <button *ngIf="favorite" (click)="removeFromFavorite()">
-          <app-icon variant="heart-green"></app-icon>
-        </button>
-      </div>
+    
     </div>
     <div class="col-span-1 text-spotify-gray flex flex-col space-y-2">
       <div class="flex flex-row items-center space-x-5 justify-center">

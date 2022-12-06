@@ -23,8 +23,10 @@
       variant="onSongs"
       [track]="track"
       [index]="i + 1"
+      [favorite]="true"
       *ngFor="let track of favoriteTracks; let i = index"
       (clickEvent)="addToPlayer($event)"
+      (removeFromFavoriteEvent)="removeFromFavorite($event)"
     ></app-track>
   </section>
 

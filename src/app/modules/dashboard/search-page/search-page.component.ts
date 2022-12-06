@@ -25,6 +25,7 @@ import {
   saveArtistId,
   addToFavorite,
   removeFromFavorite,
+  selectFavoriteTracks,
 } from 'store';
 
 @Component({
@@ -37,6 +38,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   searchTerm!: string;
   categorySub!: Subscription;
   searchSub!: Subscription;
+  favoritesSub!: Subscription;
+
+  favoriteTracks: Track[] = [];
   categories: Category[] = [];
   artists: Artist[] = [];
   albums: Album[] = [];
@@ -68,6 +72,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       next: (res) => (this.categories = res.categories.items),
       error: () => this.router.navigate(['']),
     });
+
     this.searchSub = this.searchService.searchResults$.subscribe({
       next: (res) => {
         if (
@@ -101,10 +106,17 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       },
       error: () => this.router.navigate(['']),
     });
+
+    this.favoritesSub = this.store
+      .select(selectFavoriteTracks as any)
+      .subscribe((tracks: any) => {
+        this.favoriteTracks = tracks;
+      });
   }
   ngOnDestroy(): void {
     this.categorySub.unsubscribe();
     this.searchSub.unsubscribe();
+    this.favoritesSub.unsubscribe();
   }
 
   navigateToArtistPage(id: string) {
@@ -156,6 +168,16 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   removeFromFavorite(track: Track) {
-    this.store.dispatch(removeFromFavorite({ track: track}))
+    this.store.dispatch(removeFromFavorite({ track: track }));
+  }
+
+  isInFavorites(searchTrack: Track) {
+    const available = this.favoriteTracks.find(
+      (track) => track.id === searchTrack.id
+    );
+    if (available) {
+      return true;
+    }
+    return false;
   }
 }
