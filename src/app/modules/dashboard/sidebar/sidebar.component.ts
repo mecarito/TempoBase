@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit {
     },
     {
       title: 'Liked Songs',
-      link: 'liked-songs',
+      link: 'favorite',
       iconName: 'heart-white',
     },
   ];

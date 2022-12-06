@@ -10,6 +10,7 @@ import { AlbumPageComponent } from './album-page/album-page.component';
 import { ShowPageComponent } from './show-page/show-page.component';
 import { EpisodePageComponent } from './episode-page/episode-page.component';
 import { PlaylistPageComponent } from './playlist-page/playlist-page.component';
+import { LikedSongPageComponent } from './liked-song-page/liked-song-page.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'show/:id', component: ShowPageComponent },
       { path: 'episode/:id', component: EpisodePageComponent },
       { path: 'playlist/:id', component: PlaylistPageComponent },
+      { path: 'favorite', component: LikedSongPageComponent}
     ],
   },
 ];
@@ -36,6 +38,7 @@ const routes: Routes = [
     ShowPageComponent,
     EpisodePageComponent,
     PlaylistPageComponent,
+    LikedSongPageComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
 })
