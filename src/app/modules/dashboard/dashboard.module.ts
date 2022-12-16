@@ -11,6 +11,7 @@ import { ShowPageComponent } from './show-page/show-page.component';
 import { EpisodePageComponent } from './episode-page/episode-page.component';
 import { PlaylistPageComponent } from './playlist-page/playlist-page.component';
 import { LikedSongPageComponent } from './liked-song-page/liked-song-page.component';
+import { PageNotFoundComponent } from '../../page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -24,9 +25,10 @@ const routes: Routes = [
       { path: 'show/:id', component: ShowPageComponent },
       { path: 'episode/:id', component: EpisodePageComponent },
       { path: 'playlist/:id', component: PlaylistPageComponent },
-      { path: 'favorite', component: LikedSongPageComponent}
+      { path: 'favorite', component: LikedSongPageComponent },
     ],
   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 @NgModule({
   declarations: [

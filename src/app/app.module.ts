@@ -16,9 +16,10 @@ import {
   TrackReducer,
   FavoriteReducer,
 } from 'store';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
