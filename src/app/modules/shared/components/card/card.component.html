@@ -178,27 +178,29 @@
 
   <ng-container *ngIf="variant === 'showDetail'">
     <div
-      class="h-album-container-h pl-7 relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b"
+      class="h-album-container-h md:pl-7 md:relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b overflow-hidden"
     >
       <div
-        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6 w-full"
+        class="flex flex-col py-4 md:py-0 items-center md:items-stretch md:flex-row md:space-x-album-space-x h-album-img-h text-white md:absolute md:bottom-6 w-full"
       >
         <img
           [src]="show.images[0].url"
           alt="album image"
-          class="h-full w-album-img-w"
+          class="h-full w-album-img-w rounded-xl md:rounded-none"
         />
-        <div class="flex flex-col relative">
-          <p class="text-xs mt-[2rem] mb-4 font-semibold">PODCAST</p>
+        <div
+          class="flex flex-col items-center pt-2 md:pt-0 space-y-2 md:space-y-0 md:items-stretch md:relative"
+        >
+          <p class="text-xs md:mt-[2rem] md:mb-4 font-semibold">PODCAST</p>
           <h1
-            class="text-4xl font-semibold capitalize overflow-hidden pb-3 pr-3"
+            class="text-lg md:text-2xl lg:text-4xl font-semibold capitalize md:pb-3 md:pr-3"
           >
             {{ show.name }}
           </h1>
           <div
-            class="flex flex-row h-6 items-center text-sm space-x-2 absolute bottom-0"
+            class="flex flex-row h-6 items-center text-base space-x-2 md:absolute md:bottom-0"
           >
-            <p class="text-2xl font-semibold">
+            <p class="text-lg md:text-2xl font-semibold truncate ...">
               {{ show.publisher }}
             </p>
           </div>
@@ -244,7 +246,7 @@
 
   <ng-container *ngIf="variant === 'episodeShowDetail'">
     <div
-      class="h-episode-h px-4 py-4 w-full bg-transparent rounded-md hover:bg-card-hovered cursor-pointer"
+      class="h-episode-h px-4 py-4 w-full bg-transparent rounded-md hover:bg-card-hovered cursor-pointer overflow-hidden"
       (click)="getItemId(episode.id)"
     >
       <div class="flex flex-row space-x-5 text-white">
@@ -254,7 +256,7 @@
           class="h-28 w-28"
         />
         <div class="flex flex-col space-y-2 pb-4">
-          <h1 class="text-white text-base font-semibold hover:underline">
+          <h1 class="text-white text-base font-semibold hover:underline truncate ...">
             {{ episode.name }}
           </h1>
           <p

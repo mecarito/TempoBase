@@ -7,8 +7,8 @@
       Songs or podcast episodes you play will appear here
     </p>
   </div>
-  <div class="grid grid-flow-col grid-cols-3" *ngIf="track.previewUrl">
-    <div class="col-span-1 flex flex-row items-center">
+  <div class="md:grid grid-flow-col grid-cols-3" *ngIf="track.previewUrl">
+    <div class="hidden md:col-span-1 md:flex flex-row items-center">
       <img [src]="track.images[1].url" alt="track image" class="w-14 h-14" />
       <div class="flex flex-col space-y-1 ml-4">
         <p class="capitalize text-sm">{{ track.trackName }}</p>
@@ -16,9 +16,8 @@
           {{ track.artistName }}
         </p>
       </div>
-    
     </div>
-    <div class="col-span-1 text-spotify-gray flex flex-col space-y-2">
+    <div class="w-full md:col-span-1 text-spotify-gray flex flex-col space-y-2">
       <div class="flex flex-row items-center space-x-5 justify-center">
         <button><app-icon variant="shuffle"></app-icon></button>
         <button><app-icon variant="skip-back"></app-icon></button>
@@ -69,7 +68,7 @@
       autoplay
     ></audio>
 
-    <div class="w-full flex flex-row justify-end">
+    <div class="hidden w-full md:flex flex-row justify-end">
       <div class="col-span-1 flex flex-row items-center space-x-2 w-1/4">
         <button *ngIf="!muted" (click)="mute()">
           <app-icon variant="volume"></app-icon>
