@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Icons } from 'app-types';
 
 @Component({
@@ -8,8 +8,13 @@ import { Icons } from 'app-types';
 })
 export class IconComponent implements OnInit {
   @Input() variant!: Icons;
- 
+  @Output() clickEvent = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  iconClicked() {
+    this.clickEvent.emit();
+  }
 }

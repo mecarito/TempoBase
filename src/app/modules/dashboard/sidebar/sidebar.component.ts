@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Icons } from 'app-types';
 
 interface Section {
@@ -13,6 +13,8 @@ interface Section {
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  @Output() closeBtnEvent = new EventEmitter();
+
   upSection: Section[] = [
     {
       title: 'Search',
@@ -29,4 +31,8 @@ export class SidebarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onClose() {
+    this.closeBtnEvent.emit();
+  }
 }

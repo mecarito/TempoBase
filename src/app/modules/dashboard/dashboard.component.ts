@@ -12,6 +12,8 @@ import { selectTrackData } from 'store';
 export class DashboardComponent implements OnInit, OnDestroy {
   trackDataSub!: Subscription;
   track!: TrackState;
+  sidebarVisible = false;
+
   constructor(private store: Store) {}
 
   ngOnInit(): void {
@@ -24,5 +26,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.trackDataSub.unsubscribe();
+  }
+
+  showSideBar() {
+    this.sidebarVisible = true;
+  }
+
+  hideSideBar() {
+    this.sidebarVisible = false;
   }
 }

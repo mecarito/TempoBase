@@ -41,4 +41,6 @@ export type Icons =
   | 'more-horizontal'
   | 'clock'
   | 'hashTag'
-  | 'liked';
+  | 'liked'
+  | 'menu'
+  | 'close'

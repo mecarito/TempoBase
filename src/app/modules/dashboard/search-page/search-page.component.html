@@ -1,26 +1,28 @@
 <header
-  class="h-16 top-0 left-0 right-0 sticky py-3 flex flex-row items-center px-8 justify-between bg-inherit z-50 bg-header-bg"
+  class="h-16 top-0 left-0 right-0 md:sticky py-3 flex flex-row items-center px-2 md:px-8 justify-between bg-inherit z-50 md:bg-header-bg"
   id="header"
 >
-  <div class="lg:w-1/2 lgxxl:w-1/3 flex flex-row items-center space-x-5">
-    <button class="b rounded-full">
+  <div class="w-full lg:w-1/2 lgxxl:w-1/3 flex flex-row items-center space-x-5">
+    <button class="b rounded-full hidden md:flex">
       <app-icon variant="chevron-left"></app-icon>
     </button>
-    <button class="bg-black rounded-full">
+    <button class="bg-black rounded-full hidden md:flex">
       <app-icon variant="chevron-right"></app-icon>
     </button>
-    <div class="w-full">
+    <div class="w-full md:pr-2">
       <app-search (searchEvent)="search($event)"></app-search>
     </div>
   </div>
-  <app-user></app-user>
+  <app-user class="hidden md:flex"></app-user>
 </header>
 
 <div class="pt-11 px-8" *ngIf="!searchTerm">
   <h1 class="text-2xl text-white font-semibold tracking-tight mb-5" id="title">
     Browse all
   </h1>
-  <div class="flex flex-row flex-wrap gap-5">
+  <div
+    class="flex flex-row gap-5 overflow-x-scroll md:overflow-hidden md:flex-wrap"
+  >
     <app-card
       variant="category"
       [category]="category"
@@ -29,18 +31,11 @@
   </div>
 </div>
 
-<div class="px-8 py-2" *ngIf="searchTerm">
-  <!-- <section class="flex flex-row items-center space-x-4" *ngIf="!noResults">
-    <app-chip
-      *ngFor="let category of searchResultsCategories"
-      [label]="category"
-    ></app-chip>
-  </section> -->
-
-  <section class="flex flex-col space-y-11 mt-5 w-full ">
+<div class="px-2 md:px-8 py-2" *ngIf="searchTerm">
+  <section class="flex flex-col space-y-11 mt-5 w-full">
     <div class="flex flex-col space-y-5" *ngIf="tracks.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Songs</h1>
-      <div class="grid grid-flow-col grid-rows-5 grid-cols-2">
+      <div class=" flex flex-col space-y-2  lg:grid grid-flow-col grid-rows-5 grid-cols-2">
         <app-track
           variant="onSearch"
           [track]="track"
@@ -54,7 +49,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="artists.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Artists</h1>
-      <div class="flex flex-row gap-5 flex-wrap">
+      <div class="flex flex-row gap-5 overflow-x-scroll lg:overflow-hidden lg:flex-wrap">
         <app-card
           variant="artist"
           [artist]="artist"
@@ -65,7 +60,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="albums.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Albums</h1>
-      <div class="flex flex-row gap-5 flex-wrap">
+      <div class="flex flex-row gap-5 overflow-x-scroll lg:overflow-hidden lg:flex-wrap">
         <app-card
           variant="album"
           [album]="album"
@@ -76,7 +71,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="playlists.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Playlists</h1>
-      <div class="flex flex-row gap-5 flex-wrap">
+      <div class="flex flex-row gap-5 overflow-x-scroll lg:overflow-hidden lg:flex-wrap">
         <app-card
           variant="playlist"
           [playlist]="playlist"
@@ -87,7 +82,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="shows.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Podcasts</h1>
-      <div class="flex flex-row gap-5 flex-wrap">
+      <div class="flex flex-row gap-5 overflow-x-scroll lg:overflow-hidden lg:flex-wrap">
         <app-card
           variant="show"
           [show]="show"
@@ -98,7 +93,7 @@
     </div>
     <div class="flex flex-col space-y-5" *ngIf="episodes.length !== 0">
       <h1 class="text-white capitalize text-2xl font-semibold">Episodes</h1>
-      <div class="flex flex-row gap-5 flex-wrap">
+      <div class="flex flex-row gap-5 overflow-x-scroll lg:overflow-hidden lg:flex-wrap">
         <app-card
           variant="episode"
           [episode]="episode"
