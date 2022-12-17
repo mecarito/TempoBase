@@ -83,14 +83,12 @@
         />
         <div class="flex flex-col space-y-1">
           <p class="text-white text-base truncate ...">{{ track.name }}</p>
-          <p class="text-spotify-gray text-sm truncate ...">{{ track.artists[0].name }}</p>
+          <p class="text-spotify-gray text-sm truncate ...">
+            {{ track.artists[0].name }}
+          </p>
         </div>
       </div>
-      <div *ngIf="variant === 'onSongs'" class=" w-2/5">
-        <p class="capitalize text-spotify-gray text-sm text-center truncate ...">
-          {{ track.album.name }}
-        </p>
-      </div>
+     
 
       <!-- on search  -->
       <div

@@ -7,24 +7,26 @@
     ></app-card>
   </div>
   <div>
-    <section class="mt-10 mx-8" *ngIf="topTracks.length !== 0">
+    <section class="mt-10 mx-2 lg:mx-8" *ngIf="topTracks.length !== 0">
       <h1 class="text-white text-2xl font-semibold">Popular</h1>
-      <div class="flex flex-col mt-6 w-3/4 ml-2">
+      <div class="flex flex-col mt-6 w-full lg:w-3/4 md:ml-2">
         <app-track
           variant="onPopular"
           [track]="track"
           [index]="i + 1"
           *ngFor="let track of topTracks; let i = index"
           (clickEvent)="addToPlayer($event)"
-            [favorite]="isInFavorites(track)"
+          [favorite]="isInFavorites(track)"
           (addToFavoriteEvent)="addToFavorite($event)"
           (removeFromFavoriteEvent)="removeFromFavorite($event)"
         ></app-track>
       </div>
     </section>
-    <section class="mt-9 mx-8" *ngIf="albums.length !== 0">
+    <section class="mt-9 mx-2 lg:mx-8" *ngIf="albums.length !== 0">
       <h1 class="text-white text-2xl font-semibold">Albums</h1>
-      <div class="flex flex-row gap-5 overflow-x-hidden mt-6">
+      <div
+        class="flex flex-row gap-5 mt-6 overflow-x-scroll lg:overflow-hidden lg:flex-wrap"
+      >
         <app-card
           variant="album"
           [album]="album"
@@ -33,9 +35,11 @@
         ></app-card>
       </div>
     </section>
-    <section class="mt-9 mx-8" *ngIf="relatedArtists.length !== 0">
+    <section class="mt-9 mx-2 lg:mx-8" *ngIf="relatedArtists.length !== 0">
       <h1 class="text-white text-2xl font-semibold">Fans also like</h1>
-      <div class="flex flex-row gap-5 overflow-x-hidden mt-6">
+      <div
+        class="flex flex-row gap-5 mt-6 overflow-x-scroll lg:overflow-hidden lg:flex-wrap"
+      >
         <app-card
           variant="artist"
           [artist]="artist"

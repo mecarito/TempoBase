@@ -2,7 +2,7 @@
   <section *ngIf="episode">
     <app-card variant="episodeDetail" [episode]="episode"></app-card>
   </section>
-  <section *ngIf="episode" class="w-1/2 mx-8 py-6">
+  <section *ngIf="episode" class="w-full lg:w-1/2 px-4 md:px-8 py-6">
     <div class="flex flex-col space-y-4">
       <h1 class="text-spotify-gray text-base">
         <span>{{ episode.release_date | date }}</span>

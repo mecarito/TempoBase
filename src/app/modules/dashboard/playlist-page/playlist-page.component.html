@@ -3,7 +3,7 @@
     <app-card variant="playlistDetail" [playlist]="playlist"></app-card>
   </section>
 
-  <section *ngIf="playlistTracks" class="pt-8 px-8">
+  <section *ngIf="playlistTracks" class="pt-8 px-2 md:px-8">
     <div
       class="flex flex-row items-center text-spotify-gray pl-3 pr-4 pb-2 border-b-[0.1px] border-b-bg-border mb-3"
     >
@@ -11,7 +11,7 @@
         <app-icon variant="hashTag"></app-icon>
         <p class="text-sm">TITLE</p>
       </div>
-      <div class="w-2/5"><h1 class="text-sm text-center">ALBUM</h1></div>
+      <div class="w-2/5"><h1 class="text-sm text-center"></h1></div>
       <div class="w-1/5 flex flex-row justify-end pr-12">
         <app-icon variant="clock"></app-icon>
       </div>
@@ -21,8 +21,7 @@
       [track]="track.track"
       [index]="i + 1"
       *ngFor="let track of playlistTracks; let i = index"
-          (clickEvent)="addToPlayer($event)"
-
+      (clickEvent)="addToPlayer($event)"
     ></app-track>
   </section>
 </div>

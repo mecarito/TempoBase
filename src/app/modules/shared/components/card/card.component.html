@@ -131,25 +131,27 @@
 
   <ng-container *ngIf="variant === 'albumDetail'">
     <div
-      class="h-album-container-h pl-7 relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b"
+      class="h-album-container-h md:pl-7 md:relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b overflow-hidden"
     >
       <div
-        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6 w-full"
+        class="flex flex-col py-4 md:py-0 items-center md:items-stretch md:flex-row md:space-x-album-space-x h-album-img-h text-white md:absolute md:bottom-6 w-full"
       >
         <img
           [src]="album.images[0].url"
           alt="album image"
-          class="h-full w-album-img-w"
+          class="h-full w-album-img-w rounded-xl md:rounded-none"
         />
-        <div class="flex flex-col relative">
-          <p class="text-xs mt-[2rem] mb-4 font-semibold">ALBUM</p>
+        <div
+          class="flex flex-col items-center pt-2 md:pt-0 space-y-2 md:space-y-0 md:items-stretch md:relative"
+        >
+          <p class="text-xs md:mt-[2rem] md:mb-4 font-semibold">ALBUM</p>
           <h1
-            class="text-4xl font-semibold capitalize pb-3 pr-3 "
+            class="text-xl lg:text-4xl font-semibold capitalize md:pb-3 md:pr-3 truncate ..."
           >
             {{ album.name }}
           </h1>
           <div
-            class="flex flex-row h-6 items-center text-base space-x-2 absolute bottom-0"
+            class="flex flex-row h-6 items-center text-base space-x-2 md:absolute md:bottom-0"
           >
             <img
               [src]="album.images[1].url"
@@ -157,15 +159,15 @@
               class="w-6 h-full rounded-full"
             />
             <p
-              class="capitalize flex flex-row items-center font-semibold hover:underline"
+              class="capitalize flex flex-row items-center font-semibold hover:underline truncate ..."
             >
               {{ album.artists[0].name }} <span class="ml-2">.</span>
             </p>
-            <p class="flex flex-row items-center space-x-2">
+            <p class="flex flex-row items-center space-x-2 truncate ...">
               {{ album.release_date | date : "YYYY"
               }}<span class="ml-2">.</span>
             </p>
-            <p class="flex flex-row items-center space-x-2">
+            <p class="flex flex-row items-center space-x-2 truncate ...">
               {{ album.total_tracks }} <span class="ml-1">songs</span>
             </p>
           </div>
@@ -186,7 +188,7 @@
           alt="album image"
           class="h-full w-album-img-w"
         />
-        <div class="flex flex-col relative ">
+        <div class="flex flex-col relative">
           <p class="text-xs mt-[2rem] mb-4 font-semibold">PODCAST</p>
           <h1
             class="text-4xl font-semibold capitalize overflow-hidden pb-3 pr-3"
@@ -207,29 +209,31 @@
 
   <ng-container *ngIf="variant === 'episodeDetail'">
     <div
-      class="h-album-container-h px-7 relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b"
+      class="h-album-container-h md:pl-7 md:relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b overflow-hidden"
     >
       <div
-        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6 w-full "
+        class="flex flex-col py-4 md:py-0 items-center md:items-stretch md:flex-row md:space-x-album-space-x h-album-img-h text-white md:absolute md:bottom-6 w-full"
       >
         <img
           [src]="episode.images[0].url"
           alt="album image"
-          class="h-full w-album-img-w"
+          class="h-full w-album-img-w rounded-xl md:rounded-none"
         />
-        <div class="flex flex-col relative w-full">
-          <p class="text-xs mt-[2rem] mb-4 font-semibold wordSpacing">
+        <div
+          class="flex flex-col items-center pt-2 md:pt-0 space-y-2 md:space-y-0 md:items-stretch md:relative"
+        >
+          <p class="text-xs md:mt-[2rem] md:mb-4 font-semibold">
             PODCAST EPISODE
           </p>
           <h1
-            class="text-4xl font-semibold capitalize pb-3 pr-3"
+            class="text-lg md:text-2xl lg:text-4xl font-semibold capitalize md:pb-3 md:pr-3"
           >
             {{ episode.name }}
           </h1>
           <div
-            class="flex flex-row h-6 items-center text-sm space-x-2 absolute bottom-0"
+            class="flex flex-row h-6 items-center text-base space-x-2 md:absolute md:bottom-0"
           >
-            <p class="text-2xl font-semibold">
+            <p class="text-lg md:text-2xl font-semibold truncate ...">
               {{ episode.show.name }}
             </p>
           </div>
@@ -272,34 +276,38 @@
 
   <ng-container *ngIf="variant === 'playlistDetail'">
     <div
-      class="h-album-container-h pl-7 relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b"
+      class="h-album-container-h md:pl-7 md:relative w-full bg-gradient-to-b from-album-details-bg-t via-album-details-bg-c to-album-details-bg-b overflow-hidden"
     >
       <div
-        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6 w-full"
+        class="flex flex-col py-4 md:py-0 items-center md:items-stretch md:flex-row md:space-x-album-space-x h-album-img-h text-white md:absolute md:bottom-6 w-full"
       >
         <img
           [src]="playlist.images[0].url"
           alt="album image"
-          class="h-full w-album-img-w"
+          class="h-full w-album-img-w rounded-xl md:rounded-none"
         />
-        <div class="flex flex-col relative">
-          <p class="text-xs mt-[2rem] mb-4 font-semibold">PLAYLIST</p>
+        <div
+          class="flex flex-col items-center pt-2 md:pt-0 space-y-2 md:space-y-0 md:items-stretch md:relative"
+        >
+          <p class="text-xs md:mt-[2rem] md:mb-4 font-semibold">PLAYLIST</p>
           <h1
-            class="text-4xl font-semibold capitalize overflow-hidden pb-3 pr-3"
+            class="text-xl lg:text-4xl font-semibold capitalize md:pb-3 md:pr-3 truncate ..."
           >
             {{ playlist.name }}
           </h1>
           <div
-            class="flex flex-row h-6 items-center text-base space-x-2 absolute bottom-0"
+            class="flex flex-row h-6 items-center text-base space-x-2 md:absolute md:bottom-0"
           >
-            <p class="capitalize flex flex-row items-center font-semibold">
+            <p
+              class="capitalize flex flex-row items-center font-semibold truncate ..."
+            >
               {{ playlist.owner.display_name }} <span class="ml-2">.</span>
             </p>
-            <p class="flex flex-row items-center space-x-2">
-              {{ playlist.followers.total | number }} likes
-              <span class="ml-2">.</span>
+            <p class="flex flex-row items-center space-x-2 truncate ...">
+              {{ playlist.followers.total | number }}
+              <span class="ml-1">likes.</span>
             </p>
-            <p class="flex flex-row items-center space-x-2">
+            <p class="flex flex-row items-center space-x-2 truncate ...">
               {{ playlist.tracks.total }} <span class="ml-1">songs</span>
             </p>
           </div>
@@ -330,26 +338,28 @@
 
   <ng-container *ngIf="variant === 'likedSongs'">
     <div
-      class="h-album-container-h pl-7 relative w-full bg-gradient-to-b from-liked-details-bg-t via-liked-details-bg-c to-liked-details-bg-b"
+      class="h-album-container-h md:pl-7 relative w-full bg-gradient-to-b from-liked-details-bg-t via-liked-details-bg-c to-liked-details-bg-b md:relative overflow-hidden"
     >
       <div
-        class="flex flex-row space-x-album-space-x h-album-img-h text-white absolute bottom-6"
+        class="flex flex-col py-4 md:py-0 items-center md:items-stretch md:flex-row md:space-x-album-space-x md:h-album-img-h text-white md:absolute md:bottom-6 w-full"
       >
         <div
-          class="h-full w-album-img-w bg-gradient-to-br from-liked-gradient-l to-liked-gradient-r flex flex-row items-center justify-center"
+          class="h-album-img-h md:h-full w-album-img-w bg-gradient-to-br from-liked-gradient-l to-liked-gradient-r flex flex-row items-center justify-center"
         >
           <app-icon variant="liked"></app-icon>
         </div>
 
-        <div class="flex flex-col relative">
-          <p class="text-xs mt-[2rem] mb-8 font-semibold">PLAYLIST</p>
+        <div
+          class="flex flex-col items-center pt-2 md:pt-0 space-y-2 md:space-y-0 md:items-stretch md:relative"
+        >
+          <p class="text-xs md:mt-[2rem] md:mb-4 font-semibold">PLAYLIST</p>
           <h1
-            class="text-8xl font-semibold capitalize overflow-hidden pb-3 truncate ..."
+            class="text-2xl md:text-4xl lg:text-8xl font-semibold capitalize overflow-hidden pb-3 truncate ..."
           >
             Liked songs
           </h1>
           <div
-            class="flex flex-row h-6 items-center text-base space-x-2 absolute bottom-0"
+            class="flex flex-row h-6 items-center text-base space-x-2 md:absolute md:bottom-0"
           >
             <p
               class="flex flex-row items-center space-x-2"

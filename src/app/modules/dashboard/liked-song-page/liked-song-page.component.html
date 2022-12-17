@@ -6,7 +6,7 @@
     ></app-card>
   </section>
 
-  <section class="pt-8 px-8" *ngIf="favoriteTracks.length > 0">
+  <section class="pt-8 px-2 md:px-8" *ngIf="favoriteTracks.length > 0">
     <div
       class="flex flex-row items-center text-spotify-gray pl-3 pr-4 pb-2 border-b-[0.1px] border-b-bg-border mb-3"
     >
@@ -14,7 +14,7 @@
         <app-icon variant="hashTag"></app-icon>
         <p class="text-sm">TITLE</p>
       </div>
-      <div class="w-2/5"><h1 class="text-sm text-center">ALBUM</h1></div>
+      <div class="w-2/5"><h1 class="text-sm text-center"></h1></div>
       <div class="w-1/5 flex flex-row justify-end pr-12">
         <app-icon variant="clock"></app-icon>
       </div>
@@ -34,7 +34,7 @@
     class="text-white flex flex-col items-center space-y-8 mt-20"
     *ngIf="favoriteTracks.length === 0"
   >
-    <h1 class="text-3xl font-semibold">Songs you like will appear here</h1>
+    <h1 class="text-3xl font-semibold text-center">Songs you like will appear here</h1>
     <p class="text-lg">Save songs by tapping the heart icon</p>
     <button
       class="text-black bg-white py-3 px-8 rounded-3xl text-base font-semibold"

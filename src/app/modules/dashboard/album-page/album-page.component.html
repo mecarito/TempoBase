@@ -3,7 +3,7 @@
     <app-card variant="albumDetail" [album]="album"></app-card>
   </section>
 
-  <section *ngIf="albumTracks" class="pt-8 px-8">
+  <section *ngIf="albumTracks" class="pt-8 px-2 md:px-8">
     <div
       class="flex flex-row items-center justify-between text-spotify-gray pl-3 pr-16 pb-2 border-b-[0.1px] border-b-bg-border mb-2"
     >
@@ -25,11 +25,16 @@
     ></app-track>
   </section>
 
-  <section class="mt-9 mx-8" *ngIf="artistAlbums.length !== 0 && artist">
+  <section
+    class="mt-9 mx-2 md:mx-8"
+    *ngIf="artistAlbums.length !== 0 && artist"
+  >
     <h1 class="text-white text-2xl font-semibold">
       More albums by {{ artist.name }}
     </h1>
-    <div class="flex flex-row gap-5 overflow-x-hidden mt-6">
+    <div
+      class="flex flex-row gap-5 mt-6 overflow-x-scroll lg:overflow-hidden lg:flex-wrap"
+    >
       <app-card
         variant="album"
         [album]="album"
