@@ -22,7 +22,7 @@
           <p class="text-spotify-gray text-base" *ngIf="!hovered">
             {{ index }}
           </p>
-          <button *ngIf="hovered">
+          <button *ngIf="hovered" >
             <app-icon variant="play-white"></app-icon>
           </button>
         </div>
@@ -128,12 +128,12 @@
       <div class="flex flex-row space-x-8 items-center w-1/5 justify-end">
         <button
           *ngIf="!favorite"
-          (click)="addToFavorite(track)"
+          (click)="addToFavorite(track, $event)"
           [ngStyle]="{ visibility: hovered ? 'visible' : 'hidden' }"
         >
           <app-icon variant="heart"></app-icon>
         </button>
-        <button *ngIf="favorite" (click)="removeFromFavorite(track)">
+        <button *ngIf="favorite" (click)="removeFromFavorite(track, $event)">
           <app-icon variant="heart-green"></app-icon>
         </button>
         <div class="flex flex-row space-x-3 items-center">

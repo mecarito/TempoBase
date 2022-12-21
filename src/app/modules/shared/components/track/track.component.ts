@@ -28,14 +28,16 @@ export class TrackComponent implements OnInit {
     this.clickEvent.emit(track);
   }
 
-  addToFavorite(track: Track) {
+  addToFavorite(track: Track, event: Event) {
+    event.stopImmediatePropagation();
     this.favorite = true;
     this.addToFavoriteEvent.emit(track);
   }
 
-  removeFromFavorite(track: Track) {
+  removeFromFavorite(track: Track, event: Event) {
+    event.stopImmediatePropagation();
     this.favorite = false;
-    this.removeFromFavoriteEvent.emit(track)
+    this.removeFromFavoriteEvent.emit(track);
   }
 
   mouseMovement(state: boolean) {
